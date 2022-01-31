@@ -1,11 +1,14 @@
 const express = require("express")
 const router = express.Router()
 
-project/:id/stages/:id/task/:id
+// project/:id/stages/:id/task/:id
 
-// Dashboard 
-
+// Dashboard and create new project 
 router.route('/').post(createProject).get(getAllProjects)
+
+// Viewing/Updating/deleting a project 
 router.route('/:project_id').get(getProject).delete(deleteProject).patch(updateProject)
 
 module.exports = router
+
+

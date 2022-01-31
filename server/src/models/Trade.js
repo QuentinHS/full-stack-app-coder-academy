@@ -6,6 +6,8 @@ const TradeSchema = new Schema({
     type: String,
     required: [true, "each trade must have a name"],
   },
-})
+},
+{ timestamps: true }
+)
 
 module.exports = mongoose.model("Trade", TradeSchema)

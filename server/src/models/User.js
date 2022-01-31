@@ -52,7 +52,9 @@ const UserSchema = new Schema({
     ref: "Trade"
   }
 
-})
+},
+{ timestamps: true }
+)
 
 UserSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10)

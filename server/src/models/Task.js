@@ -47,6 +47,12 @@ const TaskSchema = new Schema({
     ref: "User",
     required: [true, "each task must be assigned to a trade provider"],
   },
-})
+  image: {
+    type: [String],
+    required: false,
+  },
+},
+{ timestamps: true }
+)
 
 module.exports = mongoose.model("Task", TaskSchema)

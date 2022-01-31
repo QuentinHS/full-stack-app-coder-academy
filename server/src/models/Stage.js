@@ -16,6 +16,8 @@ const StageSchema = new Schema({
       ref: 'Task'
     },
   ],
-})
+},
+{ timestamps: true }
+)
 
 module.exports = mongoose.model("Stage", StageSchema)
