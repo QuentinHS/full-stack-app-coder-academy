@@ -6,7 +6,7 @@ const { Schema } = mongoose
 const UserSchema = new Schema({
   firstName: {
     type: String,
-    required: [true, "Please provide  fnirst ame"],
+    required: [true, "Please provide  first name"],
     maxlength: 50,
     minlength: 3,
   },

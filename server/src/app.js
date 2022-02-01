@@ -28,23 +28,23 @@ projectRouter.use('projects/:project_id/stages', stageRouter);
 // authRouter.route('/register')
 //   .get(function(req, res){
 //     res.status
-//   })
+// //   })
 
 
-
-// error handler
-const notFoundMiddleware = require("./middleware/not-found")
-const errorHandlerMiddleware = require("./middleware/error-handler")
-
-app.set("trust proxy", 1)
+// 
+// // error handler
+// const notFoundMiddleware = require("./middleware/not-found")
+// const errorHandlerMiddleware = require("./middleware/error-handler")
+// 
+// app.set("trust proxy", 1)
 
 // limit api requests
-app.use(
-  rateLimiter({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
-  })
-)
+// app.use(
+//   rateLimiter({
+//     windowMs: 15 * 60 * 1000, // 15 minutes
+//     max: 100, // limit each IP to 100 requests per windowMs
+//   })
+// )
 
 app.use(express.json())
 app.use(helmet())
