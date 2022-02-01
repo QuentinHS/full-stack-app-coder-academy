@@ -1,6 +1,6 @@
 require("dotenv").config()
 require("express-async-errors")
-const express = require("express")
+const createServer = require("./utils/server.js")
 const helmet = require("helmet")
 const cors = require("cors")
 const xss = require("xss-clean")
@@ -9,7 +9,8 @@ const rateLimiter = require("express-rate-limit")
 const connectDB = require("./db/connect")
 const authenticateUser = require("./middleware/authentication")
 
-const app = express()
+// creates the server with express 
+const app = createServer()
 
 // routers
 // const authRouter = require("./routes/authRouter")
@@ -49,7 +50,6 @@ const projectRouter = require("./routes/projectRouter")
 //   })
 // )
 
-app.use(express.json())
 // app.use(helmet())
 // app.use(cors())
 // app.use(xss())
@@ -66,7 +66,7 @@ const port = process.env.PORT || 7000
 const start = async () => {
   try {
     // connectDB
-    await connectDB("mongodb+srv://quentinhs:0bqwBNk7CulalUqS@cluster0.edxqn.mongodb.net/FullStackApp?retryWrites=true&w=majority")
+    await connectDB(process.env.MONGO_URI)
     app.listen(5000, console.log(`server is listening on ${5000}`))
   } catch (e) {
     console.log(e)
