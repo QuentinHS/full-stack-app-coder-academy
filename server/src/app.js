@@ -1,4 +1,4 @@
-require("dotenv").config()
+// require("dotenv").config()
 // require("express-async-errors")
 const express = require("express")
 // const helmet = require("helmet")
@@ -10,6 +10,7 @@ const connectDB = require("./db/connect")
 // const authenticateUser = require("./middleware/authentication")
 
 const app = express()
+app.use(express.json())
 
 // routers
 // const authRouter = require("./routes/authRouter")
@@ -47,7 +48,8 @@ app.use("/projects", projectRouter)
 //   })
 // )
 
-app.use(express.json())
+
+
 // app.use(helmet())
 // app.use(cors())
 // app.use(xss())
@@ -62,7 +64,7 @@ app.use(express.json())
 const start = async () => {
   try {
     // connectDB
-    await connectDB("mongodb+srv://quentinhs:YKuX6xaAPKw8CP6A@cluster0.edxqn.mongodb.net/mongoosetest?retryWrites=true&w=majority")
+    await connectDB("mongodb+srv://quentinhs:YKuX6xaAPKw8CP6A@cluster0.edxqn.mongodb.net/fullstackappprojecttest?retryWrites=true&w=majority")
     app.listen(6000, console.log(`server is listening on ${6000}`))
   } catch (e) {
     console.log(e)
