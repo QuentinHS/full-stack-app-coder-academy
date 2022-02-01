@@ -1,16 +1,16 @@
 // require("dotenv").config()
 // require("express-async-errors")
-const express = require("express")
 // const helmet = require("helmet")
 // const cors = require("cors")
 // const xss = require("xss-clean")
 // const rateLimiter = require("express-rate-limit")
+const createServer = require("./utils/server")
 
 const connectDB = require("./db/connect")
 // const authenticateUser = require("./middleware/authentication")
 
-const app = express()
-app.use(express.json())
+const app = createServer()
+
 
 // routers
 // const authRouter = require("./routes/authRouter")
