@@ -7,4 +7,6 @@ const router = express.Router()
 router.route('/').post(createStage).get(getAllStage)
 router.route('/:stage_id').get(getStage).delete(deleteStage).patch(updateStage)
 
+// This is a random comment
+
 module.exports = router
