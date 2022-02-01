@@ -14,19 +14,11 @@ const ProjectSchema = new Schema({
     type: Date,
     required: [false, "each project must have a completion date"],
   },
-  stages: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Stage",
-      required: false
-    },
-  ],
   users: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: false
-
     },
   ],
 },
