@@ -1,6 +1,7 @@
 require("dotenv").config()
 require("express-async-errors")
-const createServer = require("./utils/server.js")
+// const createServer = require("./utils/server.js")
+const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
 const xss = require("xss-clean")
@@ -10,8 +11,9 @@ const connectDB = require("./db/connect")
 const authenticateUser = require("./middleware/authentication")
 
 // creates the server with express 
-const app = createServer()
-
+// const app = createServer()
+const app = express()
+app.use(express.json())
 // routers
 // const authRouter = require("./routes/authRouter")
 // const tasksRouter = require("./routes/tasksRouter")
@@ -68,10 +70,11 @@ const start = async () => {
   try {
     // connectDB
     await connectDB(process.env.MONGO_URI)
-    app.listen(5000, console.log(`server is listening on ${5000}`))
+    // app.listen(5000, console.log(`server is listening on ${5000}`))
   } catch (e) {
     console.log(e)
   }
 }
 
 start()
+module.exports = app

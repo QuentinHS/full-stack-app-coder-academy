@@ -1,4 +1,4 @@
-export const userPayload = {
+ const userPayload = {
     firstName: "John",
     lastName: "doe",
     email: "foo@bar.com",
@@ -7,3 +7,4 @@ export const userPayload = {
     abn: 1234567 
 }
 
+module.exports = userPayload
