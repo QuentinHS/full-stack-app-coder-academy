@@ -7,9 +7,31 @@ const rateLimiter = require("express-rate-limit")
 
 const connectDB = require("./db/connect")
 const authenticateUser = require("./middleware/authentication")
+
 // routers
-const authRouter = require("./routes/auth")
-const tasksRouter = require("./routes/tasks")
+const authRouter = require("./routes/authRouter")
+const tasksRouter = require("./routes/tasksRouter")
+const stageRouter = require("./routes/stageRouter")
+const projectRouter = require("./routes/projectRouter")
+const userRouter = require("./routes/userRouter")
+const homeRouter = require("./routes/homeRouter")
+const tradeProviderRouter = require("tradeProviderRouter")
+const tradeRouter = require("./routes/tradeRouter")
+
+// users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
+
+stageRouter.use('projects/:project_id/stages/:stage_id/tasks', taskRouter)
+projectRouter.use('projects/:project_id/stages', stageRouter);
+
+
+
+// authRouter.route('/register')
+//   .get(function(req, res){
+//     res.status
+//   })
+
+
+
 // error handler
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")

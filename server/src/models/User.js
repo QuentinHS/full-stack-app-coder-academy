@@ -50,6 +50,11 @@ const UserSchema = new Schema({
     type: [Schema.Types.ObjectId],
     required: false,
     ref: "Trade"
+  },
+  projects: {
+    type: [Schema.Types.ObjectId],
+    ref: "Project",
+    required: false
   }
 
 },
