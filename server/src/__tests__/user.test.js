@@ -1,5 +1,7 @@
 const request = require("supertest")
-const app = require(".app")
+const createServer = require("../utils/server")
+
+const app = createServer()
 
 describe("user tests", ()=>{
   test("User profile GET /:user_id", async ()=>{
