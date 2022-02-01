@@ -23,7 +23,7 @@ describe("project tests", ()=>{
     test("Creates new project", async () =>{
 
         const res = await request(app)
-            .post("/project")
+            .post("/projects")
             .send(projectPayload)
     
             expect(res.status).toBe(200)
