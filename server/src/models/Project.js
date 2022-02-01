@@ -8,26 +8,29 @@ const ProjectSchema = new Schema({
   },
   address: {
       type: String, 
-      required: [true, "each project must have an address"],
+      required: [false, "each project must have an address"],
   },
   completionDate: {
     type: Date,
-    required: [true, "each project must have a completion date"],
+    required: [false, "each project must have a completion date"],
   },
   stages: [
     {
       type: Schema.Types.ObjectId,
       ref: "Stage",
+      required: false
     },
   ],
   users: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: false
+
     },
   ],
 },
-{ timestamps: true }
+{ timestamps: false }
 )
 
 module.exports = mongoose.model("Project", ProjectSchema)
