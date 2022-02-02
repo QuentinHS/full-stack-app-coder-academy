@@ -1,10 +1,11 @@
-// const express = require("express")
-// const router = express.Router({mergeParams: true})
+const express = require("express")
+const router = express.Router({ mergeParams: true })
+const { getAllTasks, createTask, getTask, deleteTask, updateTask } = require("../controllers/taskController")
 
-// // project/:id/stages/:id/task/:id
+// Creating a stage within a project
+router.route("/").post(createTask).get(getAllTasks)
+router.route("/:id").get(getTask).delete(deleteTask).patch(updateTask)
 
-// // Creating a task inside a stage 
-// router.route('/').post(createTask).get(getAllTasks)
-// router.route('/:task_id').get(getTask).delete(deleteTask).patch(updateTask)
+// This is a random comment
 
-// module.exports = router
+module.exports = router

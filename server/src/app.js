@@ -16,7 +16,7 @@ const app = createServer()
 
 // routers
 // const authRouter = require("./routes/authRouter")
-// const tasksRouter = require("./routes/tasksRouter")
+const tasksRouter = require("./routes/tasksRouter")
 const projectRouter = require("./routes/projectRouter")
 const stageRouter = require("./routes/stageRouter")
 // const userRouter = require("./routes/userRouter")
@@ -26,7 +26,7 @@ const stageRouter = require("./routes/stageRouter")
 
 app.use("/projects", projectRouter)
 app.use("/projects/:id/stages", stageRouter)
-// app.use("/projects/:id/stages/:id/tasks", taskRouter)
+app.use("/projects/:id/stages/:id/tasks", taskRouter)
 
 
 // authRouter.route('/register')
@@ -59,9 +59,6 @@ app.use(errorHandlerMiddleware)
 //  routes
 // app.use('/api/v1/auth', authRouter);
 // app.use('/api/v1/tasks', authenticateUser, tasksRouter);
-
-// app.use(notFoundMiddleware)
-// app.use(errorHandlerMiddleware)
 
 const start = async () => {
   try {
