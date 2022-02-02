@@ -29,8 +29,6 @@ describe("project tests", ()=>{
         expect.objectContaining({
             projects: expect.anything()
         })
-        console.log(res.body)
-    
     })
     test("Creates new project", async () =>{
 
@@ -101,7 +99,7 @@ describe("project tests", ()=>{
             expect(newProject.address).toBe(data.address)
     })
 
-    test.only("deletes a project", async ()=>{ 
+    test("deletes a project", async ()=>{ 
         //creating the project
         const project = await Project.create(projectPayload)
         const project_id = project._id
