@@ -1,4 +1,4 @@
-require("dotenv").config()
+
 require("express-async-errors")
 // const createServer = require("./utils/server.js")
 const express = require("express")
@@ -7,7 +7,7 @@ const cors = require("cors")
 const xss = require("xss-clean")
 const rateLimiter = require("express-rate-limit")
 
-const connectDB = require("./db/connect")
+
 const authenticateUser = require("./middleware/authentication")
 
 // creates the server with express 
@@ -64,17 +64,5 @@ app.use("/projects", projectRouter)
 // app.use(notFoundMiddleware)
 // app.use(errorHandlerMiddleware)
 
-const port = process.env.PORT || 7000
 
-const start = async () => {
-  try {
-    // connectDB
-    await connectDB(process.env.MONGO_URI)
-    // app.listen(5000, console.log(`server is listening on ${5000}`))
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-start()
 module.exports = app
