@@ -12,32 +12,32 @@ const getAllStages = async (req, res) => {
 }
 
 
-const getAllStages2 = async (req, res) => {
-    
-    const { id } = req.params
-    const stages = await Project.findById(id).populate({path: 'stages'}).populate('stages')
- 
-  res.status(StatusCodes.OK).json({ stages, count: stages.length })
-}
-
-const createStage2 = async (req, res) => {
+const createStage = async (req, res) => {
   const { id } = req.params
   const project = await Project.findById(id)
 
   const stage = new Stage(req.body)
+  stage.project = id
+
+  console.log(project.stages)
+  console.log(project)
+
+  console.log(stage)
+
   project.stages.push(stage)
 
-  await project.save()
   await stage.save()
+  await project.save()
+
 
   res.status(StatusCodes.CREATED).json({ stage })
 }
 
-const createStage = async (req, res) => {
-  req.body.project = req.params.id
-  const stage = await Stage.create(req.body)
-  res.status(StatusCodes.CREATED).json({ stage })
-}
+// const createStage = async (req, res) => {
+//   req.body.project = req.params.id
+//   const stage = await Stage.create(req.body)
+//   res.status(StatusCodes.CREATED).json({ stage })
+// }
 
 
 const getStage = async (req, res) => {

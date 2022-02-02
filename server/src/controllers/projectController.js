@@ -1,4 +1,5 @@
 const Project = require("../models/Project")
+const Stage = require("../models/Stage")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
@@ -6,6 +7,7 @@ const getAllProjects = async (req, res) => {
   const projects = await Project.find({}).sort('-createdAt')
   res.status(StatusCodes.OK).json({ projects, count: projects.length })
 }
+
 
 const createProject = async (req, res) => {
   const project = await Project.create(req.body)
@@ -18,6 +20,9 @@ const getProject = async (req, res) => {
   const project = await Project.findOne({
     _id: id,
   })
+    .populate({ path: "stages" })
+    .populate("stages")
+
 
   // method to find project linked to user when user methods are tested + working
   //  const project = await Project.findOne({

@@ -10,6 +10,7 @@ const StageSchema = new Schema(
     project: {
       type: Schema.Types.ObjectId,
       ref: "Project",
+      required: false
     },
     tasks: [
       {
