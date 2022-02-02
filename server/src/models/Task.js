@@ -3,11 +3,15 @@ const { Schema } = mongoose
 
 const TaskSchema = new Schema({
   name: {
-    type: String,
-    required: [true, "must provide name"],
-    trim: true,
-    maxlength: [20, "name can not be more than 20 characters"],
+  type: String,
+  required: [true, "must provide name"],
+  maxlength: [100, "name can not be more than 20 characters"],
   },
+  stage: {
+    type: Schema.Types.ObjectId,
+    ref: "Stage",
+    required: false
+  }
   // tradeCategory: {
   //   type: Schema.Types.ObjectId,
   //   ref: "Trade",

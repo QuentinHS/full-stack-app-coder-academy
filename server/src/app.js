@@ -25,9 +25,11 @@ const stageRouter = require("./routes/stageRouter")
 
 // users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
 
-app.use("/projects", projectRouter)
-app.use("/projects/:id/stages", stageRouter)
 app.use("/projects/:id/stages/:id/tasks", taskRouter)
+app.use("/projects/:id/stages", stageRouter)
+app.use("/projects", projectRouter)
+
+
 
 
 
