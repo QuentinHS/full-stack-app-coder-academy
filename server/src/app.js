@@ -1,5 +1,7 @@
-// require("dotenv").config()
-// require("express-async-errors")
+require("dotenv").config()
+require("express-async-errors")
+const notFoundMiddleware = require("./middleware/not-found")
+const errorHandlerMiddleware = require("./middleware/error-handler")
 // const helmet = require("helmet")
 // const cors = require("cors")
 // const xss = require("xss-clean")
@@ -34,9 +36,9 @@ app.use("/projects", projectRouter)
 
 
 // 
-// // error handler
-// const notFoundMiddleware = require("./middleware/not-found")
-// const errorHandlerMiddleware = require("./middleware/error-handler")
+// error handler
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
 // 
 // app.set("trust proxy", 1)
 
@@ -64,7 +66,7 @@ app.use("/projects", projectRouter)
 const start = async () => {
   try {
     // connectDB
-    await connectDB("mongodb+srv://quentinhs:YKuX6xaAPKw8CP6A@cluster0.edxqn.mongodb.net/fullstackappprojecttest?retryWrites=true&w=majority")
+    await connectDB("mongodb+srv://quentinhs:YKuX6xaAPKw8CP6A@cluster0.edxqn.mongodb.net/fullstackappprojectcontroller?retryWrites=true&w=majority")
     app.listen(6000, console.log(`server is listening on ${6000}`))
   } catch (e) {
     console.log(e)

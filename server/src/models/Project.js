@@ -14,14 +14,21 @@ const ProjectSchema = new Schema({
   //   type: Date,
   //   required: [false, "each project must have a completion date"],
   // },
-  // users: [
+  // tradeProviders: [
   //   {
   //     type: Schema.Types.ObjectId,
   //     ref: "User",
   //     required: false
   //   },
   // ],
-})
+  //   createdBy: {
+  //   type: mongoose.Types.ObjectId,
+  //   ref: 'User',
+  //   required: [true, 'Please provide user'],
+  // },
+},
+  { timestamps: true }
+)
 
 module.exports = mongoose.model("Project", ProjectSchema)
 
