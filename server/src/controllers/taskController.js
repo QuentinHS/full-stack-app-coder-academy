@@ -4,11 +4,12 @@ const { BadRequestError, NotFoundError } = require("../errors")
 
 const getAllTasks = async (req, res) => {
   req.body.stage = req.params.id
+ 
+  const { stage } = req.body 
 
-  // const tasks = await Task.find({ stage: req.body.task }).sort("createdAt")
-  const tasks = await Task.find({stage: req.body.stage }).sort("createdAt")
+  const tasks = await Task.find({ stage }).sort("createdAt")
 
-  res.status(StatusCodes.OK).json({ tasks, count: stages.length })
+  res.status(StatusCodes.OK).json({ tasks})
 }
 
 const createTask = async (req, res) => {

@@ -9,8 +9,7 @@ const TaskSchema = new Schema({
   },
   stage: {
     type: Schema.Types.ObjectId,
-    ref: "Stage",
-    required: false
+    ref: "Stage"
   }
   // tradeCategory: {
   //   type: Schema.Types.ObjectId,
