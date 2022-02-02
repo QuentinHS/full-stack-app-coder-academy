@@ -1,6 +1,6 @@
 
 require("express-async-errors")
-// const createServer = require("./utils/server.js")
+const createServer = require("./utils/server.js")
 const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
@@ -11,9 +11,8 @@ const rateLimiter = require("express-rate-limit")
 const authenticateUser = require("./middleware/authentication")
 
 // creates the server with express 
-// const app = createServer()
-const app = express()
-app.use(express.json())
+const app = createServer()
+
 // routers
 // const authRouter = require("./routes/authRouter")
 // const tasksRouter = require("./routes/tasksRouter")
