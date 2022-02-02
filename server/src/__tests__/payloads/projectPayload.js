@@ -1,6 +1,5 @@
 
 const date = new Date()
-const user =  
 // for testing the post request 
 const projectPayload ={
     name: "project 1",
