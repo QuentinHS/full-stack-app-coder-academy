@@ -17,15 +17,15 @@ const app = createServer()
 // routers
 // const authRouter = require("./routes/authRouter")
 // const tasksRouter = require("./routes/tasksRouter")
-// const stageRouter = require("./routes/stageRouter")
 const projectRouter = require("./routes/projectRouter")
+const stageRouter = require("./routes/stageRouter")
 // const userRouter = require("./routes/userRouter")
 // const homeRouter = require("./routes/homeRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
 // const tradeRouter = require("./routes/tradeRouter")
 
 app.use("/projects", projectRouter)
-// app.use("/projects/:id/stages", stageRouter)
+app.use("/projects/:id/stages", stageRouter)
 // app.use("/projects/:id/stages/:id/tasks", taskRouter)
 
 

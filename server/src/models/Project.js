@@ -22,7 +22,7 @@ const ProjectSchema = new Schema({
   //   },
   // ],
   //   createdBy: {
-  //   type: mongoose.Types.ObjectId,
+  //   type: Schema.Types.ObjectId,
   //   ref: 'User',
   //   required: [true, 'Please provide user'],
   // },
