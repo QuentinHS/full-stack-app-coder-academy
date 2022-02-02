@@ -1,16 +1,13 @@
-// require("dotenv").config()
-// require("express-async-errors")
-// const helmet = require("helmet")
-// const cors = require("cors")
-// const xss = require("xss-clean")
-// const rateLimiter = require("express-rate-limit")
+require("express-async-errors")
+const helmet = require("helmet")
+const cors = require("cors")
+const xss = require("xss-clean")
+const rateLimiter = require("express-rate-limit")
 const createServer = require("./utils/server")
+const authenticateUser = require("./middleware/authentication")
 
-const connectDB = require("./db/connect")
-// const authenticateUser = require("./middleware/authentication")
-
+// creates the server with express 
 const app = createServer()
-
 
 // routers
 // const authRouter = require("./routes/authRouter")
@@ -22,9 +19,13 @@ const projectRouter = require("./routes/projectRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
 // const tradeRouter = require("./routes/tradeRouter")
 
+
+// users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
+
 app.use("/projects", projectRouter)
 // app.use("/projects/:id/stages", stageRouter)
 // app.use("/projects/:id/stages/:id/tasks", taskRouter)
+
 
 
 // authRouter.route('/register')
@@ -61,15 +62,6 @@ app.use("/projects", projectRouter)
 // app.use(notFoundMiddleware)
 // app.use(errorHandlerMiddleware)
 
-const start = async () => {
-  try {
-    // connectDB
-    await connectDB("mongodb+srv://quentinhs:YKuX6xaAPKw8CP6A@cluster0.edxqn.mongodb.net/fullstackappprojecttest?retryWrites=true&w=majority")
-    app.listen(6000, console.log(`server is listening on ${6000}`))
-  } catch (e) {
-    console.log(e)
-  }
-}
 
-start()
+module.exports = app
 
