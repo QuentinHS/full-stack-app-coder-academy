@@ -1,8 +1,11 @@
 require("express-async-errors")
-const helmet = require("helmet")
-const cors = require("cors")
-const xss = require("xss-clean")
-const rateLimiter = require("express-rate-limit")
+// const helmet = require("helmet")
+// const cors = require("cors")
+// const xss = require("xss-clean")
+// const rateLimiter = require("express-rate-limit")
+const notFoundMiddleware = require("./middleware/not-found")
+const errorHandlerMiddleware = require("./middleware/error-handler")
+
 const createServer = require("./utils/server")
 const authenticateUser = require("./middleware/authentication")
 
@@ -11,9 +14,9 @@ const app = createServer()
 
 // routers
 // const authRouter = require("./routes/authRouter")
-// const tasksRouter = require("./routes/tasksRouter")
-// const stageRouter = require("./routes/stageRouter")
+const tasksRouter = require("./routes/tasksRouter")
 const projectRouter = require("./routes/projectRouter")
+const stageRouter = require("./routes/stageRouter")
 // const userRouter = require("./routes/userRouter")
 // const homeRouter = require("./routes/homeRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
@@ -23,8 +26,8 @@ const projectRouter = require("./routes/projectRouter")
 // users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
 
 app.use("/projects", projectRouter)
-// app.use("/projects/:id/stages", stageRouter)
-// app.use("/projects/:id/stages/:id/tasks", taskRouter)
+app.use("/projects/:id/stages", stageRouter)
+app.use("/projects/:id/stages/:id/tasks", taskRouter)
 
 
 
@@ -35,9 +38,9 @@ app.use("/projects", projectRouter)
 
 
 // 
-// // error handler
-// const notFoundMiddleware = require("./middleware/not-found")
-// const errorHandlerMiddleware = require("./middleware/error-handler")
+// error handler
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
 // 
 // app.set("trust proxy", 1)
 
@@ -59,9 +62,5 @@ app.use("/projects", projectRouter)
 // app.use('/api/v1/auth', authRouter);
 // app.use('/api/v1/tasks', authenticateUser, tasksRouter);
 
-// app.use(notFoundMiddleware)
-// app.use(errorHandlerMiddleware)
 
-
-module.exports = app
 

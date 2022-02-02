@@ -1,13 +1,15 @@
 const Project = require("../models/Project")
+const { StatusCodes } = require("http-status-codes")
+const { BadRequestError, NotFoundError } = require("../errors")
 
 const getAllProjects = async (req, res) => {
-  const projects = await Project.find({})
-  res.status(200).json({ projects })
+  const projects = await Project.find({}).sort('-createdAt')
+  res.status(StatusCodes.OK).json({ projects, count: projects.length })
 }
 
 const createProject = async (req, res) => {
   const project = await Project.create(req.body)
-  res.status(201).json({ project })
+  res.status(StatusCodes.CREATED).json({ project })
 }
 
 const getProject = async (req, res) => {
@@ -17,24 +19,33 @@ const getProject = async (req, res) => {
     _id: id,
   })
 
+  // method to find project linked to user when user methods are tested + working
+  //  const project = await Project.findOne({
+  //    _id: jobId,
+  //    createdBy: userId,
+  //  })
+
   if (!project) {
-    // throw new NotFoundError(`No project with id ${id}`)
-    throw new Error("cannot find project")
+    throw new NotFoundError(`No project with id ${id}`)
   }
-  res.status(200).json({ project })
+  res.status(StatusCodes.OK).json({ project })
 }
 
 const deleteProject = async (req, res) => {
   const { id } = req.params
   const project = await Project.findOneAndDelete({ _id: id })
   if (!project) {
-    throw new Error("cannot delete project")
+    throw new NotFoundError(`No project with id ${id}`)
   }
-  res.status(200).json({ project })
+  res.status(StatusCodes.OK).json({ project })
 }
 
 const updateProject = async (req, res) => {
-  const { id } = req.params
+  const { id, name } = req.params
+
+  if (name === "") {
+    throw new BadRequestError("Name field cannot be empty")
+  }
 
   const project = await Project.findOneAndUpdate({ _id: id }, req.body, {
     new: true,
@@ -42,10 +53,10 @@ const updateProject = async (req, res) => {
   })
 
   if (!project) {
-    throw new Error("cannot update project")
+     throw new NotFoundError(`No project with id ${id}`)
   }
 
-  res.status(200).json({ project })
+  res.status(StatusCodes.OK).json({ project })
 }
 
 module.exports = {

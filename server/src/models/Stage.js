@@ -6,16 +6,20 @@ const StageSchema = new Schema({
     type: String,
     required: [true, "each stage must have a name"],
   },
-  stageNumber: {
-    type: Number,
-    required: [true, "each stage must be numbered"],
-  },
-  tasks: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Task'
-    },
-  ],
+  project: {
+    type: Schema.Types.ObjectId,
+    ref: "Project"
+  }
+  // stageNumber: {
+  //   type: Number,
+  //   required: [true, "each stage must be numbered"],
+  // },
+  // tasks: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Task'
+  //   },
+  // ],
 },
 { timestamps: true }
 )
