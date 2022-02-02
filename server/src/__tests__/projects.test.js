@@ -37,6 +37,7 @@ describe("project tests", ()=>{
         const res = await request(app)
             .post("/projects")
             .send(projectPayload)
+            //testing the response 
             // test status 
             expect(res.status).toBe(201)
             // test that json is being received 
@@ -45,6 +46,13 @@ describe("project tests", ()=>{
             expect(res.body.project._id).toBeTruthy()
             // test that the correct project was made 
             expect(res.body.project.name).toEqual("project 1")
+
+            // testing the database 
+            const newProject = await Project.findOne({_id: res.body.project._id})
+            expect(newProject).toBeTruthy
+            expect(newProject.name).toBe(projectPayload.name)
+            expect(newProject.address).toBe(projectPayload.address)
+        
 
     })
 
@@ -61,7 +69,38 @@ describe("project tests", ()=>{
     })
 
     test("updates a project", async ()=> {
+        //creating the project
+        const project = await Project.create(projectPayload)
+        const project_id = project._id
         
+        // data to update the created project 
+        const data = {
+            name: "updated project",
+            address: "a new address "
+        }
+
+        const res = await request(app)
+            .patch(`/projects/${project_id}`)
+            .send(data)
+            //testing th response 
+            //test the status code is ok 
+            expect(res.status).toBe(200)
+            // test that the content type is json 
+            expect(res.headers["content-type"]).toMatch(/json/i)
+            // test the project is the corret project 
+            expect(res.body.project._id).toEqual(project_id.toString())
+            // test the name is updated
+            expect(res.body.project.name).toBe(data.name)
+            // test the address is updated 
+            expect(res.body.project.address).toBe(data.address)
+            
+            // testing the database 
+            const newProject = await Project.findOne({_id: res.body.project._id})
+            expect(newProject).toBeTruthy
+            expect(newProject.name).toBe(data.name)
+            expect(newProject.address).toBe(data.address)
     })
+
+    
 
 })
