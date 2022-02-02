@@ -1,4 +1,5 @@
 require("express-async-errors")
+const morgan = require("morgan")
 // const helmet = require("helmet")
 // const cors = require("cors")
 // const xss = require("xss-clean")
@@ -6,11 +7,15 @@ require("express-async-errors")
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")
 
+
 const createServer = require("./utils/server")
 const authenticateUser = require("./middleware/authentication")
 
 // creates the server with express 
 const app = createServer()
+
+
+app.use(morgan("tiny"))
 
 // routers
 // const authRouter = require("./routes/authRouter")
