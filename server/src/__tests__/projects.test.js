@@ -13,11 +13,10 @@ describe("project tests", ()=>{
       });
     
     afterAll((done) => {
-        // await connection.close();
+        // close the connection
         mongoose.connection.close();
-        // await db.close();
-        done();
-    });  
+        done()
+    })  
     test("retrive all projects Get /", async () =>{
 
         const res = await request(app).get('/projects')
