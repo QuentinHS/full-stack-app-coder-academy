@@ -1,10 +1,10 @@
-const request = require("supertest")
-// const createServer = require("../utils/server")
-const projectPayload = require('./payloads/projectPayload')
-const app = require("../app");
-const connectDB = require("../db/connect");
 require("dotenv").config()
+const request = require("supertest")
+const connectDB = require("../db/connect");
 const mongoose = require("mongoose")
+const app = require("../app");
+const projectPayload = require('./payloads/projectPayload')
+const Project = require("../models/Project")
 
 describe("project tests", ()=>{
     beforeAll(async () => {
@@ -46,6 +46,22 @@ describe("project tests", ()=>{
             // test that the correct project was made 
             expect(res.body.project.name).toEqual("project 1")
 
+    })
+
+    test("gets a specific project", async () =>{
+        const project = await Project.create(projectPayload)
+        const project_id = project._id
+        const res = await request(app).get(`/projects/${project_id}`)
+        //test the status code is ok 
+        expect(res.status).toBe(200)
+        // test that the content type is json 
+        expect(res.headers["content-type"]).toMatch(/json/i)
+        // check the right project is returned 
+        expect(res.body.project._id).toEqual(project_id.toString())
+    })
+
+    test("updates a project", async ()=> {
+        
     })
 
 })

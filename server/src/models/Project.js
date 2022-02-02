@@ -6,21 +6,21 @@ const ProjectSchema = new Schema({
     type: String,
     required: [false, "each project must have a name"],
   },
-  // address: {
-  //     type: String,
-  //     required: [false, "each project must have an address"],
-  // },
-  // completionDate: {
-  //   type: Date,
-  //   required: [false, "each project must have a completion date"],
-  // },
-  // users: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "User",
-  //     required: false
-  //   },
-  // ],
+  address: {
+      type: String,
+      required: [false, "each project must have an address"],
+  },
+  completionDate: {
+    type: Date,
+    required: [false, "each project must have a completion date"],
+  },
+  users: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: false
+    },
+  ],
 })
 
 module.exports = mongoose.model("Project", ProjectSchema)
