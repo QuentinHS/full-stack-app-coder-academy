@@ -14,6 +14,7 @@ const getAllStages = async (req, res) => {
 }
 
 const createStage = async (req, res) => {
+  req.body.project = req.params.id
   const stage = await Stage.create(req.body)
   res.status(StatusCodes.CREATED).json({ stage })
 }
