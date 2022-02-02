@@ -1,13 +1,9 @@
-
 require("express-async-errors")
-const createServer = require("./utils/server.js")
-const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
 const xss = require("xss-clean")
 const rateLimiter = require("express-rate-limit")
-
-
+const createServer = require("./utils/server")
 const authenticateUser = require("./middleware/authentication")
 
 // creates the server with express 
@@ -23,11 +19,12 @@ const projectRouter = require("./routes/projectRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
 // const tradeRouter = require("./routes/tradeRouter")
 
+
 // users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
 
 app.use("/projects", projectRouter)
-// stageRouter.use('projects/:project_id/stages/:stage_id/tasks', taskRouter)
-// projectRouter.use('projects/:project_id/stages', stageRouter);
+// app.use("/projects/:id/stages", stageRouter)
+// app.use("/projects/:id/stages/:id/tasks", taskRouter)
 
 
 
@@ -52,6 +49,8 @@ app.use("/projects", projectRouter)
 //   })
 // )
 
+
+
 // app.use(helmet())
 // app.use(cors())
 // app.use(xss())
@@ -65,3 +64,4 @@ app.use("/projects", projectRouter)
 
 
 module.exports = app
+
