@@ -17,7 +17,7 @@ const getAllTradeProviders = async (req, res) => {
 }
 
 // Protected Route / Trade Provider User
-// Get Single User   =>    GET /api/v1/users/:id
+// Get Single User   
 
 const getSingleUser = async (req, res) => {
   const user = await User.findOne({ _id: req.params.id }).select("-password")
@@ -28,7 +28,7 @@ const getSingleUser = async (req, res) => {
 }
 
 // Protected Route / Admin or User
-// Show Current User   =>    GET /api/v1/users/showMe
+// Show Current User  
 
 const showCurrentUser = async (req, res) => {
   res.status(StatusCodes.OK).json(req.user)
