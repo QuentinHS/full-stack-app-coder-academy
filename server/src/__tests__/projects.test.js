@@ -101,6 +101,17 @@ describe("project tests", ()=>{
             expect(newProject.address).toBe(data.address)
     })
 
-    
+    test.only("deletes a project", async ()=>{ 
+        //creating the project
+        const project = await Project.create(projectPayload)
+        const project_id = project._id
+
+        const res = await request(app)
+            .delete("/projects/"+ project_id)
+            expect(res.status).toBe(200)
+            expect(await Project.findOne({_id: res.body.project._id})).toBeFalsy()
+    })
+
+
 
 })
