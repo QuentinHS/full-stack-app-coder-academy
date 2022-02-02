@@ -15,7 +15,7 @@ const getAllStages = async (req, res) => {
 const getAllStages2 = async (req, res) => {
     
     const { id } = req.params
-    const stages = await Project.findById(id).populate({path: 'stages'}).populate('stages')
+    const stages = await Project.findById(id).populate({ path: "stages" }).populate("stages").sort("createdAt")
  
   res.status(StatusCodes.OK).json({ stages, count: stages.length })
 }
