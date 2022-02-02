@@ -8,7 +8,6 @@ const getAllStages = async (req, res) => {
 //   console.log(req.body)
 //   console.log(req.params)
 
-    // const stages = await Stage.find({  }).sort("createdAt")
   const stages = await Stage.find({project: req.body.project}).sort("createdAt")
   res.status(StatusCodes.OK).json({ stages, count: stages.length })
 }
