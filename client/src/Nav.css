@@ -1,0 +1,19 @@
+.link {
+
+    padding: .5rem;
+    margin: .5rem;
+    background-color: red;
+}
+
+.linkGorup {
+
+    margin: .5rem;
+    padding: .5rem;
+
+}
+
+.container {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+}

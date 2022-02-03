@@ -7,6 +7,7 @@ import Task from './components/Task'
 import User from './components/User'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import Landing from "./components/Landing"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
         <Nav />
         <h1>App</h1>
         <Routes >
+          <Route path="/" element={<Landing />}/>
           <Route path="/project" element={<Project />}/>
           <Route path="/stage/:id" element={<Stage />}/>
           <Route path="/trade/:id" element={<Trade />}/>
