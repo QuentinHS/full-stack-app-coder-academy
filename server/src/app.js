@@ -17,7 +17,8 @@ const app = createServer()
 
 
 app.use(morgan("tiny"))
-app.use(cookieParser(process.env.JWT_SECRET))
+app.use(cookieParser())
+// app.use(cookieParser(process.env.JWT_SECRET))
 
 // routers
 const authRouter = require("./routes/authRouter")
