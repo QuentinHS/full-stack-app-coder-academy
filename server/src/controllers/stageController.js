@@ -18,11 +18,6 @@ const createStage = async (req, res) => {
   const stage = new Stage(req.body)
   stage.project = id
 
-  console.log(project.stages)
-  console.log(project)
-
-  console.log(stage)
-
   project.stages.push(stage)
 
   await stage.save()

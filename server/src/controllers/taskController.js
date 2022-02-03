@@ -16,8 +16,6 @@ const getAllTasks = async (req, res) => {
 const createTask = async (req, res) => {
   req.body.stage = req.params.id
 
-   console.log(req.body)
-   console.log(req.params)
    const {tradeCategory} = req.body
    const trade = await Trade.findById(tradeCategory)
 
