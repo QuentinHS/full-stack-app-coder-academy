@@ -18,7 +18,7 @@ const app = createServer()
 app.use(morgan("tiny"))
 
 // routers
-// const authRouter = require("./routes/authRouter")
+const authRouter = require("./routes/authRouter")
 const taskRouter = require("./routes/taskRouter")
 const projectRouter = require("./routes/projectRouter")
 const stageRouter = require("./routes/stageRouter")
@@ -33,6 +33,7 @@ const stageRouter = require("./routes/stageRouter")
 app.use("/projects/:id/stages/:id/tasks", taskRouter)
 app.use("/projects/:id/stages", stageRouter)
 app.use("/projects", projectRouter)
+app.use("/", authRouter)
 
 
 

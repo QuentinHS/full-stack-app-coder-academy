@@ -14,13 +14,14 @@ const UserSchema = new Schema(
     },
     lastName: {
       type: String,
-      required: [true, "Please provide name"],
+      required: [false, "Please provide name"],
       maxlength: 50,
       minlength: 3,
     },
     email: {
       type: String,
-      required: [true, "Please provide email"],
+      unique: true,
+      required: [false, "Please provide email"],
       validate: {
         validator: validator.isEmail,
         message: "Please provide valid email",
@@ -32,45 +33,43 @@ const UserSchema = new Schema(
       required: [true, "Please provide password"],
       minlength: 6,
     },
-    companyName: {
-      type: String,
-      required: [true, "Please provide a company name"],
-      maxlength: [50, "company must have a max length of 50 characters"],
-      minlength: [3, "company must have at least 3 characters"],
-      unique: true,
-    },
-    abn: {
-      type: Number,
-      maxlength: 50,
-      minlength: 3,
-      unique: true,
-    },
+    // companyName: {
+    //   type: String,
+    //   required: [true, "Please provide a company name"],
+    //   maxlength: [50, "company must have a max length of 50 characters"],
+    //   minlength: [3, "company must have at least 3 characters"],
+    //   unique: true,
+    // },
+    // abn: {
+    //   type: Number,
+    //   maxlength: 50,
+    //   minlength: 3,
+    //   unique: true,
+    // },
     role: {
       type: String,
-      enum: ["project manager", "trade provider"],
-      default: "trade provider",
-      required: true,
+      enum: ["admin", "project manager", "trade provider"],
+      required: false,
     },
-    trades: [
-      {
-        type: [Schema.Types.ObjectId],
-        required: false,
-        ref: "Trade",
-      },
-    ],
-    projects: [
-      {
-        type: [Schema.Types.ObjectId],
-        ref: "Project",
-        required: false,
-      },
-    ],
+    // trades: [
+    //   {
+    //     type: [Schema.Types.ObjectId],
+    //     required: false,
+    //     ref: "Trade",
+    //   },
+    // ],
+    // projects: [
+    //   {
+    //     type: [Schema.Types.ObjectId],
+    //     ref: "Project",
+    //     required: false,
+    //   },
+    // ],
   },
   { timestamps: true }
 )
 
 UserSchema.pre("save", async function () {
-  console.log(this.model("Product"))
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
 })

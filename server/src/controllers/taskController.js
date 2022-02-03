@@ -2,7 +2,7 @@ const Task = require("../models/Task")
 const Stage = require("../models/Stage")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
-const Project = require("../../../../../../../../mnt/c/projects/term3/full-stack-app-coder-academy/server/src/models/Project")
+const Project = require("../models/Project")
 
 const getAllTasks = async (req, res) => {
   req.body.stage = req.params.id
