@@ -1,7 +1,8 @@
 const User = require("../models/User")
 const { StatusCodes } = require("http-status-codes")
 const CustomError = require("../errors")
-// const { createJWT, sendResponseWithCookie } = require("../utils/jwt")
+const jwt = require("jsonwebtoken")
+const { createJWT } = require("../utils")
 
 const register = async (req, res) => {
   const { email, firstName, password } = req.body
@@ -17,7 +18,13 @@ const register = async (req, res) => {
   const role = isFirstAccount ? 'admin' : 'trade provider'
 
   const user = await User.create({firstName, email, password, role})
-  res.status(StatusCodes.CREATED).json({user})
+  const tokenUser = {name: user.firstName, userId: user._id, role: user.role}
+  // const token = jwt.sign(tokenUser, 'jwtSecret', {
+  //   expiresIn: '1d'
+  // })
+  const token = createJWT({payload: tokenUser})
+
+  res.status(StatusCodes.CREATED).json({user: tokenUser, token})
 }
 
   // const token = user.createJWT()
