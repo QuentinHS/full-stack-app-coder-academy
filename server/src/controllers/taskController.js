@@ -2,6 +2,7 @@ const Task = require("../models/Task")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 const Trade = require("../models/Trade")
+const User = require("../models/User")
 
 const getAllTasks = async (req, res) => {
   req.body.stage = req.params.id
@@ -16,12 +17,14 @@ const getAllTasks = async (req, res) => {
 const createTask = async (req, res) => {
   req.body.stage = req.params.id
 
-   const {tradeCategory} = req.body
+   const {tradeCategory, assignedTradeProvider} = req.body
    const trade = await Trade.findById(tradeCategory)
+   const traderProvider =  await User.findById(assignedTradeProvider)
 
    const task = new Task(req.body)
 
    task.tradeCategory = trade 
+   task.assignedTradeProvider = traderProvider
    task.save()
 
   res.status(StatusCodes.CREATED).json({ task })

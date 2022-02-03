@@ -45,11 +45,11 @@ const TaskSchema = new Schema({
   //   minlength: [10, "comments must be at least 10 characters"],
   //   maxlength: [250, "comments cannot be more than 250 characters"],
   // },
-  // assignedTradeProvider: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "User",
-  //   required: [true, "each task must be assigned to a trade provider"],
-  // },
+  assignedTradeProvider: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: [true, "each task must be assigned to a trade provider"],
+  },
   // image: {
   //   type: [String],
   //   required: false,
