@@ -5,6 +5,6 @@ const { getAllTrades, createTrade, getTrade, deleteTrade, updateTrade } = requir
 
 // For Site Admins ONLY, CRUD for trades (e.g plumbing )
 router.route('/').get(getAllTrades).post(createTrade)
-router.route('/:trade_id').get(getTrade).delete(deleteTrade).patch(updateTrade)
+router.route('/:id').get(getTrade).delete(deleteTrade).patch(updateTrade)
 
 module.exports = router
