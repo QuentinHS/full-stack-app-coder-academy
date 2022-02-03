@@ -3,7 +3,7 @@ import Project from './components/Project'
 import Stage from './components/Stage'
 import Trade from './components/Trade'
 import Task from './components/Task'
-import ProjectManager from './components/ProjectManager'
+import User from './components/User'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,7 +15,7 @@ function App() {
       <Stage />
       <Trade />
       <Task />
-      <ProjectManager />
+      <User />
     </div>
   )
 }
