@@ -18,7 +18,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home/>}/>
-        {/* <Project />
+        <Route path="/projects" element={<Project/>} />
+        {/* 
         <Stage />
         <Trade />
         <Task />
