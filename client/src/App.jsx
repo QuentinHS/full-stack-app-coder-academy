@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Project from './components/project'
-import Stage from './components/stage'
-import Trade from './components/trade'
+import Project from './components/Project'
+import Stage from './components/Stage'
+import Trade from './components/Trade'
 
 function App() {
   const [count, setCount] = useState(0)
