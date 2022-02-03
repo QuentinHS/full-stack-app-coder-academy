@@ -1,5 +1,6 @@
 require("express-async-errors")
 const morgan = require("morgan")
+const cookieParser = require("cookie-parser")
 // const helmet = require("helmet")
 // const cors = require("cors")
 // const xss = require("xss-clean")
@@ -16,6 +17,7 @@ const app = createServer()
 
 
 app.use(morgan("tiny"))
+app.use(cookieParser())
 
 // routers
 const authRouter = require("./routes/authRouter")

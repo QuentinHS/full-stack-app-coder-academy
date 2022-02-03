@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken")
+const { StatusCodes } = require("http-status-codes")
 
 // const defaultOptions = {
 //   expiresIn: process.env.JWT_LIFETIME,
@@ -19,6 +20,18 @@ const createJWT = ({ payload }) => {
 
 const isTokenValid = (token) => jwt.verify(token, process.env.JWT_SECRET)
 
+const attachCookiesToResponse = ({res, user}) => {
+  const token = createJWT({ payload: user })
+  const oneDay = 1000 * 60 * 60 * 24
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    expires: new Date(Date.now() + oneDay),
+  })
+
+
+} 
+
 // const sendResponseWithCookie = ({ res, statusCode, user, options }) => {
 //   const token = createJWT({ payload: { user }, options })
 
@@ -35,6 +48,7 @@ const isTokenValid = (token) => jwt.verify(token, process.env.JWT_SECRET)
 module.exports = {
   isTokenValid,
   createJWT,
+  attachCookiesToResponse
 }
 
 
