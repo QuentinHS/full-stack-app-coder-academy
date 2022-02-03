@@ -1,24 +1,34 @@
 import React from "react";
 import { Button, Image, Center, Text } from '@chakra-ui/react'
+import logo from '../shared/code-solutions-logo.png'
+import mainImage from '../shared/construction.jpg'
 
 const Home = () => {
     return(
         <>
+        <Center>
+                <Image 
+                    rounded="0.5rem"
+                    src={logo}
+                    alt="code solutions logo"
+                    height="10rem"
+                    />
+            </Center>
             <Center>
                 <Text fontSize="5xl" color="teal" as="b">Welcome </Text>
             </Center>
             <Center>
                 <Image 
                     rounded="0.5rem"
-                    src="https://picsum.photos/200/300"
+                    src={mainImage}
                     alt="placeholder image"
                     />
             </Center>
             <Center>
-                <Button isloading mt="1em" width="10em" colorScheme="teal" variant="solid">Login</Button>
+                <Button isloading mt="1em" width="15em" colorScheme="teal" variant="solid">Login</Button>
             </Center>
             <Center>
-                <Button isloading width="10em" colorScheme="teal" variant="outline">Sign Up</Button>
+                <Button isloading width="15em" colorScheme="teal" variant="outline">Sign Up</Button>
             </Center>
         </>
         
