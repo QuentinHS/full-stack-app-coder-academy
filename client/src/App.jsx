@@ -9,6 +9,7 @@ import User from './components/User'
 import Nav from './components/Nav'
 import Home from './components/Home'
 import Footer from './components/Footer'
+import Signup from './components/Signup'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/signup" element={<Signup/>}/>
         <Route path="/projects" element={<Project/>} />
         {/* 
         <Stage />
