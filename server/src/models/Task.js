@@ -14,7 +14,7 @@ const TaskSchema = new Schema({
   tradeCategory: {
     type: Schema.Types.ObjectId,
     ref: "Trade",
-    required: [false, "each task must have a category"],
+    required: [true, "each task must have a category"],
   },
   // completed: {
   //   type: Boolean,

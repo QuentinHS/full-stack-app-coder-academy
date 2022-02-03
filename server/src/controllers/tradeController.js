@@ -11,21 +11,16 @@ const getAllTrades = async(req, res) =>{
 }
 
 const createTrade = async(req, res) =>{
-    const {id} = req.params 
-    const trade = new Trade(req.body)
-    const task =  await Task.findById(id)
-    task.tradeCategory.push(trade)
-    await trade.save()
-    await task.save()
-    // if(!task){
-    //     const user = await User.findById(id)
-    //     user.trade.push(trade)
-    // }
-
+    const trade = await Trade.create(req.body)
+    res.status(StatusCodes.CREATED).json({ trade })
 }
 
 const getTrade = async(req, res)=>{
+    const { id } = req.params
 
+  const trade = await Trade.findOne({
+    _id: id,
+  })
 }
 
 const deleteTrade = async(req, res)=>{
