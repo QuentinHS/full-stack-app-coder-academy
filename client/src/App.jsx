@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom"
 import { useState } from 'react'
 import Project from './components/Project'
 import Stage from './components/Stage'
@@ -12,14 +13,16 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
-      <h1>App</h1>
-      <Project />
-      <Stage />
-      <Trade />
-      <Task />
-      <User />
-      <Footer />
+      <BrowserRouter >
+        <Nav />
+        <h1>App</h1>
+        <Project />
+        <Stage />
+        <Trade />
+        <Task />
+        <User />
+        <Footer />
+      </BrowserRouter> 
     </div>
   )
 }
