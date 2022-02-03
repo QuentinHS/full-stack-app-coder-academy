@@ -22,6 +22,9 @@ const Home = () => {
                     rounded="0.5rem"
                     src={mainImage}
                     alt="placeholder image"
+                    mt="1em"
+                    mb="1em"
+                    width="40em"
                     />
             </Center>
             <Center>
