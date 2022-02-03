@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState } from 'react'
 import Project from './components/Project'
 import Stage from './components/Stage'
@@ -16,12 +16,13 @@ function App() {
       <BrowserRouter >
         <Nav />
         <h1>App</h1>
-        <Project />
-        <Stage />
-        <Trade />
-        <Task />
-        <User />
-        <Footer />
+        <Routes >
+          <Route path="/project" element={<Project />}/>
+          <Route path="/stage/:id" element={<Stage />}/>
+          <Route path="/trade/:id" element={<Trade />}/>
+          <Route path="/task/:id" element={<Task />}/>
+          <Route path="/user/:id" element={<User />}/>
+        </Routes>
       </BrowserRouter> 
     </div>
   )
