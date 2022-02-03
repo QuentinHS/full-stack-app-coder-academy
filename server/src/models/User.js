@@ -51,13 +51,12 @@ const UserSchema = new Schema(
       default: "trade provider",
       required: true,
     },
-    trades: [
-      {
+    trade: {
         type: [Schema.Types.ObjectId],
         required: false,
         ref: "Trade",
       },
-    ],
+  
     projects: [
       {
         type: [Schema.Types.ObjectId],

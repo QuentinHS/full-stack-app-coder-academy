@@ -1,7 +1,7 @@
-// const express = require("express")
-// const router = express.Router()
+const express = require("express")
+const router = express.Router()
 
-// // landing page 
-// router.get('/', home)
+// landing page 
+router.get('/', home)
 
-// module.exports = router
+module.exports = router

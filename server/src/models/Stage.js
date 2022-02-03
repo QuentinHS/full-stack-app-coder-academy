@@ -22,12 +22,6 @@ const StageSchema = new Schema(
     //   type: Number,
     //   required: [true, "each stage must be numbered"],
     // },
-    // tasks: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Task'
-    //   },
-    // ],
   },
   { timestamps: true }
 )
