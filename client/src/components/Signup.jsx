@@ -20,10 +20,10 @@ const Signup = () => {
             </Center>
             <Center>
                 <FormControl isRequired width='30rem'>
-                    <FormLabel htmlFor='email'>Select Your role </FormLabel>
+                    <FormLabel mt='2rem' htmlFor='email'>Select Your Role </FormLabel>
                     <Button mb='1rem' mr='1rem' width='15em' onClick={handleClickProjectManager}>I'm a Project Manager</Button>
                     <Button mb='1rem' width='15em' onClick={handleClickTrade}>I'm a Tradesman</Button>
-                    <InputGroup flexDirection='row' flexWrap='wrap' >
+                    <InputGroup mt='2rem' flexDirection='row' flexWrap='wrap' >
                         <FormLabel w={[150, 200, 200]} mr='1rem' htmlFor='firstName'>First Name </FormLabel>
                         <FormLabel htmlFor='lastName'>Last Name </FormLabel>
                     </InputGroup>
