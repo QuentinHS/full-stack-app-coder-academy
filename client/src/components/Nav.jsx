@@ -1,5 +1,5 @@
 import React from "react";
-import { BiArrowBack, BiHome } from 'react-icons/bi'
+import { BiHome } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 import { BsFillPersonFill } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'

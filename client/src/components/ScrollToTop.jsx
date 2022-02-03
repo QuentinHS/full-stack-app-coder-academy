@@ -3,9 +3,6 @@ import { BiArrowFromBottom } from 'react-icons/bi'
 import "../Footer.css";
 
 
-// const classNames = (...classes) => {
-//     return classes.filter(Boolean).join(' ')
-// }
 
 const ScrollToTop = () => {
     const [isVisable, setIsVisable ] = useState(false)

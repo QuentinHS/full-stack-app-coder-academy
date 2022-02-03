@@ -31,7 +31,8 @@ function App() {
           <Route path="/user" element={<User />}/>
         </Routes>
         <ScrollToTop />
-        <Footer />
+        {/* commented out because undesided on how I want to make it stay on bottom of page */}
+        {/* <Footer /> */}
       </BrowserRouter> 
     </div>
   )
