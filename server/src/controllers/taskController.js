@@ -1,24 +1,35 @@
 const Task = require("../models/Task")
+const Stage = require("../models/Stage")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
+const Project = require("../../../../../../../../mnt/c/projects/term3/full-stack-app-coder-academy/server/src/models/Project")
 
 const getAllTasks = async (req, res) => {
   req.body.stage = req.params.id
- 
   const { stage } = req.body 
-
   const tasks = await Task.find({ stage }).sort("createdAt")
 
-  res.status(StatusCodes.OK).json({ tasks})
+  res.status(StatusCodes.OK).json({ tasks, count: tasks.length})
 }
 
 const createTask = async (req, res) => {
-  req.body.stage = req.params.id
+
+  const { id } = req.params
+  const stage = await Stage.findById(id)
+  const task = new Task(req.body)
+  task.stage = id
+
+  stage.tasks.push(task)
+
+  await task.save()
+  await stage.save()
+
+  // req.body.stage = req.params.id
 
    console.log(req.body)
    console.log(req.params)
 
-  const task = await Task.create(req.body)
+  // const task = await Task.create(req.body)
   res.status(StatusCodes.CREATED).json({ task })
 }
 

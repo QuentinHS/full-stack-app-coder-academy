@@ -12,6 +12,8 @@ const getAllStages = async (req, res) => {
 }
 
 
+
+
 const createStage = async (req, res) => {
   const { id } = req.params
   const project = await Project.findById(id)
@@ -29,7 +31,6 @@ const createStage = async (req, res) => {
   await stage.save()
   await project.save()
 
-
   res.status(StatusCodes.CREATED).json({ stage })
 }
 
@@ -46,6 +47,8 @@ const getStage = async (req, res) => {
   const stage = await Stage.findOne({
     _id: id,
   })
+    .populate({ path: "tasks" })
+    .populate("tasks")
 
   // method to find project linked to user when user methods are tested + working
   //  const project = await Project.findOne({
