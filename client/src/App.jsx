@@ -27,7 +27,8 @@ function App() {
           <Route path="/stage/:id" element={<Stage />}/>
           <Route path="/trade/:id" element={<Trade />}/>
           <Route path="/task/:id" element={<Task />}/>
-          <Route path="/user/:id" element={<User />}/>
+          {/* Need to find user by :id  */}
+          <Route path="/user" element={<User />}/>
         </Routes>
         <ScrollToTop />
         <Footer />

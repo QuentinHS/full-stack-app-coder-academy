@@ -6,7 +6,7 @@ import "../Footer.css"
 const Footer = () => {
     return(
         <div className="footer">
-            <Link className="toTop" to="../" ><BiUpArrowAlt /></Link>
+            {/* <Link className="toTop" to="../" ><BiUpArrowAlt /></Link> */}
         </div>
     )
 }
