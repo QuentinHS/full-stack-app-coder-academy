@@ -4,18 +4,22 @@ import Stage from './components/Stage'
 import Trade from './components/Trade'
 import Task from './components/Task'
 import User from './components/User'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
+      <Nav />
       <h1>App</h1>
       <Project />
       <Stage />
       <Trade />
       <Task />
       <User />
+      <Footer />
     </div>
   )
 }
