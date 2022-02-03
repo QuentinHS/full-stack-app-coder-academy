@@ -1,0 +1,27 @@
+.toTop {
+   
+    padding: .5rem;
+    margin: .5rem;
+    background-color: red;
+}
+
+.opOn {
+    opacity: 100%;
+    background-color: red;
+}
+.opOff {
+    opacity: 0%;
+    background-color: red;
+}
+
+.footer {
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+    height: 5rem;
+    padding: 1rem;
+    /* margin: .5rem; */
+    background-color: lightblue;
+    display: flex;
+}
