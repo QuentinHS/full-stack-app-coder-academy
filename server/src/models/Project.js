@@ -6,6 +6,12 @@ const ProjectSchema = new Schema({
     type: String,
     required: [false, "each project must have a name"],
   },
+  stages: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Stage"
+    }
+  ],
   address: {
       type: String,
       required: [false, "each project must have an address"],

@@ -3,18 +3,21 @@ const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
 const getAllTasks = async (req, res) => {
-  req.body.project = req.params.id
+  req.body.stage = req.params.id
+ 
+  const { stage } = req.body 
 
-  //   console.log(req.body)
-  //   console.log(req.params)
+  const tasks = await Task.find({ stage }).sort("createdAt")
 
-  // const tasks = await Task.find({ stage: req.body.task }).sort("createdAt")
-  const tasks = await Task.find({  }).sort("createdAt")
-  res.status(StatusCodes.OK).json({ tasks, count: stages.length })
+  res.status(StatusCodes.OK).json({ tasks})
 }
 
 const createTask = async (req, res) => {
   req.body.stage = req.params.id
+
+   console.log(req.body)
+   console.log(req.params)
+
   const task = await Task.create(req.body)
   res.status(StatusCodes.CREATED).json({ task })
 }

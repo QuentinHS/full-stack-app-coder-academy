@@ -1,22 +1,43 @@
 const Stage = require("../models/Stage")
+const Project = require("../models/Project")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
+
 const getAllStages = async (req, res) => {
-    req.body.project = req.params.id
+  req.body.project = req.params.id
 
-//   console.log(req.body)
-//   console.log(req.params)
-
-  const stages = await Stage.find({project: req.body.project}).sort("createdAt")
+  const stages = await Stage.find({ project: req.body.project }).sort("createdAt")
   res.status(StatusCodes.OK).json({ stages, count: stages.length })
 }
 
 const createStage = async (req, res) => {
-  req.body.project = req.params.id
-  const stage = await Stage.create(req.body)
+  const { id } = req.params
+  const project = await Project.findById(id)
+
+  const stage = new Stage(req.body)
+  stage.project = id
+
+  console.log(project.stages)
+  console.log(project)
+
+  console.log(stage)
+
+  project.stages.push(stage)
+
+  await stage.save()
+  await project.save()
+
+
   res.status(StatusCodes.CREATED).json({ stage })
 }
+
+// const createStage = async (req, res) => {
+//   req.body.project = req.params.id
+//   const stage = await Stage.create(req.body)
+//   res.status(StatusCodes.CREATED).json({ stage })
+// }
+
 
 const getStage = async (req, res) => {
   const { id } = req.params
