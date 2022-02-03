@@ -25,11 +25,11 @@ const stageRouter = require("./routes/stageRouter")
 // const userRouter = require("./routes/userRouter")
 // const homeRouter = require("./routes/homeRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
-// const tradeRouter = require("./routes/tradeRouter")
+const tradeRouter = require("./routes/tradeRouter")
 
 
 // users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
-
+app.use("/projects/:id/stages/:id/tasks/:id/trades", tradeRouter)
 app.use("/projects/:id/stages/:id/tasks", taskRouter)
 app.use("/projects/:id/stages", stageRouter)
 app.use("/projects", projectRouter)
