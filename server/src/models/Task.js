@@ -10,12 +10,12 @@ const TaskSchema = new Schema({
   stage: {
     type: Schema.Types.ObjectId,
     ref: "Stage"
-  }
-  // tradeCategory: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Trade",
-  //   required: [true, "each task must have a category"],
-  // },
+  },
+  tradeCategory: {
+    type: Schema.Types.ObjectId,
+    ref: "Trade",
+    required: [true, "each task must have a category"],
+  },
   // completed: {
   //   type: Boolean,
   //   default: false,
