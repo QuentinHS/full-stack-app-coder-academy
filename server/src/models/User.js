@@ -26,7 +26,6 @@ const UserSchema = new Schema(
         validator: validator.isEmail,
         message: "Please provide valid email",
       },
-    
     },
     password: {
       type: String,
@@ -58,7 +57,14 @@ const UserSchema = new Schema(
     //     ref: "Trade",
     //   },
     // ],
-    projects: [
+    pastProjects: [
+      {
+        type: [Schema.Types.ObjectId],
+        ref: "Project",
+        required: false,
+      },
+    ],
+    currentProjects: [
       {
         type: [Schema.Types.ObjectId],
         ref: "Project",
