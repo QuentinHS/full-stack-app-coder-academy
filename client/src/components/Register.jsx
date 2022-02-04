@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabel, FormErrorMessage, FormHelperText, Button} from '@chakra-ui/react'
 
-const Signup = () => {
+const Register = () => {
     // State for Project Manager and Tradesman buttons 
     const [roleTrade, setRoleTrade] = React.useState(true)
     const handleClickTrade = () => setRoleTrade(true)
@@ -75,4 +75,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default Register
