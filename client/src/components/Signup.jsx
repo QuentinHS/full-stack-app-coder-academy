@@ -12,6 +12,12 @@ const Signup = () => {
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
 
+    async function handleSubmit(e){
+        e.preventDefault()
+
+        
+    }
+
 
     return(
         <>

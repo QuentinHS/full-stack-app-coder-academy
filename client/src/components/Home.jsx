@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Image, Center, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import logo from '../shared/code-solutions-logo.png'
-import mainImage from '../shared/construction.jpg'
+import logo from '../public/code-solutions-logo.png'
+import mainImage from '../public/construction.jpg'
 
 const Home = () => {
     return(
