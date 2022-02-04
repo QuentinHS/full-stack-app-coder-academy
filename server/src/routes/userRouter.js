@@ -1,14 +1,14 @@
 const express = require("express")
 const router = express.Router()
-const { getAllUsers, getSingleUser, showCurrentUser } = require("../controllers/userController")
+const { getAllUsers, getSingleUser, showCurrentUser, updateUser, updateUserPassword } = require("../controllers/userController")
 
-const { authenticateUser, authorizeRoles } = require("../middleware/authentication")
 
-router.route("/").get([authenticateUser, authorizeRoles("project manager")], getAllUsers)
+router.route("/users").get(getAllUsers)
+router.route("/showMe").get(showCurrentUser)
+router.route("/updateUser").post(updateUser)
+router.route("/updateUserPassword").post(updateUserPassword)
 
-// placement important || also can place in auth
-router.route("/showMe").get(authenticateUser, showCurrentUser)
+router.route("/users/:id").get(getSingleUser)
 
-router.route("/:id").get([authenticateUser, authorizeRoles("project manager")], getSingleUser)
 
 module.exports = router
