@@ -58,13 +58,13 @@ const UserSchema = new Schema(
     //     ref: "Trade",
     //   },
     // ],
-    // projects: [
-    //   {
-    //     type: [Schema.Types.ObjectId],
-    //     ref: "Project",
-    //     required: false,
-    //   },
-    // ],
+    projects: [
+      {
+        type: [Schema.Types.ObjectId],
+        ref: "Project",
+        required: false,
+      },
+    ],
   },
   { timestamps: true }
 )

@@ -20,6 +20,11 @@ const ProjectSchema = new Schema({
     type: Date,
     required: [false, "each project must have a completion date"],
   },
+  projectManager: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: false
+  },
   tradeProviders: [
     {
       type: Schema.Types.ObjectId,
