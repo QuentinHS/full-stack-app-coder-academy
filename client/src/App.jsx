@@ -9,7 +9,7 @@ import User from './components/User'
 import Nav from './components/Nav'
 import Home from './components/Home'
 import Footer from './components/Footer'
-import Resgister from './components/Register'
+import Register from './components/Register'
 
 function App() {
   const [count, setCount] = useState(0)

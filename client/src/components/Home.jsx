@@ -34,7 +34,7 @@ const Home = () => {
                 </Link>
             </Center>
             <Center>
-                <Link to="/signup"> 
+                <Link to="/register"> 
                     <Button width="15em" colorScheme="teal" variant="outline">Sign Up</Button>
                 </Link>
             </Center>
