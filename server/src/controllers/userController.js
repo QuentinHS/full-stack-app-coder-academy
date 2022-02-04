@@ -33,7 +33,8 @@ const CustomError = require("../errors")
 // New routes
 
 const getAllUsers = async(req, res) => {
-  
+  console.log(req.cookies)
+  console.log(req.user)
   const users = await User.find({ role: "trade provider" }).select("-password")
   res.status(StatusCodes.OK).json({ users })
 }
