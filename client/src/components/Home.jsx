@@ -29,7 +29,7 @@ const Home = () => {
                     />
             </Center>
             <Center>
-                <Link to="/">
+                <Link to="/login">
                     <Button mt="1em" width="15em" colorScheme="teal" variant="solid">Login</Button>
                 </Link>
             </Center>

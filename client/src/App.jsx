@@ -10,6 +10,7 @@ import Nav from './components/Nav'
 import Home from './components/Home'
 import Footer from './components/Footer'
 import Register from './components/Register'
+import Login from './components/Login'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/projects" element={<Project/>} />
+        <Route path="/login" element={<Login/>} />
         {/* 
         <Stage />
         <Trade />

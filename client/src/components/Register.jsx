@@ -1,28 +1,30 @@
 import React from "react";
-import { useState, useEffect, useMemo } from "react";
-import {useForm} from "react-hook-form"
-import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabel, FormErrorMessage, FormHelperText, Button} from '@chakra-ui/react'
+import { useForm } from "react-hook-form";
+import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabel, FormErrorMessage, FormHelperText, Button, VStack} from '@chakra-ui/react'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useFormik } from "formik"
+
 
 
 const Register = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    // form validations 
-    const validationSchema = Yup.object().shape({
-        firstname: Yup.object().required(),
-        lastname: Yup.object().required(),
-        password: Yup.string()
-            .required('Please input a password')
-            .min(6, 'Password must be at least 6 characters'),
-        confirmPassword: Yup.string()
-            .required('Please input a password')
-            .oneOf([Yup.ref('password')], 'Passwords must match')
-    })
+    // // form validations 
+    // const validationSchema = Yup.object().shape({
+    //     firstname: Yup.object().required(),
+    //     lastname: Yup.object().required(),
+    //     password: Yup.string()
+    //         .required('Please input a password')
+    //         .min(6, 'Password must be at least 6 characters'),
+    //     confirmPassword: Yup.string()
+    //         .required('Please input a password')
+    //         .oneOf([Yup.ref('password')], 'Passwords must match')
+    // })
 
 
-    const formOptions = {resolver: yupResolver(validationSchema)}
-    const {register,  handleSubmit, formState} = useForm(formOptions)
+    // const formOptions = {resolver: yupResolver(validationSchema)}
+   
    
 
 
@@ -35,13 +37,25 @@ const Register = () => {
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
 
-    async function onSubmit(data){
-        // default role is trade provider 
-        const role = roleTrade ? "trade provider" : "project manager"
-        data.role = role
-        console.log(data) 
-    }
-    console.log(formState.errors.firstName)
+    // async function onSubmit(data){
+    //     // default role is trade provider 
+    //     const role = roleTrade ? "trade provider" : "project manager"
+    //     data.role = role
+    //     console.log(data) 
+    // }
+    // const formik = useFormik({
+    //     initialValues: {
+    //       email: '',
+    //       password: '',
+    //     },
+    //     validate,
+    //     onSubmit: values => {
+    //       alert(JSON.stringify(values, null, 2))
+    //       const role = roleTrade ? "trade provider" : "project manager"
+    //       data.role = role
+    //       console.log(data) 
+    //     },
+    //   });
 
 
     return(
@@ -50,26 +64,24 @@ const Register = () => {
                 <Text mb='1rem' fontSize='5xl' color='teal' as='b'>Sign up</Text>
             </Center>
             <Center>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                     <FormControl isRequired>
+                <form>
+                     {/* <FormControl isRequired>
                         <FormLabel mt='2rem' htmlFor='email'>Select Your Role </FormLabel>
                         <Button mb='1rem' mr='1rem' width='15em' onClick={handleClickProjectManager}>I'm a Project Manager</Button>
                         <Button mb='1rem' width='15em' onClick={handleClickTrade}>I'm a Tradesman</Button>
-                    </FormControl>
+                    </FormControl> */}
 
 
-                    <FormControl isRequired isInvalid={formState.isValid} >
-                        <InputGroup mt='2rem' flexDirection='row' flexWrap='wrap' >
+                    <FormControl>
+                        
                             <FormLabel w={[150, 200, 200]} mr='1rem' htmlFor='firstname'>First Name </FormLabel>
                             <FormLabel htmlFor='lastName'>Last Name </FormLabel>
-                        </InputGroup>
-                        <InputGroup flexDirection='row' flexWrap='wrap'>
-                            <Input mr='0.5rem' w={[150, 200, 200]} id='firstname' placeholder='First Name' {...register("firstname")} />
-                            <Input w={[150, 200, 200]} id='lastname' placeholder='Last Name' {...register("lastname", {required: "Please enter your last name"})}/>
-                        </InputGroup>
-                        <FormErrorMessage>
-                            {(formState.errors.firstName && formState.errors.firstName.message)|| (formState.errors.lastName && formState.errors.lastName.message)}
-                        </FormErrorMessage>
+                            <Input mr='0.5rem' w={[150, 200, 200]} id='firstname' placeholder='First Name' {...register("firstname", {required: true})} />
+                            <Input w={[150, 200, 200]} id='lastname' placeholder='Last Name' {... register("lastname", {required: "Please enter your last name"})}/>
+                       
+                            <FormErrorMessage>
+                                {errors.firstname && errors.firstname.message}
+                            </FormErrorMessage>
                     </FormControl>
 
                     {/* <FormControl isRequired isInvalid={errors.email}>
