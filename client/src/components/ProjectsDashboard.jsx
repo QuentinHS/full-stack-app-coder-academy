@@ -9,10 +9,13 @@ import { set } from "react-hook-form";
 import CurrentProjectsList from "./CurrentProjectsList";
 import PastProjectsList from "./PastProjectsList";
 import TasksToApprove from "./TasksToApprove";
+import Footer from "./Footer";
 
 const ProjectsDashboard = () => {
     const mockData = [{name: 'foo', complete: true}, {name: 'bar ', complete: true}, {name: 'yup', complete: false}]
     const mockTasks = [{name: 'Task 1', project: 'P1', stage: 'S2', complete: false}, {name: 'Task 1', project: 'P1', stage: 'S2', complete: true}, {name: 'Task 1', project: 'P1', stage: 'S2', complete: false}]
+    const currentUser = {name: 'foo', role: 'project manager'}
+    
     const [input, setInput ] = useState('')
     const [allProjectsDefault, setAllProjectsDefault] = useState(mockData)
     const [allProjects, setAllProjects] = useState(mockData)
@@ -62,22 +65,25 @@ const ProjectsDashboard = () => {
     return(
         <>
            <Center>
-               <Text fontSize="5xl" color="teal" as="b"> Projects </Text>
+               <Text fontSize="5xl" color="teal" as="b"> My Projects </Text>
            </Center>
 
            <Center>
                 <SearchBar input={input} onChange={updateInput}/>
            </Center>
+            {currentUser.role === 'project manager' && 
+                <>
+                    <Center>
+                            <Icon m="1rem" as={BsPlusCircle} />
+                            <Link href="/">  Create new project </Link>
+                    </Center>
 
-           <Center>
-                <Icon m="1rem" as={BsPlusCircle} />
-                <Link href="/">  Create new project </Link>
-           </Center>
+                    <Center>
+                        <TasksToApprove tasksList={mockTasks}/>
 
-           <Center>
-               <TasksToApprove tasksList={mockTasks}/>
-
-           </Center>
+                    </Center>
+                </>
+            }
 
            <Center>
                <CurrentProjectsList projectsList={allProjects}/>
