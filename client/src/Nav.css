@@ -5,8 +5,15 @@
     background-color: red;
 }
 
-.linkGorup {
+.back {
+    padding: .5rem;
+    margin: .5rem;
+    background-color: red;
+}
 
+.linkGorup {
+    display: flex;
+    justify-content: space-between;
     margin: .5rem;
     padding: .5rem;
 

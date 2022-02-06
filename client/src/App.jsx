@@ -7,10 +7,10 @@ import Task from './components/Task'
 import User from './components/User'
 import Nav from './components/Nav'
 import Home from './components/Home'
-import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
+// import "./App.css"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,15 +22,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/projects" element={<Project/>} />
+        <Route path="/project" element={<Project/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/User" element={<User  /> } />
         {/* 
         <Stage />
         <Trade />
-        <Task />
-        <User /> */}
+        <Task />*/}
+        
       </Routes>
-      <Footer />
       <ScrollToTop />
     </BrowserRouter>
    

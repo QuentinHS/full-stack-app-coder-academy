@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BiArrowFromBottom } from 'react-icons/bi'
-import "../Footer.css";
 
 
 

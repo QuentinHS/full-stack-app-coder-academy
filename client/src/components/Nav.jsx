@@ -13,7 +13,7 @@ const Nav = () => {
     return(
         <div className="container" >
             
-            <BackButton className="link" />
+            <BackButton className="back" />
             <div className="linkGorup">
                 <Link className="link" to="/project"><BiHome /></Link>
                 <Link className="link" to="/user"><BsFillPersonFill /></Link>
