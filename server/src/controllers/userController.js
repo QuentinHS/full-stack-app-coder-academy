@@ -1,7 +1,7 @@
 const User = require("../models/User")
 const { StatusCodes } = require("http-status-codes")
 const CustomError = require("../errors")
-const { createTokenUser, attachCookiesToResponse } = require("../utils")
+const { createTokenUser, attachCookiesToResponse, checkPermissions } = require("../utils")
 
 // Get all project managers 
 
@@ -45,13 +45,14 @@ const showCurrentUser = async (req, res) => {
 }
 
 const getSingleUser = async (req, res) => {
-
   const user = await User.findOne({ _id: req.params.id }).select("-password")
   if (!user) {
     throw new CustomError.NotFoundError(`No user with id: ${req.params.id} `)
   }
-  res.status(StatusCodes.OK).json({user})
+  checkPermissions(req.user, user._id)
+  res.status(StatusCodes.OK).json({ user })
 }
+
 
 // update user
 const updateUser = async (req, res) => {
