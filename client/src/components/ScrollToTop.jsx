@@ -13,7 +13,7 @@ const ScrollToTop = () => {
             setIsVisable(false)
         }
     }
-
+    console.log()
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
