@@ -53,18 +53,39 @@ const getSingleUser = async (req, res) => {
   res.status(StatusCodes.OK).json({user})
 }
 
+// update user
 const updateUser = async (req, res) => {
-  const {email, firstName} = req.body
+  const { email, firstName } = req.body
   if (!email || !firstName) {
     throw new CustomError.BadRequestError("Please provide all values")
   }
 
-  const user = await User.findOneAndUpdate({_id: req.user.userId}, {email, firstName}, {new: true, runValidators: true})
+  const user = await User.findOne({_id: req.user.userId})
+  
+  user.email = email
+  user.firstName = firstName
+
+  await user.save()
 
   const tokenUser = createTokenUser(user)
-  attachCookiesToResponse({res, user: tokenUser})
-  res.status(StatusCodes.OK).json({user: tokenUser})
+  attachCookiesToResponse({ res, user: tokenUser })
+  res.status(StatusCodes.OK).json({ user: tokenUser })
 }
+
+
+// alternate update user method with findoneandupdate
+// const updateUser = async (req, res) => {
+//   const {email, firstName} = req.body
+//   if (!email || !firstName) {
+//     throw new CustomError.BadRequestError("Please provide all values")
+//   }
+
+//   const user = await User.findOneAndUpdate({_id: req.user.userId}, {email, firstName}, {new: true, runValidators: true})
+
+//   const tokenUser = createTokenUser(user)
+//   attachCookiesToResponse({res, user: tokenUser})
+//   res.status(StatusCodes.OK).json({user: tokenUser})
+// }
 
 const updateUserPassword = async (req, res) => {
   const { oldPassword, newPassword } = req.body
