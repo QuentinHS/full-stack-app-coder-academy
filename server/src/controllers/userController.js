@@ -1,6 +1,7 @@
 const User = require("../models/User")
 const { StatusCodes } = require("http-status-codes")
 const CustomError = require("../errors")
+const { createTokenUser, attachCookiesToResponse } = require("../utils")
 
 // Get all project managers 
 
@@ -53,7 +54,16 @@ const getSingleUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-  res.send("update user route")
+  const {email, firstName} = req.body
+  if (!email || !firstName) {
+    throw new CustomError.BadRequestError("Please provide all values")
+  }
+
+  const user = await User.findOneAndUpdate({_id: req.user.userId}, {email, firstName}, {new: true, runValidators: true})
+
+  const tokenUser = createTokenUser(user)
+  attachCookiesToResponse({res, user: tokenUser})
+  res.status(StatusCodes.OK).json({user: tokenUser})
 }
 
 const updateUserPassword = async (req, res) => {

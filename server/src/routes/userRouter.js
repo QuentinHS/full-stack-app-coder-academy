@@ -7,8 +7,8 @@ const { getAllUsers, getSingleUser, showCurrentUser, updateUser, updateUserPassw
 router.route("/users").get(authenticateUser, authorizeRoles("trade provider"), getAllUsers)
 
 router.route("/showMe").get(authenticateUser, showCurrentUser)
-router.route("/updateUser").post(updateUser)
-router.route("/users/updateUserPassword").patch(authenticateUser, updateUserPassword)
+router.route("/updateUser").patch(authenticateUser, updateUser)
+router.route("/updateUserPassword").patch(authenticateUser, updateUserPassword)
 
 router.route("/users/:id").get(authenticateUser, getSingleUser)
 
