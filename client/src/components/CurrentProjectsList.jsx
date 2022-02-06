@@ -8,7 +8,7 @@ const CurrentProjectsList = ({projectsList=[]}) =>{
     const handleClickShow = () => setShow(!show)
 
     const active = projectsList.filter(projects => {
-        return projects.complete === false
+        return projects.completed === false
     })
 
     return (

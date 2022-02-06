@@ -1,4 +1,4 @@
-import { Center, Text, Icon } from "@chakra-ui/react";
+import { Center, Text, Icon, Alert, AlertDescription, AlertIcon } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Link } from "@chakra-ui/react";
 import { BsPlusCircle } from "react-icons/bs";
@@ -12,8 +12,8 @@ import TasksToApprove from "./TasksToApprove";
 import Footer from "./Footer";
 
 const ProjectsDashboard = () => {
-    const mockData = [{name: 'foo', complete: true}, {name: 'bar ', complete: true}, {name: 'yup', complete: false}]
-    const mockTasks = [{name: 'Task 1', project: 'P1', stage: 'S2', complete: false}, {name: 'Task 1', project: 'P1', stage: 'S2', complete: true}, {name: 'Task 1', project: 'P1', stage: 'S2', complete: false}]
+    const mockData = [{name: 'foo', completed: true}, {name: 'bar ', completed: true}, {name: 'yup', completed: false}]
+    const mockTasks = [{name: 'Task 1', project: {name: 'p1'}, stage: 'S2', completed: true, approvedByProjectManager: false }, {name: 'Task 2', project: 'P1', stage: 'S2', completed: true, approvedByProjectManager: true}, {name: 'Task 3', project: {name: 'Project 1'}, stage: 'S2', completed: true, approvedByProjectManager: false}]
     const currentUser = {name: 'foo', role: 'project manager'}
     
     const [input, setInput ] = useState('')
@@ -36,7 +36,7 @@ const ProjectsDashboard = () => {
     //         })
     // }
 
-    // Tasks to approve
+    // All Tasks 
     // const fetchTasks   = async () => {
         
     //     await axios.get()
@@ -46,6 +46,15 @@ const ProjectsDashboard = () => {
     //          })
     //  }
 
+    // Filter Tasks to be aproved by Project Manager
+    const needApproval = mockTasks.filter(task => {
+        return (task.completed && !task.approvedByProjectManager)
+    })
+
+    //Filter Tasks to be completed by 
+    // const declined = mockTasks.filter(task =>{
+    //     return
+    // })
     
 
     // Update the input of the search bar  
@@ -71,6 +80,13 @@ const ProjectsDashboard = () => {
            <Center>
                 <SearchBar input={input} onChange={updateInput}/>
            </Center>
+           <Center>
+                <Alert status='error'>
+                    <AlertDescription>You have {currentUser.role === 'project manager' ? needApproval.length : null} tasks requiring attention </AlertDescription>
+                    <AlertIcon />
+                
+                </Alert>
+           </Center>
             {currentUser.role === 'project manager' && 
                 <>
                     <Center>
@@ -79,7 +95,7 @@ const ProjectsDashboard = () => {
                     </Center>
 
                     <Center>
-                        <TasksToApprove tasksList={mockTasks}/>
+                        <TasksToApprove tasksList={needApproval}/>
 
                     </Center>
                 </>

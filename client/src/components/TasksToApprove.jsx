@@ -7,9 +7,7 @@ const TasksToApprove = ({tasksList=[]}) =>{
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
 
-    const needApproval= tasksList.filter(task => {
-        return task.complete === false
-    })
+   
 
     return (
         <>
@@ -22,11 +20,11 @@ const TasksToApprove = ({tasksList=[]}) =>{
             </Center>
 
             <List spacing={3}>
-                {needApproval.map((data, index)=>{
+                {tasksList.map((data, index)=>{
                     if (data){
                         return  show ? (
                             <Center>
-                                <ListItem> {data.project, data.stage, data.name} </ListItem>
+                                <ListItem> {data.project.name} {data.stage} { data.name} </ListItem>
                             </Center>
                         ): null
                     }

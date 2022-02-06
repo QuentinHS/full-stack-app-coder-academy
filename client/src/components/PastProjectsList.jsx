@@ -9,7 +9,7 @@ const PastProjectsList = ({projectsList=[]}) =>{
     const handleClickShow = () => setShow(!show)
 
     const past = projectsList.filter(projects => {
-        return projects.complete === true
+        return projects.completed === true
     })
 
     return (
