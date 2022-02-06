@@ -13,7 +13,7 @@ const ScrollToTop = () => {
             setIsVisable(false)
         }
     }
-    console.log()
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -31,8 +31,8 @@ const ScrollToTop = () => {
     }, [])
 
     return (
-        <div className={isVisable ? "opOn" : "opOff" }>
-            <button type="button" onClick={scrollToTop} ><BiArrowFromBottom /></button>
+        <div className="toTop">
+            <button className={isVisable ? "opOn" : "opOff" } type="button" onClick={scrollToTop} ><BiArrowFromBottom /></button>
         </div>
     )
 }
