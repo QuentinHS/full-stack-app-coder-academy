@@ -8,7 +8,7 @@ router.route("/users").get(authenticateUser, authorizeRoles("trade provider"), g
 
 router.route("/showMe").get(authenticateUser, showCurrentUser)
 router.route("/updateUser").post(updateUser)
-router.route("/updateUserPassword").post(updateUserPassword)
+router.route("/users/updateUserPassword").patch(authenticateUser, updateUserPassword)
 
 router.route("/users/:id").get(authenticateUser, getSingleUser)
 
