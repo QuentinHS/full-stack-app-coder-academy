@@ -21,16 +21,16 @@ const UserDetailsForm = ({formik, handleClickTrade, handleClickProjectManager}) 
                     </FormControl> 
 
 
-                    <FormControl isInvalid={(formik.errors.firstname) || (formik.errors.lastname)}>
+                    <FormControl isInvalid={(formik.errors.firstName) || (formik.errors.lastName)}>
                         <HStack spacing='10px'>
                             <FormLabel w={[150, 200, 200]} mr='1rem' htmlFor='firstname'>First Name </FormLabel>
                             <FormLabel w={[150, 200, 200]} htmlFor='lastName'>Last Name </FormLabel>
                         </HStack>
-                        <Input mr='0.5rem' w={[150, 200, 200]} id='firstname'name="firstname" type="text" placeholder='First Name' onChange={formik.handleChange} value={formik.values.firstname} />
-                        <Input w={[150, 200, 200]} id='lastname' name="lastname" type="text" placeholder='Last Name' onChange={formik.handleChange} value={formik.values.lastname}/>
+                        <Input mr='0.5rem' w={[150, 200, 200]} id='firstName'name="firstName" type="text" placeholder='First Name' onChange={formik.handleChange} value={formik.values.firstName} />
+                        <Input w={[150, 200, 200]} id='lastName' name="lastName" type="text" placeholder='Last Name' onChange={formik.handleChange} value={formik.values.lastName}/>
                         <HStack spacing='3rem' >
-                            {formik.errors.firstname ? <FormErrorMessage>{formik.errors.firstname}</FormErrorMessage> : null}
-                            {formik.errors.lastname ? <FormErrorMessage>{formik.errors.lastname}</FormErrorMessage> : null}
+                            {formik.errors.firstName ? <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage> : null}
+                            {formik.errors.lastName ? <FormErrorMessage>{formik.errors.lastName}</FormErrorMessage> : null}
                         </HStack>
                     </FormControl>
                         
@@ -69,10 +69,10 @@ const UserDetailsForm = ({formik, handleClickTrade, handleClickProjectManager}) 
                         {formik.errors.confirmPassword ? <FormErrorMessage>{formik.errors.confirmPassword}</FormErrorMessage> : null}
                     </FormControl>
 
-                    <FormControl isInvalid={formik.errors.company}>
-                        <FormLabel mt='2rem' htmlFor='company'>Company </FormLabel>
-                        <Input id='company' name='company' placeholder='Company or Business Name' onChange={formik.handleChange} value={formik.values.company}/>
-                        {formik.errors.company ? <FormErrorMessage>{formik.errors.company}</FormErrorMessage> : null}
+                    <FormControl isInvalid={formik.errors.businessName}>
+                        <FormLabel mt='2rem' htmlFor='businessName'>Business Name </FormLabel>
+                        <Input id='businessName' name='businessName' placeholder='Company or Business Name' onChange={formik.handleChange} value={formik.values.businessName}/>
+                        {formik.errors.businessName ? <FormErrorMessage>{formik.errors.businessName}</FormErrorMessage> : null}
                     </FormControl>
                         
                     <FormControl isInvalid={formik.errors.abn}>

@@ -34,7 +34,7 @@ const UserSchema = new Schema(
     },
     businessName: {
       type: String,
-      required: [true, "Please provide a company name"],
+      required: [false, "Please provide a company name"],
       maxlength: [50, "company must have a max length of 50 characters"],
       minlength: [3, "company must have at least 3 characters"],
       unique: true,
