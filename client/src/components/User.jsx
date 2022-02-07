@@ -5,9 +5,9 @@ import validate from "../validation/signupValidation"
 import{ Link } from 'react-router-dom'
 
 
-const user = {pm: false, firstName: "John", lastName: "Doe", email: "john@doe", position: "Boss", trade: "Carpenter", company: "John's construction", abn: 12345678 }
+const trade = {pm: false, firstName: "John", lastName: "Doe", email: "john@doe", position: "Boss", trade: "Carpenter", company: "Johno's construction", abn: 12345678 }
 const pm = {pm: true, firstName: "Barny", lastName: "Gumble", email: "Barny@Gumble", position: null, trade: null, company: null, abn: null }
-const currentUser = user
+const currentUser = trade
 
 
 const User = () => {
