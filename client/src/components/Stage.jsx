@@ -1,7 +1,9 @@
 import React from "react";
-import { Input, InputLeftAddon, InputGroup, Center, Button, Text } from '@chakra-ui/react'
+import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon } from '@chakra-ui/react'
 import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
+import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
+
 
 const Stage = () => {
 
@@ -15,10 +17,17 @@ const Stage = () => {
             <Center>
                 <Text mb='1rem' fontSize='3xl' color='teal' as='b'>{currentProject.address}</Text>
             </Center>
-            <Center >
-                <Link to="/register">
-                    <Button leftIcon={<AiOutlinePlusCircle />} mt="1em" width="15rem" colorScheme="teal" variant="outline">Add Stage</Button>
-                </Link>
+            <Center>
+                <Icon m="1rem" as={BsPlusCircle} />
+                <Link to="/">  Add project Stage </Link>
+            </Center>
+            <Center>
+                <Icon m="1rem" as={BsPlusCircle} />
+                <Link to="/">  Add trade provider </Link>
+            </Center>
+            <Center>
+                <Icon m="1rem" as={BsTrash} />
+                <Text mt='1rem' fontSize='1xl' color='teal' as='b'>Tasks to Approve</Text>
             </Center>
         </div>
     )
