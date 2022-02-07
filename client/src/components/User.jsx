@@ -5,7 +5,8 @@ import validate from "../validation/signupValidation"
 import{ Link } from 'react-router-dom'
 
 
-
+const user = {pm: false, firstName: "John", lastName: "Doe", email: "john@doe", position: "Boss", trade: "carpenter", company: "John's construction", abn: 12345678 }
+const pm = {pm: true, firstName: "Barny", lastName: "Gumble", email: "Barny@Gumble", position: null, trade: null, company: null, abn: null }
 
 
 
@@ -51,17 +52,17 @@ const User = () => {
             </Center>
             <Center mt='2rem'>
                 <Link to="/register">
-                    <Button mt="1em" width="15em" colorScheme="teal" variant="solid">Edit Profile</Button>
+                    <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Edit Profile</Button>
                 </Link>
             </Center>
             <Center mt='1rem'>
                 <Link to="/register">
-                    <Button mt="1em" width="15em" colorScheme="teal" variant="solid">Change Password</Button>
+                    <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Change Password</Button>
                 </Link>
             </Center>
             <Center mt='5rem'>
                 <Link to="/register">
-                    <Button mt="1em" width="15em" colorScheme="teal" variant="solid">Delete Account</Button>
+                    <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Delete Account</Button>
                 </Link>
             </Center>
         </div>

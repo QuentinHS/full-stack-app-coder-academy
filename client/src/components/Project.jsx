@@ -12,6 +12,9 @@ const Project = () => {
     return(
         <div>
             <Center>
+                <Text mb='1rem' fontSize='3xl' color='teal' as='b'>Project Name</Text>
+            </Center>
+            <Center>
                 <div>
                     <InputGroup>
                         <InputLeftAddon children={<BiSearch />} />
@@ -22,17 +25,16 @@ const Project = () => {
             
             <Center >
                 <Link to="/register">
-                    <Button leftIcon={<AiOutlinePlusCircle />} mt="1em" width="15em" colorScheme="teal" variant="outline">Create New Project</Button>
+                    <Button leftIcon={<AiOutlinePlusCircle />} mt="1em" width="15rem" colorScheme="teal" variant="outline">Create New Project</Button>
                 </Link>
             </Center>
             <Center>
-                <Text mt='1rem' fontSize='3xl' color='teal' as='b'>User</Text>
+                <Text mt='1rem' fontSize='2xl' color='teal' as='b'>Tasks to Approve</Text>
             </Center>
             <Center >
-                
-                {/* Need to show individual projects */}
+                {/* Need to show individual Tasks */}
                 <Link to="/register">
-                    <Button mt="1em" width="15em" colorScheme="teal" variant="outline">Project: Name</Button>
+                    <Button mt="1em" width="15rem" colorScheme="teal" variant="outline">Task: Name</Button>
                 </Link>
                 {/* <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Projet</Text> */}
             </Center>
