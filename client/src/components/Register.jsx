@@ -6,6 +6,7 @@ import UserDetailsForm from "./UserDetailsForm";
 
 
 
+
 const Register = () => {
 
    // State for Project Manager and Tradesman buttons 
@@ -13,7 +14,6 @@ const Register = () => {
    const handleClickTrade = () => setRoleTrade(true)
    const handleClickProjectManager = () => setRoleTrade(false)
  
-    
     
     
    
@@ -33,8 +33,14 @@ const Register = () => {
         //   alert(JSON.stringify(values, null, 2))
             const role = roleTrade ? "trade provider" : "project manager"
             values.role = role
-            console.log(values)
+            delete values.confirmPassword
+            try {
+                api.post(values)
+            } catch(error){
+                console.log(error)
+            }
             resetForm()
+            
         },
     })   
     
