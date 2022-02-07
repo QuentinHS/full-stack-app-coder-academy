@@ -12,7 +12,6 @@ const Nav = () => {
 
     return(
         <div className="container" >
-            
             <BackButton className="back" />
             <div className="linkGorup">
                 <Link className="link" to="/project"><BiHome /></Link>
