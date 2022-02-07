@@ -1,7 +1,8 @@
 require("express-async-errors")
 const morgan = require("morgan")
+const cookieParser = require("cookie-parser")
 // const helmet = require("helmet")
-// const cors = require("cors")
+const cors = require("cors")
 // const xss = require("xss-clean")
 // const rateLimiter = require("express-rate-limit")
 const notFoundMiddleware = require("./middleware/not-found")
@@ -14,16 +15,19 @@ const authenticateUser = require("./middleware/authentication")
 // creates the server with express 
 const app = createServer()
 
+app.use(cors())
 
 app.use(morgan("tiny"))
+app.use(cookieParser())
+// app.use(cookieParser(process.env.JWT_SECRET))
 
 // routers
-// const authRouter = require("./routes/authRouter")
+const authRouter = require("./routes/authRouter")
 const taskRouter = require("./routes/taskRouter")
 const projectRouter = require("./routes/projectRouter")
 const stageRouter = require("./routes/stageRouter")
-// const userRouter = require("./routes/userRouter")
-const homeRouter = require("./routes/homeRouter")
+const userRouter = require("./routes/userRouter")
+// const homeRouter = require("./routes/homeRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
 const tradeRouter = require("./routes/tradeRouter")
 
@@ -33,7 +37,8 @@ app.use("/trades", tradeRouter)
 app.use("/projects/:id/stages/:id/tasks", taskRouter)
 app.use("/projects/:id/stages", stageRouter)
 app.use("/projects", projectRouter)
-app.use("/", homeRouter)
+app.use("/", userRouter)
+app.use("/", authRouter)
 
 
 
@@ -63,7 +68,7 @@ app.use(errorHandlerMiddleware)
 
 
 // app.use(helmet())
-// app.use(cors())
+
 // app.use(xss())
 
 //  routes
