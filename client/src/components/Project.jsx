@@ -52,10 +52,10 @@ const Project = () => {
                 <Text mt='1rem' fontSize='2xl' color='teal' as='b'>Current Projects</Text>
             </Center>
             <Center >
-                {/* Need to show individual Tasks */}
+                {/* May need to sort by date*/}
                     <ol>
                         {projectList.projects.map((project, id) => 
-                        // will need to be user id through params
+                        // will need to be project id through params
                             <li key={id} ><Link to="/register"><Button mt="1em" width="15rem" colorScheme="teal" variant="outline">{project.address}</Button></Link></li>
                         )}
                     </ol> 
@@ -64,10 +64,10 @@ const Project = () => {
                 <Text mt='1rem' fontSize='2xl' color='teal' as='b'>Completed Projects</Text>
             </Center>
             <Center >
-                {/* Need to show individual Tasks */}
+                {/* May need to sort by date*/}
                     <ol>
                         {completedProjectList.projects.map((project, id) => 
-                        // will need to be user id through params
+                        // will need to be project id through params
                             <li key={id} ><Link to="/register"><Button mt="1em" width="15rem" colorScheme="teal" variant="outline">{project.address}</Button></Link></li>
                         )}
                     </ol> 
