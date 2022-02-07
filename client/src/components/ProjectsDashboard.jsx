@@ -37,7 +37,7 @@ const ProjectsDashboard = () => {
     // }
 
     // All Tasks 
-    // const fetchTasks   = async () => {
+    // const fetchTasks = async () => {
         
     //     await axios.get()
     //          .then((response)=>{
@@ -69,7 +69,7 @@ const ProjectsDashboard = () => {
 
     // Load the data
 
-    // useEffect(()=> {fetchData()}, [])
+    // useEffect(()=> {fetchProjecs() fetchTasks()}, [])
 
     return(
         <>
