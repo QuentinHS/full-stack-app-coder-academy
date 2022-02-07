@@ -34,7 +34,7 @@ const User = () => {
                 <Text mb='1rem' fontSize='5xl' color='teal' as='b'>User</Text>
             </Center>
             {/* Maybe change position to something that isn't centered */}
-            <Center>
+            <Center mt={7} >
                 <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Email:</Text>
             </Center>
             <Center>
@@ -49,17 +49,17 @@ const User = () => {
             <Center>
                 <Text mb='1rem' fontSize='2xl' color='teal' as='b'>ABN:</Text>
             </Center>
-            <Center>
+            <Center mt={7}>
                 <Link to="/register">
                     <Button mt="1em" width="15em" colorScheme="teal" variant="solid">Edit Profile</Button>
                 </Link>
             </Center>
-            <Center>
+            <Center mt={2}>
                 <Link to="/register">
                     <Button mt="1em" width="15em" colorScheme="teal" variant="solid">Change Password</Button>
                 </Link>
             </Center>
-            <Center>
+            <Center mt={20}>
                 <Link to="/register">
                     <Button mt="1em" width="15em" colorScheme="teal" variant="solid">Delete Account</Button>
                 </Link>
