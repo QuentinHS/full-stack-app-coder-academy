@@ -3,7 +3,7 @@
     lastName: "doe",
     email: "foo@bar.com",
     password: "passoword",
-    companyName: "Foo Company",
+    businessName: "Foo Company",
     abn: 1234567 
 }
 

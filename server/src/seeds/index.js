@@ -9,7 +9,7 @@ const jsonUsers= require("./users.json")
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URI)
+    await connectDB(process.env.MONGO_URI_TEST)
     await User.deleteMany()
     await Task.deleteMany()
     await User.create(jsonTasks)
