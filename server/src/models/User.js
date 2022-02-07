@@ -14,25 +14,25 @@ const UserSchema = new Schema(
     },
     lastName: {
       type: String,
-      required: [true, "Please provide name"],
+      required: [false, "Please provide name"],
       maxlength: 50,
       minlength: 3,
     },
     email: {
       type: String,
+      unique: true,
       required: [true, "Please provide email"],
       validate: {
         validator: validator.isEmail,
         message: "Please provide valid email",
       },
-    
     },
     password: {
       type: String,
       required: [true, "Please provide password"],
       minlength: 6,
     },
-    companyName: {
+    businessName: {
       type: String,
       required: [true, "Please provide a company name"],
       maxlength: [50, "company must have a max length of 50 characters"],
@@ -47,16 +47,16 @@ const UserSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["project manager", "trade provider"],
-      default: "trade provider",
-      required: true,
+      enum: ["admin", "project manager", "trade provider"],
+      default: "trade provider"
     },
-    trade: {
+    trades: [
+      {
         type: [Schema.Types.ObjectId],
         required: false,
         ref: "Trade",
       },
-  
+    ],
     projects: [
       {
         type: [Schema.Types.ObjectId],
@@ -69,7 +69,7 @@ const UserSchema = new Schema(
 )
 
 UserSchema.pre("save", async function () {
-  console.log(this.model("Product"))
+  if (!this.isModified("password")) return
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
 })
