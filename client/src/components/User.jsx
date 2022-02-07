@@ -5,7 +5,7 @@ import validate from "../validation/signupValidation"
 import{ Link } from 'react-router-dom'
 
 
-const user = {pm: false, firstName: "John", lastName: "Doe", email: "john@doe", position: "Boss", trade: "carpenter", company: "John's construction", abn: 12345678 }
+const user = {pm: false, firstName: "John", lastName: "Doe", email: "john@doe", position: "Boss", trade: "Carpenter", company: "John's construction", abn: 12345678 }
 const pm = {pm: true, firstName: "Barny", lastName: "Gumble", email: "Barny@Gumble", position: null, trade: null, company: null, abn: null }
 
 
@@ -32,23 +32,23 @@ const User = () => {
         <div>
             <Center>
                 {/* User name and other data will need to retrived and parsed in*/}
-                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>User</Text>
+                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>{user.firstName}</Text>
             </Center>
             {/* Maybe change position to something that isn't centered */}
             <Center mt='2rem' >
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Email:</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Email: {user.email}</Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Position:</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Position: {user.position}</Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Trade:</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Trade: {user.trade}</Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Company:</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Company: {user.company} </Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>ABN:</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>ABN: {user.abn}</Text>
             </Center>
             <Center mt='2rem'>
                 <Link to="/register">
