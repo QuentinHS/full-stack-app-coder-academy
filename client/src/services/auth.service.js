@@ -2,14 +2,14 @@ import api from "./api";
 
 const register = (
     role, firstName, lastName, email, 
-    password, companyName, abn ) =>{
+    password, businessName, abn ) =>{
         return api.post('/register', {
             role, 
             firstName, 
             lastName, 
             email, 
             password, 
-            companyName, 
+            businessName, 
             abn 
         })
         .then((response) => {
