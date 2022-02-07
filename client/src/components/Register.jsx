@@ -3,6 +3,7 @@ import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabe
 import { useFormik } from "formik"
 import validate from "../validation/signupValidation"
 import UserDetailsForm from "./UserDetailsForm";
+import api from "../services/api";
 
 
 
@@ -19,12 +20,12 @@ const Register = () => {
    
     const formik = useFormik({
         initialValues: {
-            firstname: '',
-            lastname: '',
+            firstName: '',
+            lastName: '',
             email: '',
             password: '',
             confirmPassword: '',
-            company: '',
+            businessName: '',
             abn: null
         
         },
@@ -34,12 +35,15 @@ const Register = () => {
             const role = roleTrade ? "trade provider" : "project manager"
             values.role = role
             delete values.confirmPassword
-            try {
-                api.post(values)
-            } catch(error){
-                console.log(error)
-            }
-            resetForm()
+            console.log(values)
+        
+            api.post('/register', values)
+            .then ((res) => {
+                console.log(res.data)
+            }).catch((error)=>{
+
+                console.log(error.response)
+            })
             
         },
     })   
