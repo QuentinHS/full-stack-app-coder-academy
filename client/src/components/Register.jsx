@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabel, FormErrorMessage, Button, HStack} from '@chakra-ui/react'
 import { useFormik } from "formik"
 import validate from "../validation/signupValidation"
 import UserDetailsForm from "./UserDetailsForm";
 import api from "../services/api";
-
 
 
 
@@ -15,9 +14,16 @@ const Register = () => {
    const handleClickTrade = () => setRoleTrade(true)
    const handleClickProjectManager = () => setRoleTrade(false)
  
-    
-    
-   
+    useEffect(() => {
+        const getData = async () => {
+            const res = await fetch("http://localhost:5000/register")
+            const data = await res.json()
+            console.log(data)
+        } 
+        getData()
+    }, [])
+
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -37,7 +43,7 @@ const Register = () => {
             delete values.confirmPassword
             console.log(values)
         
-            api.post('/register', values)
+            api.post('/register', values, { withCredentials: true })
             .then ((res) => {
                 console.log(res.data)
             }).catch((error)=>{
