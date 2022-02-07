@@ -14,7 +14,7 @@ const Nav = () => {
         <div className="container" >
             <BackButton className="back" />
             <div className="linkGorup">
-                <Link className="link" to="/project"><BiHome /></Link>
+                <Link className="link" to="/projects"><BiHome /></Link>
                 <Link className="link" to="/user"><BsFillPersonFill /></Link>
                 <Link className="link" to="/"><FiLogOut /></Link>
             </div>

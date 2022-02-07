@@ -9,7 +9,7 @@ import { set } from "react-hook-form";
 import CurrentProjectsList from "./CurrentProjectsList";
 import PastProjectsList from "./PastProjectsList";
 import TasksToApprove from "./TasksToApprove";
-import Footer from "./Footer";
+
 
 const ProjectsDashboard = () => {
     const mockData = [{name: 'foo', completed: true}, {name: 'bar ', completed: true}, {name: 'yup', completed: false}]
