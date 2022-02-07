@@ -16,7 +16,7 @@ const Home = () => {
                     />
             </Center>
             <Center>
-                <Text fontSize="5xl" color="teal" as="b">Welcome </Text>
+                <Text fontSize="5xl" color="teal" as="b">Welcome  </Text>
             </Center>
             <Center>
                 <Image 

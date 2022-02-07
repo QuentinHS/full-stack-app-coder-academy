@@ -10,7 +10,7 @@ const StageSchema = new Schema(
     project: {
       type: Schema.Types.ObjectId,
       ref: "Project",
-      required: false
+      required: false,
     },
     tasks: [
       {
@@ -18,10 +18,10 @@ const StageSchema = new Schema(
         ref: "Task",
       },
     ],
-    // stageNumber: {
-    //   type: Number,
-    //   required: [true, "each stage must be numbered"],
-    // },
+    completed: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 )

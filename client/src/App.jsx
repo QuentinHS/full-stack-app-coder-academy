@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState } from 'react'
-import Project from './components/Project'
 import Stage from './components/Stage'
 import Trade from './components/Trade'
 import Task from './components/Task'
@@ -11,6 +10,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
 // import "./App.css"
+import ProjectsDashboard from "./components/ProjectsDashboard"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/project" element={<Project/>} />
+        <Route path="/projects" element={<ProjectsDashboard/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/User" element={<User  /> } />
         {/* 

@@ -1,11 +1,11 @@
 const validate = (values) => {
     const errors = {}
-    if (!values.firstname) {
-      errors.firstname = 'Please enter your first name';
+    if (!values.firstName) {
+      errors.firstName = 'Please enter your first name';
     }
   
-    if (!values.lastname) {
-      errors.lastname = 'Please enter your last name';
+    if (!values.lastName) {
+      errors.lastName = 'Please enter your last name';
     } 
   
     if (!values.email) {
@@ -27,8 +27,8 @@ const validate = (values) => {
         errors.confirmPassword = 'Passwords do not match'
       }
 
-      if (!values.company) {
-        errors.company = 'Please enter your company/business name ';
+      if (!values.businessName) {
+        errors.businessName = 'Please enter your company/business name ';
       } 
 
      if (values.abn && !/^\d+$/i.test(values.abn)){
