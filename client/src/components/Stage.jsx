@@ -1,5 +1,7 @@
 import React from "react";
 import { Input, InputLeftAddon, InputGroup, Center, Button, Text } from '@chakra-ui/react'
+import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
+import{ Link } from 'react-router-dom'
 
 const Stage = () => {
 
@@ -12,6 +14,11 @@ const Stage = () => {
         <div>
             <Center>
                 <Text mb='1rem' fontSize='3xl' color='teal' as='b'>{currentProject.address}</Text>
+            </Center>
+            <Center >
+                <Link to="/register">
+                    <Button leftIcon={<AiOutlinePlusCircle />} mt="1em" width="15rem" colorScheme="teal" variant="outline">Add Stage</Button>
+                </Link>
             </Center>
         </div>
     )
