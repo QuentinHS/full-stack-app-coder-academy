@@ -7,7 +7,7 @@ import{ Link } from 'react-router-dom'
 
 const user = {pm: false, firstName: "John", lastName: "Doe", email: "john@doe", position: "Boss", trade: "Carpenter", company: "John's construction", abn: 12345678 }
 const pm = {pm: true, firstName: "Barny", lastName: "Gumble", email: "Barny@Gumble", position: null, trade: null, company: null, abn: null }
-
+const currentUser = user
 
 
 const User = () => {
@@ -32,23 +32,23 @@ const User = () => {
         <div>
             <Center>
                 {/* User name and other data will need to retrived and parsed in*/}
-                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>{user.firstName}</Text>
+                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>{currentUser.firstName ? currentUser.firstName : "User Profile!"}</Text>
             </Center>
             {/* Maybe change position to something that isn't centered */}
             <Center mt='2rem' >
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Email: {user.email}</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Email: {currentUser.email ? currentUser.email : "Add an email address!"}</Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Position: {user.position}</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Position: {currentUser.position ? currentUser.position : "Add a position!"}</Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Trade: {user.trade}</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Trade: {currentUser.trade ? currentUser.trade : "Add a Trade!"}</Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Company: {user.company} </Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Company: {currentUser.company ? currentUser.company : "Add company name!"} </Text>
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>ABN: {user.abn}</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>ABN: {currentUser.abn ? currentUser.abn : "Add ABN number!"}</Text>
             </Center>
             <Center mt='2rem'>
                 <Link to="/register">
