@@ -37,11 +37,7 @@ const ProjectSchema = new Schema(
     completed: {
       type: Boolean,
       default: false,
-    },
-    image: {
-      type: String,
-   
-    },
+    }
   },
   { timestamps: true },
 
