@@ -1,9 +1,8 @@
 import React from "react";
-import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon } from '@chakra-ui/react'
+import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon, Checkbox, Stack } from '@chakra-ui/react'
 import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
-import CheckBox from "./CheckBox";
 
 
 const Stage = () => {
@@ -26,15 +25,21 @@ const Stage = () => {
             <Center>
                 <Icon m="1rem" as={BsPlusCircle} />
                 <Link to="/">  Add trade provider </Link>
+            </Center >
+            <Center>
+                <ul >
+                    {currentProject.stage.map((task, index) => 
+                        <Center key={index}  >
+                            <Stack spacing={5} direction='row'>
+                            <Icon m="1rem" as={BsTrash} />
+                            <Checkbox >
+                                Stage: {task.stageNum}
+                            </Checkbox>
+                            </Stack>
+                        </Center>
+                    )}
+                </ul>
             </Center>
-                {currentProject.stage.map(task => 
-                    <Center>
-                        <CheckBox />
-                        <Icon m="1rem" as={BsTrash} />
-                        <Text mt='1rem' fontSize='1xl' color='teal' as='b'>Stage: {task.stageNum}</Text>
-                    </Center>
-            )}
-           
         </div>
     )
 }

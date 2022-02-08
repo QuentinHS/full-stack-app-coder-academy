@@ -42,9 +42,9 @@ const Project = () => {
             <Center >
                 {/* Need to show individual Tasks */}
                     <ol>
-                        {currentProject.task.map((task, id) => 
+                        {currentProject.task.map((task, index) => 
                         // will need to be user id through params
-                            <li key={id} ><Link to="/register"><Button mt="1em" width="15rem" colorScheme="teal" variant="outline">{task.provider}</Button></Link></li>
+                            <li key={index} ><Link to="/register"><Button mt="1em" width="15rem" colorScheme="teal" variant="outline">{task.provider}</Button></Link></li>
                         )}
                     </ol> 
             </Center>
