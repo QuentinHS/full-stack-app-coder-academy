@@ -5,9 +5,14 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 import "../Nav.css"
 import BackButton from "./BackButton";
+import { useCookies } from "react-cookie";
 
 const Nav = () => {
-
+    const [cookies, setCookie] = useCookies(["user"])
+    
+    const logout = (e) =>{
+        cookies.remove
+    }
 
 
     return(

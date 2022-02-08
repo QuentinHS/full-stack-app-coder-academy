@@ -31,6 +31,9 @@ const ProjectsDashboard = () => {
     //All projects filtered by user 
     useEffect(async () => {
         const res = await api.get('/projects')
+            .catch((error)=>{
+                console.log(error.response)
+            })
         projectDispatch({
           type: "setProjects",
           data: res.data

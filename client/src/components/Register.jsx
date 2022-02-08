@@ -18,8 +18,7 @@ const Register = () => {
  
    const navigate = useNavigate()
 
-    const [id, setId] = useState('')
-    const [role, setRole]= useState('')
+   // get user detials from cookies 
     const [cookies, setCookie] = useCookies()
 
 

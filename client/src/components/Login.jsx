@@ -3,9 +3,16 @@ import react from "react"
 import { useFormik } from "formik"
 import validate from "../validation/loginValidation"
 import api from "../services/api"
+import authService from "../services/auth.service"
+import { useCookies } from "react-cookie"
+import { useNavigate } from "react-router"
 
 const Login = () => {
-  
+  // get user detials from cookies 
+  const [cookies, setCookie] = useCookies()
+
+  const navigate = useNavigate()
+
   // Formik form validation states
   const formik = useFormik({
       initialValues: {
@@ -16,7 +23,11 @@ const Login = () => {
       onSubmit: (values, {resetForm} ) => {
       //   alert(JSON.stringify(values, null, 2))
         console.log(values)
-        // api.get('/user')
+        authService.login(values.email, values.password)
+        .then((res) =>{ 
+          console.log(res)
+          navigate("/projects")
+        })
         resetForm()
       },
   })
