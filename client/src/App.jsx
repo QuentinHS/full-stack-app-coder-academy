@@ -11,6 +11,7 @@ import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
 // import "./App.css"
 import ProjectsDashboard from "./components/ProjectsDashboard"
+import TradeProdvider from "./components/TradeProviders"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/User" element={<User  /> } />
         <Route path="/stage" element={<Stage /> } />
+        <Route path="/tradeProvider" element={<TradeProdvider /> } />
         {/* 
         
         <Trade />
