@@ -30,12 +30,10 @@ const Stage = () => {
                 <Icon m="1rem" as={BsPlusCircle} />
                 <Link to="/">  Add trade provider </Link>
             </Center >
-            <Center>
-                
+            <Center m="1rem">
                 <Link to="/">  View trade Providers </Link>
             </Center >
-            
-            <Center>
+            <Center mt="2rem">
                 <ul >
                     {currentProject.stage.map((stage, index) => 
                         <Center key={index}  >
@@ -52,6 +50,10 @@ const Stage = () => {
                     )}
                 </ul>
             </Center>
+            <Center mt="3rem">
+                <Icon m="1rem" as={BsTrash} />
+                <Link to="/">  Delete Project </Link>
+            </Center >
         </div>
     )
 }
