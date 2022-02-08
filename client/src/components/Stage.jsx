@@ -9,10 +9,11 @@ import CheckBox from "./CheckBox";
 const Stage = () => {
 
     const projectList = {projects: [{address: "123 fake street"}, {address: "555 Evergreen trc"}, {address: "31 Spooner st"}]}
-    const pm = {address: "123 fake street", task: [{stageNum: 1, taskNum: 1, trade: "carentry", provider: "Johno's construction"},{stageNum: 2, taskNum: 2, trade: "2 carentry", provider: "2 Johno's construction"}, {stageNum: 3, taskNum: 3, trade: "3 carentry", provider: "7 Johno's construction"}]}
+    const pm = {address: "123 fake street", stage: [{stageNum: 1, taskName: "foo", trade: "carentry", provider: "Johno's construction"},{stageNum: 2, taskName: "bar", trade: "2 carentry", provider: "2 Johno's construction"}, {stageNum: 3, taskName: "blah", trade: "3 carentry", provider: "7 Johno's construction"}]}
 
     const currentProject = pm
 
+    console.log(currentProject.task)
     return(
         <div>
             <Center>
@@ -26,11 +27,14 @@ const Stage = () => {
                 <Icon m="1rem" as={BsPlusCircle} />
                 <Link to="/">  Add trade provider </Link>
             </Center>
-            <Center>
-                <CheckBox />
-                <Icon m="1rem" as={BsTrash} />
-                <Text mt='1rem' fontSize='1xl' color='teal' as='b'>Tasks to Approve</Text>
-            </Center>
+                {currentProject.stage.map(task => 
+                    <Center>
+                        <CheckBox />
+                        <Icon m="1rem" as={BsTrash} />
+                        <Text mt='1rem' fontSize='1xl' color='teal' as='b'>Stage: {task.stageNum}</Text>
+                    </Center>
+            )}
+           
         </div>
     )
 }

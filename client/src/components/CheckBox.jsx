@@ -6,7 +6,8 @@ function CheckBox () {
 
   function toggle(value){
     return !value;
-  }
+}
+console.log(checked)
 
   return (
     <form>
