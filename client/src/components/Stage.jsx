@@ -31,12 +31,18 @@ const Stage = () => {
                 <Link to="/">  Add trade provider </Link>
             </Center >
             <Center>
+                
+                <Link to="/">  View trade Providers </Link>
+            </Center >
+            
+            <Center>
                 <ul >
                     {currentProject.stage.map((stage, index) => 
                         <Center key={index}  >
                             <Stack spacing={5} direction='row'>
                                 <Icon m="1rem" as={BsTrash} />
                                 <Checkbox 
+                                spacing="1rem"
                                     isChecked={checkedItems[index]}
                                     onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}>
                                     Stage: {stage.stageNum}
