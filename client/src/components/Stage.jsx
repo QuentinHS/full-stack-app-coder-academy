@@ -3,6 +3,7 @@ import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon } from '@
 import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
+import CheckBox from "./CheckBox";
 
 
 const Stage = () => {
@@ -26,6 +27,7 @@ const Stage = () => {
                 <Link to="/">  Add trade provider </Link>
             </Center>
             <Center>
+                <CheckBox />
                 <Icon m="1rem" as={BsTrash} />
                 <Text mt='1rem' fontSize='1xl' color='teal' as='b'>Tasks to Approve</Text>
             </Center>
