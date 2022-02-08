@@ -41,7 +41,7 @@ const Register = () => {
             .then ((res) => {
                 console.log(res.data)
             }).catch((error)=>{
-
+                console.log(error.response.config.data)
                 console.log(error.response)
             })
             
