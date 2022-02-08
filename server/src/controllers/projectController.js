@@ -8,7 +8,6 @@ const getAllProjects = async (req, res) => {
   res.status(StatusCodes.OK).json({ projects, count: projects.length })
 }
 
-
 const createProject = async (req, res) => {
   const project = await Project.create({...req.body, projectManager: req.user.userId})
  
