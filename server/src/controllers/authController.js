@@ -19,11 +19,12 @@ const register = async (req, res) => {
   // role = isFirstAccount && 'admin'
 
   const user = await User.create({firstName, lastName, businessName, abn, email, password, role,})
+  console.log(user)
   const tokenUser = createTokenUser(user)
-
+  console.log(tokenUser)
   attachCookiesToResponse({res, user: tokenUser})
-
-  res.status(StatusCodes.CREATED).json({ user: tokenUser })
+  
+  res.status(StatusCodes.CREATED).json({ user: {...tokenUser, lastName: user.lastName, businessName: user.businessName, abn: user.abn }})
 
 }
 
