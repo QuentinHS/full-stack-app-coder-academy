@@ -7,10 +7,14 @@ const cors = require("cors")
 // const rateLimiter = require("express-rate-limit")
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")
+const { authenticateUser, authorizeRoles } = require("./middleware/authentication")
+const fileUpload = require("express-fileupload")
+
+const { cloudinary } = require("./utils/cloudinary")
 
 
 const createServer = require("./utils/server")
-const authenticateUser = require("./middleware/authentication")
+
 
 // creates the server with express 
 const app = createServer()
@@ -25,11 +29,15 @@ app.use(cors({
 //   next()
 // })
 
+
+
+app.use(fileUpload({ useTempFiles: true }))
 app.use(morgan("tiny"))
 app.use(cookieParser())
 // app.use(cookieParser(process.env.JWT_SECRET))
 
 // routers
+const uploadRouter = require("./routes/uploadRouter")
 const authRouter = require("./routes/authRouter")
 const taskRouter = require("./routes/taskRouter")
 const projectRouter = require("./routes/projectRouter")
@@ -40,12 +48,14 @@ const userRouter = require("./routes/userRouter")
 const tradeRouter = require("./routes/tradeRouter")
 const { attachCookiesToResponse } = require("./utils")
 
-// users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
+// users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id\
+// app.all("*", authenticateUser)
+app.use("/", uploadRouter)
 app.use("/trades", tradeRouter)
 app.use("/projects/:id/stages/:id/tasks", taskRouter)
 app.use("/projects/:id/stages", stageRouter)
-app.use("/projects", projectRouter)
-app.use("/", userRouter)
+app.use("/projects", authenticateUser, projectRouter)
+app.use("/", authenticateUser, userRouter)
 app.use("/", authRouter)
 
 

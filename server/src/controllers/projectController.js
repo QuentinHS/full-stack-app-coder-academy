@@ -3,6 +3,7 @@ const Stage = require("../models/Stage")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
+
 const getAllProjects = async (req, res) => {
   const projects = await Project.find({ projectManager: req.user.userId }).sort("-createdAt")
   res.status(StatusCodes.OK).json({ projects, count: projects.length })
