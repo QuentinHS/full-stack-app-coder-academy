@@ -15,7 +15,7 @@ import {useCookies} from 'react-cookie'
 
 
 const ProjectsDashboard = () => {
-    const [cookies, setCookie] = useCookies(["user"])
+    const [cookies, setCookie] = useCookies(["user", "role"])
     const currentUserId = cookies.user
     const currentUserRole = cookies.role
     const {projectState, projectDispatch} = useContext(projectContext)
@@ -24,12 +24,13 @@ const ProjectsDashboard = () => {
     const [allProjects, setAllProjects] = useState()
     const [allTasks, setAllTasks] = useState()
     
+    
 
     
     // fetch data from DB
 
     //All projects filtered by user 
-    useEffect(async () => {
+   /* useEffect(async () => {
         const res = await api.get('/projects')
             .catch((error)=>{
                 console.log(error.response)
@@ -38,10 +39,9 @@ const ProjectsDashboard = () => {
           type: "setProjects",
           data: res.data
         })
-      }, [])
+  //    }, [])*/
 
     
-   
 
     // All Tasks 
     // const fetchTasks = async () => {
@@ -89,7 +89,8 @@ const ProjectsDashboard = () => {
            </Center>
            <Center>
                 <Alert status='error'>
-                    <AlertDescription>You have {currentUserRole === 'project manager' ? needApproval.length : null} tasks requiring attention </AlertDescription>
+                    <AlertDescription>You have 
+                        {currentUserRole === 'project manager' ? 1 : null} tasks requiring attention </AlertDescription>
                     <AlertIcon />
                 
                 </Alert>
@@ -102,7 +103,7 @@ const ProjectsDashboard = () => {
                     </Center>
 
                     <Center>
-                        <TasksToApprove tasksList={needApproval}/>
+                        {/* <TasksToApprove tasksList={needApproval}/> */}
 
                     </Center>
                 </>

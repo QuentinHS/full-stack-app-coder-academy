@@ -9,7 +9,7 @@ import { useNavigate } from "react-router"
 
 const Login = () => {
   // get user detials from cookies 
-  const [cookies, setCookie] = useCookies()
+  const [cookies, setCookie] = useCookies("user", "role ")
 
   const navigate = useNavigate()
 
@@ -26,6 +26,8 @@ const Login = () => {
         authService.login(values.email, values.password)
         .then((res) =>{ 
           console.log(res)
+          setCookie("user", res.user.userId, {path: '/'})
+          setCookie("role", res.user.role, {path: '/'})
           navigate("/projects")
         })
         resetForm()

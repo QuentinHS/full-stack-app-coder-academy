@@ -19,7 +19,7 @@ const Register = () => {
    const navigate = useNavigate()
 
    // get user detials from cookies 
-    const [cookies, setCookie] = useCookies()
+    const [cookies, setCookie] = useCookies("user", "role")
 
 
     const formik = useFormik({
@@ -44,9 +44,12 @@ const Register = () => {
             api.post('/register', values, { withCredentials: true })
             .then ((res) => {
                 console.log(res.data.user)
+                setCookie("user", res.data.user.userId, {path: '/'})
+                setCookie("role", res.data.user.role, {path: '/'})
                 
             })
-            .then(console.log(cookies))
+            .then(
+                console.log(cookies))
             .then(() => navigate('/projects'))
             .catch((error)=>{
                 console.log(error.response)
