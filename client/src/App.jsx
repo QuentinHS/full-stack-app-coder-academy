@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import Stage from './components/Stage'
 import Trade from './components/Trade'
 import Task from './components/Task'
@@ -11,29 +11,38 @@ import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
 // import "./App.css"
 import ProjectsDashboard from "./components/ProjectsDashboard"
+import projectReducer from "./reducers/projectReducer"
+import projectContext from "./context/projectContext"
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [projectState, projectDispatch] = useReducer(projectReducer, [])
+  
+  
  
 
   return (
-    < BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/projects" element={<ProjectsDashboard/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/User" element={<User  /> } />
-        <Route path="/stage" element={<Stage /> } />
-        {/* 
-        
-        <Trade />
-        <Task />*/}
-        
-      </Routes>
-      <ScrollToTop />
-    </BrowserRouter>
+    <projectContext.Provider value ={{projectState, projectDispatch}}>
+      < BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/projects" element={<ProjectsDashboard/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/User" element={<User  /> } />
+          <Route path="/stage" element={<Stage /> } />
+          {/* 
+          
+          <Trade />
+          <Task />*/}
+          
+        </Routes>
+        <ScrollToTop />
+      </BrowserRouter>
+    </projectContext.Provider>
    
   )
 }

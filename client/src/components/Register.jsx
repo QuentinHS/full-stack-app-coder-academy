@@ -4,6 +4,8 @@ import { useFormik } from "formik"
 import validate from "../validation/signupValidation"
 import UserDetailsForm from "./UserDetailsForm";
 import api from "../services/api";
+import { useNavigate } from 'react-router'
+import { useCookies } from "react-cookie";
 
 
 
@@ -14,14 +16,17 @@ const Register = () => {
    const handleClickTrade = () => setRoleTrade(true)
    const handleClickProjectManager = () => setRoleTrade(false)
  
-    useEffect(() => {
-        const getData = async () => {
-            const res = await fetch("http://localhost:5000/register")
-            const data = await res.json()
-            console.log(data)
-        } 
-        getData()
-    }, [])
+   const navigate = useNavigate()
+
+    const [id, setId] = useState('')
+    const [role, setRole]= useState('')
+    const [cookies, setCookie] = useCookies(["user", "role"])
+
+   const handleCookie = ()=> {
+       setCookie("user", id, {path: '/'})
+       setCookie("role", role, {path: '/'})
+       console.log(cookies)
+   }
 
 
     const formik = useFormik({
@@ -45,11 +50,18 @@ const Register = () => {
         
             api.post('/register', values, { withCredentials: true })
             .then ((res) => {
-                console.log(res.data)
-            }).catch((error)=>{
-                console.log(error.response.config.data)
+                console.log(res.data.user)
+                setId( res.data.user.userId)
+                setRole(res.data.user.role)
+            })
+            .then(() => {
+                handleCookie()
+            })
+            .then(() => navigate('/projects'))
+            .catch((error)=>{
                 console.log(error.response)
             })
+            resetForm()
             
         },
     })   
