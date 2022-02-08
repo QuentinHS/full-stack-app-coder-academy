@@ -3,16 +3,20 @@ import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon, Checkbox
 import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
+import { useEffect, useState } from "react";
 
 
 const Stage = () => {
 
     const projectList = {projects: [{address: "123 fake street"}, {address: "555 Evergreen trc"}, {address: "31 Spooner st"}]}
-    const pm = {address: "123 fake street", stage: [{stageNum: 1, taskName: "foo", trade: "carentry", provider: "Johno's construction"},{stageNum: 2, taskName: "bar", trade: "2 carentry", provider: "2 Johno's construction"}, {stageNum: 3, taskName: "blah", trade: "3 carentry", provider: "7 Johno's construction"}]}
+    const pm = {address: "123 fake street", stage: [{stageNum: 1, taskName: "foo", trade: "carentry", provider: "Johno's construction", complete: false},{stageNum: 2, taskName: "bar", trade: "2 carentry", provider: "2 Johno's construction"}, {stageNum: 3, taskName: "blah", trade: "3 carentry", provider: "7 Johno's construction"}, {stageNum: 5, taskName: "blah", trade: "3 carentry", provider: "7 Johno's construction"}]}
 
     const currentProject = pm
 
-    console.log(currentProject.task)
+    const [checkedItems, setCheckedItems] = React.useState( new Array(currentProject.stage.length).fill(false))
+
+    console.log(checkedItems)
+
     return(
         <div>
             <Center>
@@ -28,13 +32,15 @@ const Stage = () => {
             </Center >
             <Center>
                 <ul >
-                    {currentProject.stage.map((task, index) => 
+                    {currentProject.stage.map((stage, index) => 
                         <Center key={index}  >
                             <Stack spacing={5} direction='row'>
-                            <Icon m="1rem" as={BsTrash} />
-                            <Checkbox >
-                                Stage: {task.stageNum}
-                            </Checkbox>
+                                <Icon m="1rem" as={BsTrash} />
+                                <Checkbox 
+                                    isChecked={checkedItems[index]}
+                                    onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}>
+                                    Stage: {stage.stageNum}
+                                </Checkbox>
                             </Stack>
                         </Center>
                     )}
