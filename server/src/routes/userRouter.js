@@ -12,5 +12,4 @@ router.route("/updateUserPassword").patch(authenticateUser, updateUserPassword)
 
 router.route("/users/:id").get(authenticateUser, getSingleUser)
 
-
 module.exports = router

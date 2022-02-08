@@ -15,7 +15,15 @@ const authenticateUser = require("./middleware/authentication")
 // creates the server with express 
 const app = createServer()
 
-app.use(cors())
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:3000', // your_frontend_domain, it's an example
+  }))
+
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Credentials", "http://localhost:3000")
+//   next()
+// })
 
 app.use(morgan("tiny"))
 app.use(cookieParser())
@@ -30,7 +38,7 @@ const userRouter = require("./routes/userRouter")
 // const homeRouter = require("./routes/homeRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
 const tradeRouter = require("./routes/tradeRouter")
-
+const { attachCookiesToResponse } = require("./utils")
 
 // users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
 app.use("/trades", tradeRouter)
@@ -39,9 +47,6 @@ app.use("/projects/:id/stages", stageRouter)
 app.use("/projects", projectRouter)
 app.use("/", userRouter)
 app.use("/", authRouter)
-
-
-
 
 
 // authRouter.route('/register')
