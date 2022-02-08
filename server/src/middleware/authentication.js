@@ -7,9 +7,9 @@ const authenticateUser = async (req, res, next) => {
     throw new CustomError.UnauthenticatedError("Authentication invalid")
   }
     try {
-      const {name, userId, role} = isTokenValid(token)
+      const {firstName, userId, role} = isTokenValid(token)
       // Attach the user and his permissions to the req object
-      req.user = {name, userId, role}
+      req.user = {firstName, userId, role}
       console.log(req.user)
       next()
      

@@ -4,13 +4,14 @@ const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
 const getAllProjects = async (req, res) => {
-  const projects = await Project.find({}).sort('-createdAt')
+  const projects = await Project.find({ projectManager: req.user.userId }).sort("-createdAt")
   res.status(StatusCodes.OK).json({ projects, count: projects.length })
 }
 
 
 const createProject = async (req, res) => {
-  const project = await Project.create(req.body)
+  const project = await Project.create({...req.body, projectManager: req.user.userId})
+ 
   res.status(StatusCodes.CREATED).json({ project })
 }
 
