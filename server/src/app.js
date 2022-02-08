@@ -21,7 +21,7 @@ const app = createServer()
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000', // your_frontend_domain, it's an example
+    origin: 'http://localhost:3000'
   }))
 
 // app.use((req, res, next) => {
@@ -29,7 +29,8 @@ app.use(cors({
 //   next()
 // })
 
-
+const cookieParser = require("cookie-parser")
+app.use(cookieParser())
 
 app.use(fileUpload({ useTempFiles: true }))
 app.use(morgan("tiny"))
