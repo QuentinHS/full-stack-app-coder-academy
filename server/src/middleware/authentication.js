@@ -4,7 +4,7 @@ const { isTokenValid } = require("../utils/jwt")
 const authenticateUser = async (req, res, next) => {
   const token = req.cookies.token
   if (!token) {
-    throw new CustomError.UnauthenticatedError("Authentication invalid")
+    throw new CustomError.UnauthenticatedError("Error 1")
   }
     try {
       const {firstName, userId, role} = isTokenValid(token)
@@ -14,7 +14,7 @@ const authenticateUser = async (req, res, next) => {
       next()
      
     } catch (error) {
-      throw new CustomError.UnauthenticatedError("Authentication invalid")
+      throw new CustomError.UnauthenticatedError("Error 2")
     }
 }
 

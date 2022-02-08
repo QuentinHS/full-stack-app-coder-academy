@@ -10,7 +10,7 @@ const errorHandlerMiddleware = require("./middleware/error-handler")
 
 
 const createServer = require("./utils/server")
-const authenticateUser = require("./middleware/authentication")
+const {authenticateUser, authorizeRoles} = require("./middleware/authentication")
 
 // creates the server with express 
 const app = createServer()
@@ -28,6 +28,7 @@ app.use(cors({
 app.use(morgan("tiny"))
 app.use(cookieParser())
 // app.use(cookieParser(process.env.JWT_SECRET))
+// app.all("*", authenticateUser)
 
 // routers
 const authRouter = require("./routes/authRouter")
@@ -39,6 +40,8 @@ const userRouter = require("./routes/userRouter")
 // const tradeProviderRouter = require("tradeProviderRouter")
 const tradeRouter = require("./routes/tradeRouter")
 const { attachCookiesToResponse } = require("./utils")
+
+
 
 // users/:id/projects/:project_id/stages/:stage_id/tasks/:task_id
 app.use("/trades", tradeRouter)
