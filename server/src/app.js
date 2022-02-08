@@ -17,7 +17,7 @@ const app = createServer()
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000', // your_frontend_domain, it's an example
+    origin: 'http://localhost:3000', 
   }))
 
 // app.use((req, res, next) => {
@@ -27,6 +27,8 @@ app.use(cors({
 
 app.use(morgan("tiny"))
 app.use(cookieParser())
+
+app.use(errorHandlerMiddleware)
 // app.use(cookieParser(process.env.JWT_SECRET))
 // app.all("*", authenticateUser)
 
@@ -49,6 +51,8 @@ app.use("/projects/:id/stages/:id/tasks", taskRouter)
 app.use("/projects/:id/stages", stageRouter)
 app.use("/projects", projectRouter)
 app.use("/", userRouter)
+app.use("/projects", projectRouter)
+app.use("/", userRouter)
 app.use("/", authRouter)
 
 
@@ -60,8 +64,9 @@ app.use("/", authRouter)
 
 // 
 // error handler
-app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware)
+
+
+
 // 
 // app.set("trust proxy", 1)
 
