@@ -23,11 +23,11 @@ const Stage = () => {
                 <Text mb='1rem' fontSize='3xl' color='teal' as='b'>{currentProject.address}</Text>
             </Center>
             <Center>
-                <Icon m="1rem" as={BsPlusCircle} />
+                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
                 <Link to="/">  Add project Stage </Link>
             </Center>
             <Center>
-                <Icon m="1rem" as={BsPlusCircle} />
+                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
                 <Link to="/">  Add trade provider </Link>
             </Center >
             <Center m="1rem">

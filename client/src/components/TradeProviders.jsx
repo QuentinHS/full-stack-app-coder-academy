@@ -17,7 +17,7 @@ const TradeProdvider = () => {
                 <Heading>Trade Providers</Heading>
             </Center>
             <Center mt="2rem">
-                <Icon m="1rem" as={BsPlusCircle} />
+                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
                 <Link to="/">  Add trade provider </Link>
             </Center>
             <Center mt="1rem">
