@@ -13,9 +13,7 @@ import ScrollToTop from "./components/ScrollToTop"
 import ProjectsDashboard from "./components/ProjectsDashboard"
 import projectReducer from "./reducers/projectReducer"
 import projectContext from "./context/projectContext"
-
-
-
+import TradeProdvider from "./components/TradeProviders"
 
 function App() {
   const [projectState, projectDispatch] = useReducer(projectReducer, [])

@@ -20,13 +20,7 @@ const Register = () => {
 
     const [id, setId] = useState('')
     const [role, setRole]= useState('')
-    const [cookies, setCookie] = useCookies(["user", "role"])
-
-   const handleCookie = ()=> {
-       setCookie("user", id, {path: '/'})
-       setCookie("role", role, {path: '/'})
-       console.log(cookies)
-   }
+    const [cookies, setCookie] = useCookies()
 
 
     const formik = useFormik({
@@ -51,12 +45,9 @@ const Register = () => {
             api.post('/register', values, { withCredentials: true })
             .then ((res) => {
                 console.log(res.data.user)
-                setId( res.data.user.userId)
-                setRole(res.data.user.role)
+                
             })
-            .then(() => {
-                handleCookie()
-            })
+            .then(console.log(cookies))
             .then(() => navigate('/projects'))
             .catch((error)=>{
                 console.log(error.response)

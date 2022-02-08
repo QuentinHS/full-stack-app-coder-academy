@@ -28,16 +28,7 @@ const ProjectsDashboard = () => {
     
     // fetch data from DB
 
-    //All projects
-    // const fetchProjects  = async () => {
-        
-    //    await api.get("/projects")
-    //         .then((response)=>{
-    //             console.log(response)
-    //              setAllProjectsDefault(response.data)
-    //             setAllProjects(response.data)
-    //         })
-    // }
+    //All projects filtered by user 
     useEffect(async () => {
         const res = await api.get('/projects')
         projectDispatch({

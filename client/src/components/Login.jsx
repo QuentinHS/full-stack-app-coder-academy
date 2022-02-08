@@ -2,6 +2,7 @@ import { FormLabel, Input, Button, FormControl, FormErrorMessage, Center, Text }
 import react from "react"
 import { useFormik } from "formik"
 import validate from "../validation/loginValidation"
+import api from "../services/api"
 
 const Login = () => {
   
@@ -15,6 +16,7 @@ const Login = () => {
       onSubmit: (values, {resetForm} ) => {
       //   alert(JSON.stringify(values, null, 2))
         console.log(values)
+        // api.get('/user')
         resetForm()
       },
   })
