@@ -41,7 +41,12 @@ const getAllUsers = async(req, res) => {
 }
 
 const showCurrentUser = async (req, res) => {
-  res.status(StatusCodes.OK).json({user: req.user})
+  const user = await User.findOne({ _id: req.user.userId }).select("-password")
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id: ${req.params.id} `)
+  }
+  console.log(user)
+  res.status(StatusCodes.OK).json({user: user})
 }
 
 const getSingleUser = async (req, res) => {
@@ -56,21 +61,25 @@ const getSingleUser = async (req, res) => {
 
 // update user
 const updateUser = async (req, res) => {
-  const { email, firstName } = req.body
-  if (!email || !firstName) {
+  const { email, firstName, lastName, businessName, abn } = req.body
+  if (!email || !firstName || !lastName|| !businessName) {
     throw new CustomError.BadRequestError("Please provide all values")
   }
 
   const user = await User.findOne({_id: req.user.userId})
+
   
-  user.email = email
   user.firstName = firstName
+  user.lastName = lastName 
+  user.email = email
+  user.businessName = businessName
+  user.abn = abn 
 
   await user.save()
 
   const tokenUser = createTokenUser(user)
   attachCookiesToResponse({ res, user: tokenUser })
-  res.status(StatusCodes.OK).json({ user: tokenUser })
+  res.status(StatusCodes.OK).json({ user: user })
 }
 
 
