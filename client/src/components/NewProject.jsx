@@ -1,11 +1,29 @@
 import { Button, Center, FormControl, FormErrorMessage, FormLabel, Input, Text, Textarea } from "@chakra-ui/react"
 import { Form, useFormik } from "formik"
-import React from "react"
+import React, { useContext } from "react"
 import api from "../services/api"
 import validate from "../validation/newProjectValidation"
+import appContext from "../context/appContext"
 
 
 const NewProject = () => {
+    const {state: {projects}, dispatch} = useContext(appContext)
+    
+async function addProject (values) {
+
+    await api.post('/projects', values, { withCredentials: true })
+        .then ((res) => {
+            console.log(res.data) 
+            dispatch({
+                type: "addProjects",
+                data: res.data
+            })
+            console.log(projects) 
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+}
 
     //formik states, validation and submit
     const formik = useFormik({
@@ -19,16 +37,17 @@ const NewProject = () => {
         onSubmit: (values, {resetForm} ) => {
         //   alert(JSON.stringify(values, null, 2))
             console.log(values)
-            api.post('/projects', values, { withCredentials: true })
-            .then ((res) => {
-                console.log(res.data)  
+            // addProject(values)
+            dispatch({
+                type: "addProjects",
+                data: values
             })
-            .catch((error)=>{
-                console.log(error)
-            })
+           
+            // resetForm()
             
         },
     })   
+console.log(projects)
 
 
     return (

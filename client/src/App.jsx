@@ -11,19 +11,21 @@ import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
 // import "./App.css"
 import ProjectsDashboard from "./components/ProjectsDashboard"
-import projectReducer from "./reducers/projectReducer"
-import projectContext from "./context/projectContext"
+import projectReducer from "./reducers/stateReducer"
+import appContext from "./context/appContext"
 import TradeProdvider from "./components/TradeProviders"
 import NewProject from "./components/NewProject"
 
+const initialState = {projects: []}
 function App() {
-  const [projectState, projectDispatch] = useReducer(projectReducer, [])
-  
+  const [state, dispatch] = useReducer(projectReducer, initialState)
+  const {projects} = state
+
   
  
 
   return (
-    <projectContext.Provider value ={{projectState, projectDispatch}}>
+    <appContext.Provider value ={{state, dispatch}}>
       < BrowserRouter>
         <Nav />
         <Routes>
@@ -43,7 +45,7 @@ function App() {
         </Routes>
         <ScrollToTop />
       </BrowserRouter>
-    </projectContext.Provider>
+    </appContext.Provider>
    
   )
 }

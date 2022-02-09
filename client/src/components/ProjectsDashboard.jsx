@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 import CurrentProjectsList from "./CurrentProjectsList";
 import PastProjectsList from "./PastProjectsList";
 import TasksToApprove from "./TasksToApprove";
-import projectContext from "../context/projectContext";
+import projectContext from "../context/appContext";
 import {useCookies} from 'react-cookie'
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const ProjectsDashboard = () => {
     const [cookies, setCookie] = useCookies(["user", "role"])
     const currentUserId = cookies.user
     const currentUserRole = cookies.role
-    const {projectState, projectDispatch} = useContext(projectContext)
+    const {state: {projects}, dispatch} = useContext(projectContext)
     
     const [input, setInput ] = useState('')
     const [allProjects, setAllProjects] = useState()
@@ -34,7 +34,7 @@ const ProjectsDashboard = () => {
             .catch((error)=>{
                 console.log(error.response)
             })
-        projectDispatch({
+        dispatch({
           type: "setProjects",
           data: res.data
         })
@@ -66,13 +66,13 @@ const ProjectsDashboard = () => {
     // Update the input of the search bar  
 
     const updateInput = async (input) =>{
-        const filteredList = projectState.filter(project =>{
+        const filteredList = projects.filter(project =>{
             return project.name.toLowerCase().includes(input.toLowerCase())
         })
         setInput(input)
         setAllProjects(filteredList)
     }
-    console.log(projectState)
+    console.log(projects)
 
     // Load the data
 
