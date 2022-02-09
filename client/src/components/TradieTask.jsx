@@ -9,7 +9,7 @@ import TasksApprovalList from "./TasksApprovalList";
 const projectAddress = [{address: "123 Fake street"}]
 const stageNum = [{stage: [1, 2, 3, 4, 5, 6]}]
 const stageInfo = [{incompleteTask: []}, {completeTask: []}]
-const currentUserRole = "PM"
+const currentUserRole = "tradie"
 const allTasks = ["foo"]
 
 const TradieTask = () => {
@@ -21,7 +21,7 @@ const TradieTask = () => {
             <Center mb="2rem">
                 <Heading size='lg'>Stage: {stageNum[0].stage[0]}</Heading>
             </Center>
-            {currentUserRole === 'PM' && 
+            {currentUserRole === 'tradie' && 
                 <>
    
 
@@ -34,12 +34,12 @@ const TradieTask = () => {
             <Center>
                 <Alert status='error'>
                     <AlertDescription>You have 
-                        {currentUserRole === 'PM' ? 1 : null} tasks requiring attention </AlertDescription>
+                        {currentUserRole === 'tradie' ? 1 : null} tasks requiring attention </AlertDescription>
                     <AlertIcon />
                 </Alert>
             </Center>
             <Center>
-                <Heading size='md'>Incomplete Tasks</Heading>
+                <Heading size='md'>My Tasks</Heading>
             </Center>
            <Center>
                <CurrentTasksList tasksList={allTasks} />
