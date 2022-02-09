@@ -26,7 +26,7 @@ const login = (email, password ) =>{
     .post('/login', {
         email,
         password
-    })
+    }, {withCredentials: true})
     .then((response) => {
         if (response.data){
             console.log(response.data)
