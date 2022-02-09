@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useReducer, useState } from 'react'
 import Stage from './components/Stage'
 import Trade from './components/Trade'
-import Task from './components/PMTask'
+import PMTask from './components/PMTask'
 import User from './components/User'
 import Nav from './components/Nav'
 import Home from './components/Home'
@@ -15,6 +15,7 @@ import projectReducer from "./reducers/projectReducer"
 import projectContext from "./context/projectContext"
 import TradeProdvider from "./components/TradeProviders"
 import NewProject from "./components/NewProject"
+import TradieTask from "./components/TradieTask"
 
 function App() {
   const [projectState, projectDispatch] = useReducer(projectReducer, [])
@@ -35,7 +36,8 @@ function App() {
           <Route path="/User" element={<User  /> } />
           <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
-          <Route path="/task" element={<Task /> } />
+          <Route path="/pmtask" element={<PMTask /> } />
+          <Route path="/tradieTask" element={<TradieTask /> } />
           {/* 
           
           <Trade />
