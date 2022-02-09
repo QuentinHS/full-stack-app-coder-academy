@@ -15,10 +15,16 @@ const {authenticateUser, authorizeRoles} = require("./middleware/authentication"
 // creates the server with express 
 const app = createServer()
 
-app.use(cors({
-    credentials: true,
-    origin: 'http://localhost:3000', 
-  }))
+// app.use(cors({
+//     credentials: true,
+//     origin: 'http://localhost:3000', 
+//   }))
+
+// security packages
+app.use(helmet());
+app.use(cors());
+app.use(xss());
+app.use(rateLimiter({ windowMs: 60 * 1000, max: 150 }));
 
 // app.use((req, res, next) => {
 //   res.header("Access-Control-Allow-Credentials", "http://localhost:3000")
@@ -78,9 +84,7 @@ app.use("/", authRouter)
 
 
 
-// app.use(helmet())
 
-// app.use(xss())
 
 //  routes
 // app.use('/api/v1/auth', authRouter);
