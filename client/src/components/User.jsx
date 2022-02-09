@@ -1,57 +1,59 @@
-import React from "react";
-import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabel, FormErrorMessage, FormHelperText, Button, VStack, HStack} from '@chakra-ui/react'
+import React, { useContext, useEffect, useState } from "react";
+import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabel, FormErrorMessage, FormHelperText, Button, VStack, HStack, Alert, AlertIcon} from '@chakra-ui/react'
 import { useFormik } from "formik"
 import validate from "../validation/signupValidation"
 import{ Link } from 'react-router-dom'
+import api from "../services/api";
+import appContext from "../context/appContext";
 
-
-const trade = {pm: false, firstName: "John", lastName: "Doe", email: "john@doe", position: "Boss", trade: "Carpenter", company: "Johno's construction", abn: 12345678 }
-const pm = {pm: true, firstName: "Barny", lastName: "Gumble", email: "Barny@Gumble", position: null, trade: null, company: null, abn: null }
-const currentUser = trade
 
 
 const User = () => {
-    const formik = useFormik({
-        initialValues: {
-            name: '',
-            email: '',
-            company: '',
-            abn: null
+    //setting user 
+    // const [currentUser, setCurrentUser] = useState({})
+    const {state: {currentUser}, dispatch } = useContext(appContext)
+
+    // useEffect(async () => {
+    //     const res = await api.get('/showMe', {withCredentials: true})
         
-        },
-        validate,
-        onSubmit: (values, {resetForm} ) => {
-        //   alert(JSON.stringify(values, null, 2))
-            const role = roleTrade ? "trade provider" : "project manager"
-            values.role = role
-            console.log(values)
-            resetForm()
-        },
-    })  
+    //     setCurrentUser(res.data.user)
+    // }, [])
+
+  
+
+ 
     return(
         <div>
             <Center>
-                {/* User name and other data will need to retrived and parsed in*/}
-                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>{currentUser.firstName ? currentUser.firstName : "User Profile!"}</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b' > My Profile</Text>
+            </Center> 
+            <Center>
+                 <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.firstName ? currentUser.firstName : "Add a first name"} {currentUser.lastName ? currentUser.lastName : "Add a last name"}</Text>
             </Center>
-            {/* Maybe change position to something that isn't centered */}
-            <Center mt='2rem' >
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Email: {currentUser.email ? currentUser.email : "Add an email address!"}</Text>
+            <Center >
+                <Text mb='1rem' mr='1rem' fontSize='2xl' color='teal' as='b' >Email:</Text>
+                {currentUser.email ? <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.email}</Text> :  <Alert w='15rem' status='error'> <AlertIcon/> Add an email address! </Alert>}
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Position: {currentUser.position ? currentUser.position : "Add a position!"}</Text>
+                <Text mb='1rem' mr='1rem' fontSize='2xl' color='teal' as='b' >Position: </Text>
+                {currentUser.role ? <Text mb='1rem' fontSize='2xl' color='teal'> {currentUser.role} </Text> : <Alert w='10rem' status='error'> <AlertIcon/> Add a role! </Alert>}
+            </Center>
+                {currentUser.role === "trade provider" ? 
+            <Center>
+                <Text mb='1rem' mr='1rem' fontSize='2xl' color='teal' as='b' >Trade: </Text> <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.trade ? currentUser.trade : "Add a Trade!"}</Text> 
+            </Center>
+                : null}
+                
+            <Center>
+                <Text mb='1rem' mr='1rem' fontSize='2xl' color='teal' as='b' >Company: </Text>
+                {currentUser.businessName ? <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.businessName} </Text>: <Alert w='15rem' status='error'> <AlertIcon/>Add company/business!</Alert>} 
             </Center>
             <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Trade: {currentUser.trade ? currentUser.trade : "Add a Trade!"}</Text>
-            </Center>
-            <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Company: {currentUser.company ? currentUser.company : "Add company name!"} </Text>
-            </Center>
-            <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>ABN: {currentUser.abn ? currentUser.abn : "Add ABN number!"}</Text>
+                <Text mb='1rem' mr='1rem' fontSize='2xl' color='teal' >ABN: </Text>
+                {currentUser.abn ? <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.abn}</Text>  : <Alert w='10rem' status='warning'> <AlertIcon/> Add an ABN</Alert> }
             </Center>
             <Center mt='2rem'>
-                <Link to="/register">
+                <Link to="/user/edit">
                     <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Edit Profile</Button>
                 </Link>
             </Center>
