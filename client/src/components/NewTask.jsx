@@ -1,8 +1,13 @@
 import React from "react";
-import { Center, Icon, Input,  Heading, IconButton, Alert, AlertDescription, AlertIcon, FormControl, FormLabel, FormErrorMessage, FormHelperText } from '@chakra-ui/react'
+import { Center, Icon, Text, Input,  Heading, IconButton, Alert, AlertDescription, AlertIcon, FormControl, FormLabel, FormErrorMessage, FormHelperText } from '@chakra-ui/react'
 import { useFormik } from "formik"
+import { ChevronDownIcon } from "@chakra-ui/icons";
+
 
 const NewTask = () => {
+
+    const [show, setShow] = React.useState(false)
+    const handleClickShow = () => setShow(!show)
 
     const formik = useFormik({
         initialValues: {
@@ -26,8 +31,13 @@ const NewTask = () => {
                     {formik.errors.businessName ? <FormErrorMessage>{formik.errors.businessName}</FormErrorMessage> : null}
                 </FormControl>
             </Center>
-            <Center>
-                
+            <Center m="1rem">
+                <Text>Select a Trade</Text>
+                <IconButton size='sm'  mr="2rem" ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
+            </Center>
+            <Center m="1rem">
+                <Text>Task Assignee</Text>
+                <IconButton size='sm'  mr="2rem" ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
             </Center>
         </div>
     )
