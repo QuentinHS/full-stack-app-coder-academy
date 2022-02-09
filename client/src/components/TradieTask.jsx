@@ -1,6 +1,6 @@
 import React from "react";
 import { Center, Icon,  Heading, IconButton, Alert, AlertDescription, AlertIcon  } from '@chakra-ui/react'
-import { BsTrash, BsPlusCircle } from 'react-icons/bs'
+import { BsTrash, BsPlusCircle, BsFillExclamationCircleFill } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 import CurrentTasksList from "./CurrentTasksList";
 import PastTasksList from "./PastTasksList";
@@ -21,6 +21,7 @@ const TradieTask = () => {
             <Center mb="2rem">
                 <Heading size='lg'>Stage: {stageNum[0].stage[0]}</Heading>
             </Center>
+
             {currentUserRole === 'tradie' && 
                 <>
    
@@ -30,6 +31,8 @@ const TradieTask = () => {
                     </Center>
                 </>
             }
+
+            
             {/* Matbe keep this for tradie as a redo task thing */}
             <Center>
                 <Alert status='error'>

@@ -4,6 +4,7 @@ import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 import CurrentTasksList from "./CurrentTasksList";
 import PastTasksList from "./PastTasksList";
+import IncompleteTasksList from "./IncompleteTasksList ";
 
 const stageNum = [{stage: [1, 2, 3, 4, 5, 6]}]
 const stageInfo = [{incompleteTask: []}, {completeTask: []}]
@@ -39,7 +40,7 @@ const PMTask = () => {
                 <Heading size='md'>Incomplete Tasks</Heading>
             </Center>
            <Center>
-               <CurrentTasksList tasksList={allTasks} />
+               <IncompleteTasksList tasksList={allTasks} />
             </Center>
             
             <Center>
