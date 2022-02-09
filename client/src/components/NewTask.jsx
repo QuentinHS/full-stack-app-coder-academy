@@ -1,8 +1,8 @@
 import React from "react";
-import { Center, Icon, Text, Input,  Heading, IconButton, Alert, AlertDescription, AlertIcon, FormControl, FormLabel, FormErrorMessage, FormHelperText } from '@chakra-ui/react'
+import { Center, Icon, Text, Input,  Heading, IconButton, Alert, AlertDescription, AlertIcon, FormControl, FormLabel, FormErrorMessage, FormHelperText, Button } from '@chakra-ui/react'
 import { useFormik } from "formik"
 import { ChevronDownIcon } from "@chakra-ui/icons";
-
+import{ Link } from 'react-router-dom'
 
 const NewTask = () => {
 
@@ -38,6 +38,11 @@ const NewTask = () => {
             <Center m="1rem">
                 <Text>Task Assignee</Text>
                 <IconButton size='sm'  mr="2rem" ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
+            </Center>
+            <Center mt='2rem'>
+                <Link to="/register">
+                    <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Add Task</Button>
+                </Link>
             </Center>
         </div>
     )
