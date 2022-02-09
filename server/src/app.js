@@ -1,10 +1,10 @@
 require("express-async-errors")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
-// const helmet = require("helmet")
+const helmet = require("helmet")
 const cors = require("cors")
-// const xss = require("xss-clean")
-// const rateLimiter = require("express-rate-limit")
+const xss = require("xss-clean")
+const rateLimiter = require("express-rate-limit")
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")
 
@@ -24,6 +24,8 @@ const app = createServer()
 app.use(helmet());
 app.use(cors());
 app.use(xss());
+
+app.set("trust proxy", 1)
 app.use(rateLimiter({ windowMs: 60 * 1000, max: 150 }));
 
 // app.use((req, res, next) => {
