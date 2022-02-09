@@ -57,6 +57,7 @@ const logout = async(req,res) => {
   expires: new Date(Date.now() + 5 * 1000 )}
   )
   
+  res.clearCookie("token")
   res.status(StatusCodes.OK).json({msg: "user logged out"})
 
 }
