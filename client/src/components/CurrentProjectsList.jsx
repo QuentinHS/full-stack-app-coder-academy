@@ -6,7 +6,7 @@ const CurrentProjectsList = ({projectsList=[]}) =>{
 
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-
+ 
     const active = projectsList.filter(projects => {
         return projects.completed === false
     })

@@ -21,18 +21,13 @@ const TradieTask = () => {
             <Center mb="2rem">
                 <Heading size='lg'>Stage: {stageNum[0].stage[0]}</Heading>
             </Center>
-
             {currentUserRole === 'tradie' && 
                 <>
-   
-
                     <Center>
                         {/* <TasksToApprove tasksList={needApproval}/> */}
                     </Center>
                 </>
             }
-
-            
             {/* Matbe keep this for tradie as a redo task thing */}
             <Center>
                 <Alert  status='error'>
