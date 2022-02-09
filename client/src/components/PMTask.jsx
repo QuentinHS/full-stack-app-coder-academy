@@ -10,7 +10,7 @@ const stageInfo = [{incompleteTask: []}, {completeTask: []}]
 const currentUserRole = "PM"
 const allTasks = ["foo"]
 
-const Task = () => {
+const PMTask = () => {
     return(
         <div>
             <Center mb="2rem">
@@ -52,4 +52,4 @@ const Task = () => {
     )
 }
 
-export default Task
+export default PMTask
