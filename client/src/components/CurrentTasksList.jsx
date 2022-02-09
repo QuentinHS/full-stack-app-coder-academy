@@ -1,5 +1,7 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Center, IconButton, List, ListItem, Text, VStack } from "@chakra-ui/react";
+import { Center, IconButton, List, ListItem, Text, VStack, Icon } from "@chakra-ui/react";
+import { BsTrash, BsPlusCircle, BsFillExclamationCircleFill } from 'react-icons/bs'
+import { BiPackage } from "react-icons/bi"
 import React from "react";
 
 const CurrentTasksList = ({tasksList=[]}) =>{
@@ -19,7 +21,9 @@ const CurrentTasksList = ({tasksList=[]}) =>{
             <Center>
 
                 <Text>My Tasks</Text>
-                <IconButton size='sm' ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
+                <IconButton size='sm'  mr="2rem" ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
+                {eclamation ? <Icon mr="1rem" as={BsFillExclamationCircleFill} /> : null}
+                {eclamation ? <Icon mr="1rem" as={BiPackage} /> : null}
             </Center>
 
             <List spacing={3}>
