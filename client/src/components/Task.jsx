@@ -2,13 +2,13 @@ import React from "react";
 import { Center, Icon,  Heading, IconButton, Alert, AlertDescription, AlertIcon  } from '@chakra-ui/react'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
-import CurrentProjectsList from "./CurrentProjectsList";
+import CurrentTasksList from "./CurrentTasksList";
 import PastTasksList from "./PastTasksList";
 
 const stageNum = [{stage: [1, 2, 3, 4, 5, 6]}]
 const stageInfo = [{incompleteTask: []}, {completeTask: []}]
 const currentUserRole = "PM"
-const allProjects = ["foo"]
+const allTasks = ["foo"]
 
 const Task = () => {
     return(
@@ -39,14 +39,14 @@ const Task = () => {
                 <Heading size='md'>Incomplete Tasks</Heading>
             </Center>
            <Center>
-               <CurrentProjectsList projectsList={allProjects} />
+               <CurrentTasksList tasksList={allTasks} />
             </Center>
             
             <Center>
                 <Heading size='md'>Complete Tasks</Heading>
             </Center>
            <Center>
-               <PastTasksList tasksList={allProjects} />
+               <PastTasksList tasksList={allTasks} />
            </Center> 
         </div>
     )
