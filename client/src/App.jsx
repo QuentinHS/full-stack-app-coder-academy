@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useReducer, useState } from 'react'
 import Stage from './components/Stage'
-import Trade from './components/Trade'
+import Trade from './components/NewTask'
 import PMTask from './components/PMTask'
 import User from './components/User'
 import Nav from './components/Nav'
@@ -16,6 +16,7 @@ import appContext from "./context/appContext"
 import TradeProdvider from "./components/TradeProviders"
 import NewProject from "./components/NewProject"
 import TradieTask from "./components/TradieTask"
+import NewTask from "./components/NewTask"
 
 const initialState = {projects: []}
 function App() {
@@ -41,10 +42,11 @@ function App() {
           <Route path="/pmtask" element={<PMTask /> } />
           <Route path="/tradieTask" element={<TradieTask /> } />
           <Route path="/projectsDashboard" element={<ProjectsDashboard /> } />
-          {/* 
+          <Route path="/newTask" element={<NewTask /> } />
+      
           
-          <Trade />
-          */}
+          
+         
           
         </Routes>
         <ScrollToTop />
