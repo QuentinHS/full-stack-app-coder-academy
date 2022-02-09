@@ -38,6 +38,7 @@ function App() {
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
           <Route path="/pmtask" element={<PMTask /> } />
           <Route path="/tradieTask" element={<TradieTask /> } />
+          <Route path="/projectsDashboard" element={<ProjectsDashboard /> } />
           {/* 
           
           <Trade />

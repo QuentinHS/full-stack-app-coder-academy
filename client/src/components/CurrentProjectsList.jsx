@@ -15,7 +15,7 @@ const CurrentProjectsList = ({projectsList=[]}) =>{
         <>
             <VStack>
 
-            <Center>
+            <Center m="1rem">
 
                 <Text>Current Projects</Text>
                 <IconButton size='sm' ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
