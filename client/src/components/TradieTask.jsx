@@ -16,10 +16,10 @@ const TradieTask = () => {
     return(
         <div>
             <Center mb="2rem">
-                <Heading size='2xl'>Address: {projectAddress[0].address}</Heading>
+                <Heading fontSize='5xl' color='teal' as='b'>Address: {projectAddress[0].address}</Heading>
             </Center>
             <Center mb="2rem">
-                <Heading size='lg'>Stage: {stageNum[0].stage[0]}</Heading>
+                <Heading fontSize='2xl' color='teal' as='b'>Stage: {stageNum[0].stage[0]}</Heading>
             </Center>
             {currentUserRole === 'tradie' && 
                 <>

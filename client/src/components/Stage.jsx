@@ -1,5 +1,5 @@
 import React from "react";
-import { Center, Text, Icon, Checkbox, Stack, IconButton } from '@chakra-ui/react'
+import { Center, Text, Icon, Checkbox, Stack, IconButton, Heading } from '@chakra-ui/react'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ const Stage = () => {
     return(
         <div>
             <Center>
-                <Text mb='1rem' fontSize='3xl' color='teal' as='b'>{currentProject.address}</Text>
+                <Heading mb='1rem' fontSize='5xl' color='teal' as='b'>{currentProject.address}</Heading>
             </Center>
             <Center>
                 <Icon boxSize={6} m="1rem" as={BsPlusCircle} />

@@ -15,7 +15,7 @@ const PMTask = () => {
     return(
         <div>
             <Center mb="2rem">
-                <Heading size='2xl'>Stage: {stageNum[0].stage[0]}</Heading>
+                <Heading fontSize='5xl' color='teal' as='b'>Stage: {stageNum[0].stage[0]}</Heading>
             </Center>
             {currentUserRole === 'PM' && 
                 <>

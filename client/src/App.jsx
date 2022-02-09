@@ -39,15 +39,11 @@ function App() {
           <Route path="/User" element={<User  /> } />
           <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
-          <Route path="/pmtask" element={<PMTask /> } />
+          <Route path="/pmTask" element={<PMTask /> } />
           <Route path="/tradieTask" element={<TradieTask /> } />
           <Route path="/projectsDashboard" element={<ProjectsDashboard /> } />
           <Route path="/newTask" element={<NewTask /> } />
-      
-          
-          
-         
-          
+
         </Routes>
         <ScrollToTop />
       </BrowserRouter>
