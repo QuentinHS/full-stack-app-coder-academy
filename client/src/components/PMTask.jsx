@@ -29,24 +29,17 @@ const PMTask = () => {
                     </Center>
                 </>
             }
-            <Center>
+            <Center m="1rem">
                 <Alert status='error'>
-                    <AlertDescription>You have 
+                    <AlertDescription mr="1rem">You have 
                         {currentUserRole === 'PM' ? 1 : null} tasks requiring attention </AlertDescription>
                     <AlertIcon />
                 </Alert>
             </Center>
-            <Center>
-                <Heading size='md'>Incomplete Tasks</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <IncompleteTasksList tasksList={allTasks} />
             </Center>
-            
-            <Center>
-                <Heading size='md'>Complete Tasks</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <PastTasksList tasksList={allTasks} />
            </Center> 
         </div>

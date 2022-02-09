@@ -17,7 +17,7 @@ const IncompleteTasksList = ({tasksList=[]}) =>{
 
             <Center>
 
-                <Text>Current Tasks</Text>
+                <Text>Incomplete Tasks</Text>
                 <IconButton size='sm' ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
             </Center>
 

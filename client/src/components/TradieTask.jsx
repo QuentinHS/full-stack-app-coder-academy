@@ -35,29 +35,19 @@ const TradieTask = () => {
             
             {/* Matbe keep this for tradie as a redo task thing */}
             <Center>
-                <Alert status='error'>
-                    <AlertDescription>You have 
+                <Alert  status='error'>
+                    <AlertDescription mr="2rem">You have 
                         {currentUserRole === 'tradie' ? 1 : null} tasks requiring attention </AlertDescription>
-                    <AlertIcon />
+                    <AlertIcon  />
                 </Alert>
             </Center>
-            <Center>
-                <Heading size='md'>My Tasks</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <CurrentTasksList tasksList={allTasks} />
             </Center>
-            
-            <Center>
-                <Heading size='md'>Tasks Pending Approval</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <TasksApprovalList tasksList={allTasks} />
            </Center> 
-            <Center>
-                <Heading size='md'>Complete Tasks</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <PastTasksList tasksList={allTasks} />
            </Center> 
         </div>
