@@ -15,7 +15,7 @@ const Nav = () => {
     
      const  logout = (e) =>{
         e.preventDefault()
-        api.get("/logout")
+        api.get("/logout", {withCredentials: true})
         .then((res) => {
             console.log(res)
             removeCookie("user", {path: '/'})
