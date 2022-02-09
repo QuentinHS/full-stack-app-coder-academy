@@ -33,10 +33,11 @@ function App() {
           <Route path="/User" element={<User  /> } />
           <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
+          <Route path="/task" element={<Task /> } />
           {/* 
           
           <Trade />
-          <Task />*/}
+          */}
           
         </Routes>
         <ScrollToTop />

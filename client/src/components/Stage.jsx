@@ -1,9 +1,7 @@
 import React from "react";
-import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon, Checkbox, Stack, IconButton } from '@chakra-ui/react'
-import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
+import { Center, Text, Icon, Checkbox, Stack, IconButton } from '@chakra-ui/react'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
-import { useEffect, useState } from "react";
 
 
 const Stage = () => {
@@ -14,8 +12,6 @@ const Stage = () => {
     const currentProject = pm
 
     const [checkedItems, setCheckedItems] = React.useState( new Array(currentProject.stage.length).fill(false))
-
-    console.log(checkedItems)
 
     return(
         <div>
