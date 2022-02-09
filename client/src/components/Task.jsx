@@ -3,7 +3,7 @@ import { Center, Icon,  Heading, IconButton, Alert, AlertDescription, AlertIcon 
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 import CurrentProjectsList from "./CurrentProjectsList";
-import PastProjectsList from "./PastProjectsList";
+import PastTasksList from "./PastTasksList";
 
 const stageNum = [{stage: [1, 2, 3, 4, 5, 6]}]
 const stageInfo = [{incompleteTask: []}, {completeTask: []}]
@@ -46,7 +46,7 @@ const Task = () => {
                 <Heading size='md'>Complete Tasks</Heading>
             </Center>
            <Center>
-               <PastProjectsList projectsList={allProjects} />
+               <PastTasksList tasksList={allProjects} />
            </Center> 
         </div>
     )
