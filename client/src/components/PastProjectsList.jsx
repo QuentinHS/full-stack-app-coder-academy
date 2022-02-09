@@ -3,12 +3,13 @@ import { Center, IconButton, List, ListItem, Text, VStack } from "@chakra-ui/rea
 import React from "react";
 
 
-const PastProjectsList = ({projectsList=[]}) =>{
-
+const PastProjectsList = ({projectList=[]}) =>{
+   
+    
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
 
-    const past = projectsList.filter(projects => {
+    const past = projectList.filter(projects => {
         return projects.completed === true
     })
 

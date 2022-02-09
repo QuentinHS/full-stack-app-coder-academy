@@ -2,14 +2,17 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Center, IconButton, List, ListItem, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
-const CurrentProjectsList = ({projectsList=[]}) =>{
 
+const CurrentProjectsList = ({projectList=[]}) =>{
+   
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-
-    const active = projectsList.filter(projects => {
-        return projects.completed === false
+   
+    const active = projectList.filter(project => {
+        return project.completed === false
     })
+  
+
 
     return (
         <>

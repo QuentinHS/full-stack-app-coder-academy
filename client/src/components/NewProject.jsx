@@ -4,10 +4,12 @@ import React, { useContext } from "react"
 import api from "../services/api"
 import validate from "../validation/newProjectValidation"
 import appContext from "../context/appContext"
+import { useNavigate } from "react-router"
 
 
 const NewProject = () => {
     const {state: {projects}, dispatch} = useContext(appContext)
+    const navigate = useNavigate()
     
 async function addProject (values) {
 
@@ -37,13 +39,9 @@ async function addProject (values) {
         onSubmit: (values, {resetForm} ) => {
         //   alert(JSON.stringify(values, null, 2))
             console.log(values)
-            // addProject(values)
-            dispatch({
-                type: "addProjects",
-                data: values
-            })
-           
-            // resetForm()
+            addProject(values)
+            resetForm()
+            navigate("/projects")
             
         },
     })   

@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 import CurrentProjectsList from "./CurrentProjectsList";
 import PastProjectsList from "./PastProjectsList";
 import TasksToApprove from "./TasksToApprove";
-import projectContext from "../context/appContext";
+import appContext from "../context/appContext";
 import {useCookies} from 'react-cookie'
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const ProjectsDashboard = () => {
     const [cookies, setCookie] = useCookies(["user", "role"])
     const currentUserId = cookies.user
     const currentUserRole = cookies.role
-    const {state: {projects}, dispatch} = useContext(projectContext)
+    const {state: {projects}, dispatch} = useContext(appContext)
     
     const [input, setInput ] = useState('')
     const [allProjects, setAllProjects] = useState()
@@ -29,16 +29,22 @@ const ProjectsDashboard = () => {
     // fetch data from DB
 
     //All projects filtered by user 
-   /* useEffect(async () => {
-        const res = await api.get('/projects')
+    useEffect(async () => {
+        const res = await api.get('/projects', {withCredentials: true})
             .catch((error)=>{
                 console.log(error.response)
             })
-        dispatch({
-          type: "setProjects",
-          data: res.data
-        })
-  //    }, [])*/
+            dispatch({
+                type: "setProjects",
+                data: res.data.projects
+              })
+            setAllProjects(res.data.projects)
+        
+     }, [])
+
+     console.log(projects)
+
+
 
     
 
@@ -72,9 +78,8 @@ const ProjectsDashboard = () => {
         setInput(input)
         setAllProjects(filteredList)
     }
-    console.log(projects)
 
-    // Load the data
+
 
 
     return(
@@ -88,8 +93,8 @@ const ProjectsDashboard = () => {
            </Center>
            <Center>
                 <Alert status='error'>
-                    <AlertDescription>You have 
-                        {currentUserRole === 'project manager' ? 1 : null} tasks requiring attention </AlertDescription>
+                    <AlertDescription>You have
+                        {currentUserRole === 'project manager' ? projects.length : null} tasks requiring attention </AlertDescription>
                     <AlertIcon />
                 
                 </Alert>
@@ -109,10 +114,10 @@ const ProjectsDashboard = () => {
             }
 
            <Center>
-               <CurrentProjectsList projectsList={allProjects}/>
+               <CurrentProjectsList projectList ={allProjects}/>
            </Center>
            <Center>
-               <PastProjectsList projectsList={allProjects} />
+               <PastProjectsList projectList ={allProjects} />
            </Center>
 
             

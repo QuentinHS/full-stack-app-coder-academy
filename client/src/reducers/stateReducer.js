@@ -3,7 +3,12 @@ export default function (currentState, action){
         case "addProjects":
             return{
                 ...currentState,
-                projects: [action.entry, ...currentState.projects]
+                projects: [action.data, ...currentState.projects]
+            }
+        case "setProjects":
+            return{
+                ...currentState,
+                projects: action.data
             }
     }
 }
