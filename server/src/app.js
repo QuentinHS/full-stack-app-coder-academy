@@ -8,7 +8,6 @@ const rateLimiter = require("express-rate-limit")
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")
 
-
 const createServer = require("./utils/server")
 const {authenticateUser, authorizeRoles} = require("./middleware/authentication")
 
