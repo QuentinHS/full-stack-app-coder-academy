@@ -3,6 +3,7 @@ import { Center, Icon, Text, Textarea, Input,  Heading, IconButton, Alert, Alert
 import { useFormik } from "formik"
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import{ Link } from 'react-router-dom'
+import{ ImCalendar } from 'react-icons/im'
 
 const NewTask = () => {
 
@@ -27,12 +28,12 @@ const NewTask = () => {
             <Center >
                 <FormControl width='80%' isInvalid={formik.errors.trade}>
                     <FormLabel mt='2rem' htmlFor='businessName'>Task Name </FormLabel>
-                    <Input id='businessName' name='businessName' placeholder='Enter a task Name' onChange={formik.handleChange} value={formik.values.businessName}/>
+                    <Input id='businessName' name='businessName' placeholder='Enter a task Name Here' onChange={formik.handleChange} value={formik.values.businessName}/>
                     {formik.errors.businessName ? <FormErrorMessage>{formik.errors.businessName}</FormErrorMessage> : null}
                 </FormControl>
             </Center>
             <Center m="1rem">
-                <Text>Select a Trade</Text>
+                <Text >Select a Trade</Text>
                 <IconButton size='sm'  mr="2rem" ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
             </Center>
             <Center m="1rem">
@@ -41,9 +42,13 @@ const NewTask = () => {
             </Center>
 
             <Center>
-                <Textarea width='80%'  placeholder='Here is a sample placeholder' />
+                <Textarea width='80%'  placeholder='Comments' />
             </Center>
-
+            <Center>
+                {/* Require date entry field */}
+                <Text>Task Due Date</Text>
+                <Icon boxSize={6} m="1rem" as={ImCalendar} />
+            </Center>
             <Center mt='2rem'>
                 <Link to="/register">
                     <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Add Task</Button>
