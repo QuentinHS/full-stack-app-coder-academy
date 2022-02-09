@@ -21,7 +21,7 @@ const TradeProdviders = () => {
             <Center mt="1rem">
                 <ul >
                     {tradeList[0].carpenter.map((trade, index) => 
-                        <Center key={index}  >
+                        <Center key={index} m="1rem" >
                             <IconButton aria-label='Search database' icon={<BsTrash />} />
                             <Link to="/">  {trade} </Link>
                         </Center>
