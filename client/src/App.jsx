@@ -14,6 +14,7 @@ import ProjectsDashboard from "./components/ProjectsDashboard"
 import projectReducer from "./reducers/projectReducer"
 import projectContext from "./context/projectContext"
 import TradeProdvider from "./components/TradeProviders"
+import NewProject from "./components/NewProject"
 
 function App() {
   const [projectState, projectDispatch] = useReducer(projectReducer, [])
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/projects" element={<ProjectsDashboard/>} />
+          <Route path="/projects/new" element={<NewProject/>}/>
           <Route path="/login" element={<Login/>} />
           <Route path="/User" element={<User  /> } />
           <Route path="/stage" element={<Stage /> } />

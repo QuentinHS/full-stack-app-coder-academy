@@ -1,16 +1,15 @@
 import { Center, Text, Icon, Alert, AlertDescription, AlertIcon } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "@chakra-ui/react";
+import { Link as ReachLink} from "@chakra-ui/react";
 import { BsPlusCircle } from "react-icons/bs";
 import api from "../services/api";
 import SearchBar from "./SearchBar";
-import axios from "axios";
-import { set } from "react-hook-form";
 import CurrentProjectsList from "./CurrentProjectsList";
 import PastProjectsList from "./PastProjectsList";
 import TasksToApprove from "./TasksToApprove";
 import projectContext from "../context/projectContext";
 import {useCookies} from 'react-cookie'
+import { Link } from "react-router-dom";
 
 
 
@@ -99,7 +98,7 @@ const ProjectsDashboard = () => {
                 <>
                     <Center>
                             <Icon m="1rem" as={BsPlusCircle} />
-                            <Link href="/">  Create new project </Link>
+                            <Link as={ReachLink} to="/projects/new">  Create new project </Link>
                     </Center>
 
                     <Center>
