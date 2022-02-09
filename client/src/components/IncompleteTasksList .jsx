@@ -2,18 +2,14 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Center, IconButton, List, ListItem, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
+const IncompleteTasksList = ({tasksList=[]}) =>{
 
-const CurrentProjectsList = ({projectList=[]}) =>{
-   
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-    const projectsList = ["foo"]
- 
-    const active = projectsList.filter(projects => {
-        return projects.completed === false
-    })
-  
 
+    const active = tasksList.filter(tasks => {
+        return tasks.completed === false
+    })
 
     return (
         <>
@@ -21,7 +17,7 @@ const CurrentProjectsList = ({projectList=[]}) =>{
 
             <Center>
 
-                <Text>Current Projects</Text>
+                <Text>Incomplete Tasks</Text>
                 <IconButton size='sm' ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
             </Center>
 
@@ -43,4 +39,4 @@ const CurrentProjectsList = ({projectList=[]}) =>{
     )
 }
 
-export default CurrentProjectsList
+export default IncompleteTasksList

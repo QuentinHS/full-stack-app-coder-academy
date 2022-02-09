@@ -1,6 +1,6 @@
 import React from "react";
 import { Center, Icon,  Heading, IconButton, Alert, AlertDescription, AlertIcon  } from '@chakra-ui/react'
-import { BsTrash, BsPlusCircle } from 'react-icons/bs'
+import { BsTrash, BsPlusCircle, BsFillExclamationCircleFill } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 import CurrentTasksList from "./CurrentTasksList";
 import PastTasksList from "./PastTasksList";
@@ -9,7 +9,7 @@ import TasksApprovalList from "./TasksApprovalList";
 const projectAddress = [{address: "123 Fake street"}]
 const stageNum = [{stage: [1, 2, 3, 4, 5, 6]}]
 const stageInfo = [{incompleteTask: []}, {completeTask: []}]
-const currentUserRole = "PM"
+const currentUserRole = "tradie"
 const allTasks = ["foo"]
 
 const TradieTask = () => {
@@ -21,10 +21,8 @@ const TradieTask = () => {
             <Center mb="2rem">
                 <Heading size='lg'>Stage: {stageNum[0].stage[0]}</Heading>
             </Center>
-            {currentUserRole === 'PM' && 
+            {currentUserRole === 'tradie' && 
                 <>
-   
-
                     <Center>
                         {/* <TasksToApprove tasksList={needApproval}/> */}
                     </Center>
@@ -32,29 +30,19 @@ const TradieTask = () => {
             }
             {/* Matbe keep this for tradie as a redo task thing */}
             <Center>
-                <Alert status='error'>
-                    <AlertDescription>You have 
-                        {currentUserRole === 'PM' ? 1 : null} tasks requiring attention </AlertDescription>
-                    <AlertIcon />
+                <Alert  status='error'>
+                    <AlertDescription mr="2rem">You have 
+                        {currentUserRole === 'tradie' ? 1 : null} tasks requiring attention </AlertDescription>
+                    <AlertIcon  />
                 </Alert>
             </Center>
-            <Center>
-                <Heading size='md'>Incomplete Tasks</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <CurrentTasksList tasksList={allTasks} />
             </Center>
-            
-            <Center>
-                <Heading size='md'>Tasks Pending Approval</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <TasksApprovalList tasksList={allTasks} />
            </Center> 
-            <Center>
-                <Heading size='md'>Complete Tasks</Heading>
-            </Center>
-           <Center>
+           <Center m="1rem">
                <PastTasksList tasksList={allTasks} />
            </Center> 
         </div>

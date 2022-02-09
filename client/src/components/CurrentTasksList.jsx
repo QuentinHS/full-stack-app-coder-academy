@@ -6,7 +6,8 @@ const CurrentTasksList = ({tasksList=[]}) =>{
 
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-
+    const onSite = true
+    const eclamation = true
     const active = tasksList.filter(tasks => {
         return tasks.completed === false
     })
@@ -17,7 +18,7 @@ const CurrentTasksList = ({tasksList=[]}) =>{
 
             <Center>
 
-                <Text>Current Tasks</Text>
+                <Text>My Tasks</Text>
                 <IconButton size='sm' ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
             </Center>
 
@@ -26,7 +27,7 @@ const CurrentTasksList = ({tasksList=[]}) =>{
                     if (data){
                         return  show ? (
                             <Center>
-                                <ListItem> {data.name} </ListItem>
+                                <ListItem> {data.name}{} </ListItem>
                             </Center>
                         ): null
                     }
