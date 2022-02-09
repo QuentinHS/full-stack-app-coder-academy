@@ -9,7 +9,7 @@ const tradeList = [{carpenter: ["Jim’s carpentry", "JVK & Sons Construction", 
 
 
 
-const TradeProdvider = () => {
+const TradeProdviders = () => {
 
     return(
         <div>
@@ -34,4 +34,4 @@ const TradeProdvider = () => {
     )
 } 
 
-export default TradeProdvider
+export default TradeProdviders
