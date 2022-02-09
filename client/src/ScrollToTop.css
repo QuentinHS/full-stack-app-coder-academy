@@ -1,0 +1,13 @@
+.toTop {
+   
+    padding: .5rem;
+    margin: .5rem;
+}
+
+.opOn {
+    opacity: 100%;
+}
+.opOff {
+    opacity: 0%;
+}
+
