@@ -47,6 +47,7 @@ const Register = () => {
                 setCookie("user", res.data.user.userId, {path: '/'})
                 setCookie("role", res.data.user.role, {path: '/'})
                 
+                
             })
             .then(
                 console.log(cookies))

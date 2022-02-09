@@ -18,23 +18,11 @@ import NewProject from "./components/NewProject"
 import TradieTask from "./components/TradieTask"
 import api from "./services/api"
 import EditUserDetails from "./components/EditUserDetails"
+import EditUserPassword from "./components/EditUserPassword"
 
 const initialState = {projects: [], currentUser:{}}
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState)
-  const {currentUser} = state
-
-  
-  useEffect(async () => {
-    const res = await api.get('/showMe', {withCredentials: true})
-    
-    dispatch({
-      type: "setCurrentUser",
-      data: res.data.user
-    })
-}, [])
-
-  
  
 
   return (
@@ -47,8 +35,9 @@ function App() {
           <Route path="/projects" element={<ProjectsDashboard/>} />
           <Route path="/projects/new" element={<NewProject/>}/>
           <Route path="/login" element={<Login/>} />
-          <Route path="/User" element={<User/> } />
-          <Route path="/User/edit" element={<EditUserDetails /> } />
+          <Route path="/user" element={<User/> } />
+          <Route path="/user/edit" element={<EditUserDetails /> } />
+          <Route path="/user/password" element={<EditUserPassword /> } />
           <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
           <Route path="/pmtask" element={<PMTask /> } />

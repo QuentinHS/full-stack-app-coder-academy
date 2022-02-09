@@ -8,9 +8,9 @@ import api from '../services/api'
 import { useNavigate } from 'react-router'
 
 const EditUserDetails = () => {
-  
+    // get user details from state
     const {state: {currentUser}, dispatch } = useContext(appContext)
-
+    // navigate the components 
     const navigate = useNavigate()
 
  
@@ -43,7 +43,7 @@ const EditUserDetails = () => {
             .catch((error)=>{
                 console.log(error.response)
             })
-            // resetForm()
+            resetForm()
             
         },
     }) 

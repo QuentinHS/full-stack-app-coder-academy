@@ -11,13 +11,11 @@ import appContext from "../context/appContext";
 const User = () => {
     //setting user 
     // const [currentUser, setCurrentUser] = useState({})
-    const {state: {currentUser}, dispatch } = useContext(appContext)
+    const {state: {currentUser} } = useContext(appContext)
 
-    // useEffect(async () => {
-    //     const res = await api.get('/showMe', {withCredentials: true})
-        
-    //     setCurrentUser(res.data.user)
-    // }, [])
+    const handleClick =()=>{
+
+    }
 
   
 
@@ -58,13 +56,13 @@ const User = () => {
                 </Link>
             </Center>
             <Center mt='1rem'>
-                <Link to="/register">
+                <Link to="/user/password">
                     <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Change Password</Button>
                 </Link>
             </Center>
             <Center mt='5rem'>
                 <Link to="/register">
-                    <Button mt="1em" width="15rem" colorScheme="teal" variant="solid">Delete Account</Button>
+                    <Button mt="1em" width="15rem" colorScheme="red" variant="solid">Delete Account</Button>
                 </Link>
             </Center>
         </div>
