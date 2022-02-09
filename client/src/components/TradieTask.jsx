@@ -6,6 +6,7 @@ import CurrentTasksList from "./CurrentTasksList";
 import PastTasksList from "./PastTasksList";
 import TasksApprovalList from "./TasksApprovalList";
 
+const projectAddress = [{address: "123 Fake street"}]
 const stageNum = [{stage: [1, 2, 3, 4, 5, 6]}]
 const stageInfo = [{incompleteTask: []}, {completeTask: []}]
 const currentUserRole = "PM"
@@ -15,21 +16,21 @@ const TradieTask = () => {
     return(
         <div>
             <Center mb="2rem">
-                <Heading size='2xl'>Stage: {stageNum[0].stage[0]}</Heading>
+                <Heading size='2xl'>Address: {projectAddress[0].address}</Heading>
+            </Center>
+            <Center mb="2rem">
+                <Heading size='lg'>Stage: {stageNum[0].stage[0]}</Heading>
             </Center>
             {currentUserRole === 'PM' && 
                 <>
-                {/* Matbe keep this for tradie as a redo task thing */}
-                    <Center>
-                            <Icon m="1rem" as={BsPlusCircle} />
-                            <Link to="/">  Create new Task </Link>
-                    </Center>
+   
 
                     <Center>
                         {/* <TasksToApprove tasksList={needApproval}/> */}
                     </Center>
                 </>
             }
+            {/* Matbe keep this for tradie as a redo task thing */}
             <Center>
                 <Alert status='error'>
                     <AlertDescription>You have 
