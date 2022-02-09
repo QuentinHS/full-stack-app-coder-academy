@@ -32,7 +32,7 @@ const Stage = () => {
             <Center mt="2rem">
                 <ul >
                     {currentProject.stage.map((stage, index) => 
-                        <Center key={index}  >
+                        <Center key={index} m="1rem" >
                             <Stack spacing={5} direction='row'>
                                 <IconButton aria-label='Search database' icon={<BsTrash />} />
                                 <Checkbox 
