@@ -51,8 +51,6 @@ app.use("/projects/:id/stages/:id/tasks", taskRouter)
 app.use("/projects/:id/stages", stageRouter)
 app.use("/projects", projectRouter)
 app.use("/", userRouter)
-app.use("/projects", projectRouter)
-app.use("/", userRouter)
 app.use("/", authRouter)
 
 
