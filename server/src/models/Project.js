@@ -4,7 +4,7 @@ const { Schema } = mongoose
 const ProjectSchema = new Schema({
   name: {
     type: String,
-    required: [false, "each project must have a name"],
+    required: [true, "each project must have a name"],
   },
   stages: [
     {
@@ -14,11 +14,11 @@ const ProjectSchema = new Schema({
   ],
   address: {
       type: String,
-      required: [false, "each project must have an address"],
+      required: [true, "each project must have an address"],
   },
   completionDate: {
     type: Date,
-    required: [false, "each project must have a completion date"],
+    required: [true, "each project must have a completion date"],
   },
   projectManager: {
     type: Schema.Types.ObjectId,
@@ -35,6 +35,10 @@ const ProjectSchema = new Schema({
   completed: {
     type: Boolean,
     default: false
+  },
+  comments: {
+    type: String, 
+    required: false
   }
 },
   { timestamps: true }
