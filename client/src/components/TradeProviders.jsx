@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon, Checkbox, Stack, Heading  } from '@chakra-ui/react'
+import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon, Checkbox, Stack, Heading, IconButton   } from '@chakra-ui/react'
 import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
@@ -24,7 +24,7 @@ const TradeProdviders = () => {
                 <ul >
                     {tradeList[0].carpenter.map((trade, index) => 
                         <Center key={index}  >
-                            <Icon m="1rem" as={BsTrash} />
+                            <IconButton aria-label='Search database' icon={<BsTrash />} />
                             <Link to="/">  {trade} </Link>
                         </Center>
                     )}

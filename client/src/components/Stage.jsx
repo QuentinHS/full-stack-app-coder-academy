@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon, Checkbox, Stack } from '@chakra-ui/react'
+import { Input, InputLeftAddon, InputGroup, Center, Button, Text, Icon, Checkbox, Stack, IconButton } from '@chakra-ui/react'
 import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
@@ -38,7 +38,7 @@ const Stage = () => {
                     {currentProject.stage.map((stage, index) => 
                         <Center key={index}  >
                             <Stack spacing={5} direction='row'>
-                                <Icon m="1rem" as={BsTrash} />
+                                <IconButton aria-label='Search database' icon={<BsTrash />} />
                                 <Checkbox 
                                 spacing="1rem"
                                     isChecked={checkedItems[index]}
@@ -51,7 +51,7 @@ const Stage = () => {
                 </ul>
             </Center>
             <Center mt="3rem">
-                <Icon m="1rem" as={BsTrash} />
+            <IconButton m="1rem" aria-label='' icon={<BsTrash />} />
                 <Link to="/">  Delete Project </Link>
             </Center >
         </div>
