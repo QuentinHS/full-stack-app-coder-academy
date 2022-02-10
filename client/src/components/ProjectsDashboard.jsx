@@ -86,7 +86,7 @@ const ProjectsDashboard = () => {
         setInput(input)
         setAllProjects(filteredList)
     }
-
+console.log(projects)
 
 
 

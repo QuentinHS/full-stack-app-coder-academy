@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Center, IconButton, List, ListItem, Text, VStack } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -30,7 +31,9 @@ const CurrentProjectsList = ({projectList=[]}) =>{
                     if (data){
                         return  show ? (
                             <Center>
-                                <ListItem> {data.name} </ListItem>
+                                <Link to={`/projects/${data._id}`}>
+                                    <ListItem> {data.name} </ListItem>
+                                </Link>
                             </Center>
                         ): null
                     }

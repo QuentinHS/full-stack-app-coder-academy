@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import api from "../services/api";
 import { Input, InputLeftAddon, InputGroup, Center, Button, Text } from '@chakra-ui/react'
 import { BiSearch } from 'react-icons/bi'
 import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
 import{ Link } from 'react-router-dom'
+import { useParams } from "react-router";
+import appContext from "../context/appContext";
 
 const pm = {address: "123 fake street", task: [{stageNum: 1, taskNum: 1, trade: "carentry", provider: "Johno's construction"},{stageNum: 2, taskNum: 2, trade: "2 carentry", provider: "2 Johno's construction"}, {stageNum: 3, taskNum: 3, trade: "3 carentry", provider: "7 Johno's construction"}]}
 const currentProject = pm
@@ -14,9 +16,14 @@ const completedProjectList = {projects: [{address: "Foo"}, {address: "Bar"}, {ad
 
 
 
-
 const Project = () => {
-
+    const params = useParams()
+    
+    
+    const {state: {projects, curretUser}, dispatch} = useContext(appContext)
+    
+    
+    
     return(
         <div>
             <Center>

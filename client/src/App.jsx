@@ -21,6 +21,7 @@ import EditUserDetails from "./components/EditUserDetails"
 import EditUserPassword from "./components/EditUserPassword"
 import NewTask from "./components/NewTask"
 import TasksApproval from "./components/TasksApproval"
+import Project from "./components/Project"
 
 const initialState = {projects: [], currentUser:{}}
 function App() {
@@ -44,7 +45,6 @@ function App() {
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
           <Route path="/pmTask" element={<PMTask /> } />
           <Route path="/tradieTask" element={<TradieTask /> } />
-          <Route path="/projectsDashboard" element={<ProjectsDashboard /> } />
           <Route path="/newTask" element={<NewTask /> } />
           <Route path="/tasksApproval" element={<TasksApproval /> } />
 
