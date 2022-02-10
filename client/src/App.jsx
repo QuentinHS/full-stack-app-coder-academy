@@ -49,7 +49,15 @@ function App() {
           <Route path="/projects/new" element={<NewProject />} />
           <Route path="/projects/:id" element={<Project />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/user" element={<User />} />
+          <Route
+            path="/user"
+            element={
+              <PrivateRoute>
+                <User />
+              </PrivateRoute>
+            }
+          />
+          {/* <Route path="/user" element={<User />} /> */}
           <Route path="/user/edit" element={<EditUserDetails />} />
           <Route path="/user/password" element={<EditUserPassword />} />
           <Route path="/tradeProviders" element={<TradeProdvider />} />
