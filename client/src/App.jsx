@@ -23,7 +23,7 @@ import NewTask from "./components/NewTask"
 import TasksApproval from "./components/TasksApproval"
 import NewStage from "./components/NewStage"
 
-const initialState = {projects: [], currentUser:{}}
+const initialState = {projects: [], currentUser:{}, stages: []}
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState)
 
