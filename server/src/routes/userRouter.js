@@ -4,7 +4,7 @@ const { authenticateUser, authorizeRoles } = require('../middleware/authenticati
 const { getAllUsers, getSingleUser, showCurrentUser, updateUser, updateUserPassword } = require("../controllers/userController")
 
 
-router.route("/users").get(authenticateUser, authorizeRoles("trade provider"), getAllUsers)
+router.route("/users").get(authenticateUser, authorizeRoles("admin"), getAllUsers)
 
 router.route("/showMe").get(authenticateUser, showCurrentUser)
 router.route("/updateUser").patch(authenticateUser, updateUser)
