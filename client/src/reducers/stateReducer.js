@@ -16,5 +16,10 @@ export default function (currentState, action){
                 ...currentState,
                 currentUser: action.data
             }
+        case "setAuth":
+            return {
+                ...currentState,
+                auth: action.data
+            }
     }
 }

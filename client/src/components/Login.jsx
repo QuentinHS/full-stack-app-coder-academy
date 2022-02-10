@@ -14,7 +14,10 @@ const Login = () => {
   const [cookies, setCookie] = useCookies("user", "role ")
 
   const navigate = useNavigate()
-
+  const {
+    state: { auth },
+    dispatch,
+  } = useContext(appContext)
 
   // Formik form validation states
   const formik = useFormik({
@@ -26,16 +29,22 @@ const Login = () => {
       onSubmit: (values, {resetForm} ) => {
       //   alert(JSON.stringify(values, null, 2))
         console.log(values)
-        authService.login(values.email, values.password)
-        .then((res) =>{ 
-          console.log(res)
-          setCookie("user", res.user.userId, {path: '/'})
-          setCookie("role", res.user.role, {path: '/'})
-        })
-        .then(()=>{
-          navigate("/projects")
-          
-        })
+        authService
+          .login(values.email, values.password)
+          .then((res) => {
+            console.log(res)
+            setCookie("user", res.user.userId, { path: "/" })
+            setCookie("role", res.user.role, { path: "/" })
+          })
+          .then(() => {
+            dispatch({
+              type: "setAuth",
+              data: true,
+            })
+          })
+          .then(() => {
+            navigate("/projects")
+          })
         resetForm()
       },
   })

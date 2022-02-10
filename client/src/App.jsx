@@ -21,7 +21,7 @@ import EditUserDetails from "./components/EditUserDetails"
 import EditUserPassword from "./components/EditUserPassword"
 import NewTask from "./components/NewTask"
 import TasksApproval from "./components/TasksApproval"
-import Project from "./components/Project"
+import { PrivateRoute } from "./components/PrivateRoute"
 
 const initialState = {projects: [], currentUser:{}}
 function App() {
@@ -31,30 +31,36 @@ function App() {
  
 
   return (
-    <appContext.Provider value ={{state, dispatch}}>
-      < BrowserRouter>
+    <appContext.Provider value={{ state, dispatch }}>
+      <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/projects" element={<ProjectsDashboard/>} />
-          <Route path="/projects/new" element={<NewProject/>}/>
-          <Route path="/projects/:id" element={<Project/>}/>
-          <Route path="/login" element={<Login/>} />
-          <Route path="/user" element={<User/> } />
-          <Route path="/user/edit" element={<EditUserDetails /> } />
-          <Route path="/user/password" element={<EditUserPassword /> } />
-          <Route path="/tradeProviders" element={<TradeProdvider /> } />
-          <Route path="/pmTask" element={<PMTask /> } />
-          <Route path="/tradieTask" element={<TradieTask /> } />
-          <Route path="/newTask" element={<NewTask /> } />
-          <Route path="/tasksApproval" element={<TasksApproval /> } />
-
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/projects"
+            element={
+              <PrivateRoute>
+                <ProjectsDashboard />
+              </PrivateRoute>
+            }
+          />
+          {/* <Route path="/projects" element={<ProjectsDashboard/>} /> */}
+          <Route path="/projects/new" element={<NewProject />} />
+          <Route path="/projects/:id" element={<Project />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/user/edit" element={<EditUserDetails />} />
+          <Route path="/user/password" element={<EditUserPassword />} />
+          <Route path="/tradeProviders" element={<TradeProdvider />} />
+          <Route path="/pmTask" element={<PMTask />} />
+          <Route path="/tradieTask" element={<TradieTask />} />
+          <Route path="/newTask" element={<NewTask />} />
+          <Route path="/tasksApproval" element={<TasksApproval />} />
         </Routes>
         <ScrollToTop />
       </BrowserRouter>
     </appContext.Provider>
-   
   )
 }
 
