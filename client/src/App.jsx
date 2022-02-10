@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useEffect, useReducer, useState } from 'react'
-import Stage from './components/Stage'
+import Stage from './components/Project'
 import Trade from './components/NewTask'
 import PMTask from './components/PMTask'
 import User from './components/User'
