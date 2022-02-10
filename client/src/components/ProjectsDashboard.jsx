@@ -17,7 +17,7 @@ const ProjectsDashboard = () => {
     const [cookies, setCookie] = useCookies(["user", "role"])
     const currentUserId = cookies.user
     const currentUserRole = cookies.role
-    const {state: {projects}, dispatch} = useContext(appContext)
+    const {state: {projects, curretUser}, dispatch} = useContext(appContext)
     
     const [input, setInput ] = useState('')
     const [allProjects, setAllProjects] = useState()
@@ -26,7 +26,16 @@ const ProjectsDashboard = () => {
     
 
     
-    // fetch data from DB
+    // fetch user data from DB
+    
+      useEffect(async () => {
+        const res = await api.get('/showMe', {withCredentials: true})
+        
+        dispatch({
+          type: "setCurrentUser",
+          data: res.data.user
+        })
+    }, [])
 
     //All projects filtered by user 
     useEffect(async () => {
@@ -42,7 +51,6 @@ const ProjectsDashboard = () => {
         
      }, [])
 
-     console.log(projects)
 
 
 

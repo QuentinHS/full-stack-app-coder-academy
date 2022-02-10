@@ -47,6 +47,7 @@ const Register = () => {
                 setCookie("user", res.data.user.userId, {path: '/'})
                 setCookie("role", res.data.user.role, {path: '/'})
                 
+                
             })
             .then(
                 console.log(cookies))
@@ -66,7 +67,7 @@ const Register = () => {
             <Center>
                 <Text mb='1rem' fontSize='5xl' color='teal' as='b'>Sign up</Text>
             </Center>
-           <UserDetailsForm formik={formik} handleClickProjectManager={handleClickProjectManager} handleClickTrade={handleClickTrade}/>
+           <UserDetailsForm registering={true} formik={formik} handleClickProjectManager={handleClickProjectManager} handleClickTrade={handleClickTrade}/>
         </>
     )
 }

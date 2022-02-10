@@ -1,17 +1,20 @@
 import { FormLabel, Input, Button, FormControl, FormErrorMessage, Center, Text } from "@chakra-ui/react"
-import react from "react"
+import react, {useContext} from "react"
 import { useFormik } from "formik"
 import validate from "../validation/loginValidation"
 import api from "../services/api"
 import authService from "../services/auth.service"
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router"
+import appContext from "../context/appContext"
+
 
 const Login = () => {
   // get user detials from cookies 
   const [cookies, setCookie] = useCookies("user", "role ")
 
   const navigate = useNavigate()
+
 
   // Formik form validation states
   const formik = useFormik({
@@ -28,7 +31,10 @@ const Login = () => {
           console.log(res)
           setCookie("user", res.user.userId, {path: '/'})
           setCookie("role", res.user.role, {path: '/'})
+        })
+        .then(()=>{
           navigate("/projects")
+          
         })
         resetForm()
       },

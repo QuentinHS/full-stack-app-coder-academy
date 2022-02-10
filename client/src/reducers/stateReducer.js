@@ -10,5 +10,11 @@ export default function (currentState, action){
                 ...currentState,
                 projects: action.data
             }
+
+        case "setCurrentUser":
+            return{
+                ...currentState,
+                currentUser: action.data
+            }
     }
 }

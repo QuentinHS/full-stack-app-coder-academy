@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useReducer, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import Stage from './components/Stage'
 import Trade from './components/NewTask'
 import PMTask from './components/PMTask'
@@ -11,20 +11,20 @@ import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
 // import "./App.css"
 import ProjectsDashboard from "./components/ProjectsDashboard"
-import projectReducer from "./reducers/stateReducer"
+import stateReducer from "./reducers/stateReducer"
 import appContext from "./context/appContext"
 import TradeProdvider from "./components/TradeProviders"
 import NewProject from "./components/NewProject"
 import TradieTask from "./components/TradieTask"
+import api from "./services/api"
+import EditUserDetails from "./components/EditUserDetails"
+import EditUserPassword from "./components/EditUserPassword"
 import NewTask from "./components/NewTask"
 import TasksApproval from "./components/TasksApproval"
 
-const initialState = {projects: []}
+const initialState = {projects: [], currentUser:{}}
 function App() {
-  const [state, dispatch] = useReducer(projectReducer, initialState)
-  const {projects} = state
-
-  
+  const [state, dispatch] = useReducer(stateReducer, initialState)
  
 
   return (
@@ -37,7 +37,9 @@ function App() {
           <Route path="/projects" element={<ProjectsDashboard/>} />
           <Route path="/projects/new" element={<NewProject/>}/>
           <Route path="/login" element={<Login/>} />
-          <Route path="/user" element={<User  /> } />
+          <Route path="/user" element={<User/> } />
+          <Route path="/user/edit" element={<EditUserDetails /> } />
+          <Route path="/user/password" element={<EditUserPassword /> } />
           <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
           <Route path="/pmTask" element={<PMTask /> } />
