@@ -1,5 +1,6 @@
 const Stage = require("../models/Stage")
 const Project = require("../models/Project")
+const Task = require("../models/Task")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
@@ -17,7 +18,6 @@ const getAllStages = async (req, res) => {
 const createStage = async (req, res) => {
   const { id } = req.params
   const project = await Project.findById(id)
-
   const stage = new Stage(req.body)
   stage.project = id
 
@@ -60,6 +60,8 @@ const getStage = async (req, res) => {
 
 const deleteStage = async (req, res) => {
   const { id } = req.params
+
+  await Task.deleteMany({ stage: id })
   const stage = await Stage.findOneAndDelete({ _id: id })
   if (!stage) {
     throw new NotFoundError(`No stage with id ${id}`)

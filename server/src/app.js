@@ -10,7 +10,6 @@ const errorHandlerMiddleware = require("./middleware/error-handler")
 
 
 const createServer = require("./utils/server")
-const {authenticateUser, authorizeRoles} = require("./middleware/authentication")
 
 // creates the server with express 
 const app = createServer()
@@ -30,7 +29,7 @@ app.use(cookieParser())
 
 app.use(errorHandlerMiddleware)
 // app.use(cookieParser(process.env.JWT_SECRET))
-// app.all("*", authenticateUser)
+
 
 // routers
 const authRouter = require("./routes/authRouter")

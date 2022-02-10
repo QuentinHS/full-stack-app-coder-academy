@@ -15,7 +15,7 @@ const TaskSchema = new Schema(
     tradeCategory: {
       type: Schema.Types.ObjectId,
       ref: "Trade",
-      required: [true, "each task must have a category"],
+      required: [false, "each task must have a category"],
     },
     pendingApproval: {
       type: Boolean,
@@ -31,7 +31,7 @@ const TaskSchema = new Schema(
     },
     completionDate: {
       type: Date,
-      required: [true, "each task must have a completion date"],
+      required: [false, "each task must have a completion date"],
     },
     materialsAreOnSite: {
       type: Boolean,
@@ -57,7 +57,7 @@ const TaskSchema = new Schema(
     assignedTradeProvider: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "each task must be assigned to a trade provider"],
+      required: [false, "each task must be assigned to a trade provider"],
     },
     image: {
       type: [String],

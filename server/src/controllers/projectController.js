@@ -38,6 +38,7 @@ const getProject = async (req, res) => {
 
 const deleteProject = async (req, res) => {
   const { id } = req.params
+  await Stage.deleteMany({project: id})
   const project = await Project.findOneAndDelete({ _id: id })
   if (!project) {
     throw new NotFoundError(`No project with id ${id}`)

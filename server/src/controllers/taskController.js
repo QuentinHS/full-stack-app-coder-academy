@@ -26,13 +26,13 @@ const createTask = async (req, res) => {
 
   // req.body.stage = req.params.id
 
-   const {tradeCategory, assignedTradeProvider} = req.body
-   const trade = await Trade.findById(tradeCategory)
-   const traderProvider =  await User.findById(assignedTradeProvider)
+  //  const {tradeCategory, assignedTradeProvider} = req.body
+  //  const trade = await Trade.findById(tradeCategory)
+  //  const tradeProvider =  await User.findById(assignedTradeProvider)
 
-   task.tradeCategory = trade 
-   task.assignedTradeProvider = traderProvider
-   task.save()
+  //  task.tradeCategory = trade 
+  //  task.assignedTradeProvider = tradeProvider
+  //  task.save()
 
   // const task = await Task.create(req.body)
   res.status(StatusCodes.CREATED).json({ task })
