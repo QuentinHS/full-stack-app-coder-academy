@@ -47,11 +47,7 @@ const deleteProject = async (req, res) => {
 }
 
 const updateProject = async (req, res) => {
-  const { id, name } = req.params
-
-  if (name === "") {
-    throw new BadRequestError("Name field cannot be empty")
-  }
+  const { id } = req.params
 
   const project = await Project.findOneAndUpdate({ _id: id }, req.body, {
     new: true,
