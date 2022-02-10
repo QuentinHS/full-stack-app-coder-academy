@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useEffect, useReducer, useState } from 'react'
 import Stage from './components/Stage'
-import Trade from './components/Trade'
+import Trade from './components/NewTask'
 import PMTask from './components/PMTask'
 import User from './components/User'
 import Nav from './components/Nav'
@@ -19,6 +19,8 @@ import TradieTask from "./components/TradieTask"
 import api from "./services/api"
 import EditUserDetails from "./components/EditUserDetails"
 import EditUserPassword from "./components/EditUserPassword"
+import NewTask from "./components/NewTask"
+import TasksApproval from "./components/TasksApproval"
 
 const initialState = {projects: [], currentUser:{}}
 function App() {
@@ -40,13 +42,12 @@ function App() {
           <Route path="/user/password" element={<EditUserPassword /> } />
           <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
-          <Route path="/pmtask" element={<PMTask /> } />
+          <Route path="/pmTask" element={<PMTask /> } />
           <Route path="/tradieTask" element={<TradieTask /> } />
-          {/* 
-          
-          <Trade />
-          */}
-          
+          <Route path="/projectsDashboard" element={<ProjectsDashboard /> } />
+          <Route path="/newTask" element={<NewTask /> } />
+          <Route path="/tasksApproval" element={<TasksApproval /> } />
+
         </Routes>
         <ScrollToTop />
       </BrowserRouter>

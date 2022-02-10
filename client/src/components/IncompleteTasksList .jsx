@@ -1,15 +1,12 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Center, IconButton, List, ListItem, Text, VStack, Icon } from "@chakra-ui/react";
-import { BsTrash, BsPlusCircle, BsFillExclamationCircleFill } from 'react-icons/bs'
-import { BiPackage } from "react-icons/bi"
+import { Center, IconButton, List, ListItem, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
-const CurrentTasksList = ({tasksList=[]}) =>{
+const IncompleteTasksList = ({tasksList=[]}) =>{
 
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-    const onSite = true
-    const eclamation = true
+
     const active = tasksList.filter(tasks => {
         return tasks.completed === false
     })
@@ -20,10 +17,8 @@ const CurrentTasksList = ({tasksList=[]}) =>{
 
             <Center>
 
-                <Text>My Tasks</Text>
-                <IconButton size='sm'  mr="2rem" ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
-                {eclamation ? <Icon mr="1rem" as={BsFillExclamationCircleFill} /> : null}
-                {eclamation ? <Icon mr="1rem" as={BiPackage} /> : null}
+                <Text>Incomplete Tasks</Text>
+                <IconButton size='sm' ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
             </Center>
 
             <List spacing={3}>
@@ -31,7 +26,7 @@ const CurrentTasksList = ({tasksList=[]}) =>{
                     if (data){
                         return  show ? (
                             <Center>
-                                <ListItem> {data.name}{} </ListItem>
+                                <ListItem> {data.name} </ListItem>
                             </Center>
                         ): null
                     }
@@ -44,4 +39,4 @@ const CurrentTasksList = ({tasksList=[]}) =>{
     )
 }
 
-export default CurrentTasksList
+export default IncompleteTasksList

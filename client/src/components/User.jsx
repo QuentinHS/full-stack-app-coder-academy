@@ -22,6 +22,9 @@ const User = () => {
  
     return(
         <div>
+            <Center m="2rem">
+                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>My Profile</Text>
+            </Center>
             <Center>
                 <Text mb='1rem' fontSize='2xl' color='teal' as='b' > My Profile</Text>
             </Center> 

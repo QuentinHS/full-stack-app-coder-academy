@@ -12,7 +12,7 @@ const TradeProdviders = () => {
     return(
         <div>
             <Center>
-                <Heading>Trade Providers</Heading>
+                <Heading fontSize='5xl' color='teal' as='b'>Trade Providers</Heading>
             </Center>
             <Center mt="2rem">
                 <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
@@ -21,7 +21,7 @@ const TradeProdviders = () => {
             <Center mt="1rem">
                 <ul >
                     {tradeList[0].carpenter.map((trade, index) => 
-                        <Center key={index}  >
+                        <Center key={index} m="1rem" >
                             <IconButton aria-label='Search database' icon={<BsTrash />} />
                             <Link to="/">  {trade} </Link>
                         </Center>

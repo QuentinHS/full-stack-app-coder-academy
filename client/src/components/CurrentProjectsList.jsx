@@ -7,9 +7,10 @@ const CurrentProjectsList = ({projectList=[]}) =>{
    
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-   
-    const active = projectList.filter(project => {
-        return project.completed === false
+    const projectsList = ["foo"]
+ 
+    const active = projectsList.filter(projects => {
+        return projects.completed === false
     })
   
 
@@ -18,7 +19,7 @@ const CurrentProjectsList = ({projectList=[]}) =>{
         <>
             <VStack>
 
-            <Center>
+            <Center m="1rem">
 
                 <Text>Current Projects</Text>
                 <IconButton size='sm' ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
