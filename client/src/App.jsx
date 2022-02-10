@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { useEffect, useReducer, useState } from 'react'
 import Trade from './components/NewTask'
 import PMTask from './components/PMTask'
@@ -27,9 +27,6 @@ const initialState = {projects: [], currentUser:{}}
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState)
 
-
- 
-
   return (
     <appContext.Provider value={{ state, dispatch }}>
       <BrowserRouter>
@@ -45,7 +42,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route path="/projects" element={<ProjectsDashboard/>} /> */}
           <Route path="/projects/new" element={<NewProject />} />
           <Route path="/projects/:id" element={<Project />} />
           <Route path="/login" element={<Login />} />
@@ -57,7 +53,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route path="/user" element={<User />} /> */}
           <Route path="/user/edit" element={<EditUserDetails />} />
           <Route path="/user/password" element={<EditUserPassword />} />
           <Route path="/tradeProviders" element={<TradeProdvider />} />
@@ -65,6 +60,7 @@ function App() {
           <Route path="/tradieTask" element={<TradieTask />} />
           <Route path="/newTask" element={<NewTask />} />
           <Route path="/tasksApproval" element={<TasksApproval />} />
+          <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
         <ScrollToTop />
       </BrowserRouter>
