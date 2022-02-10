@@ -3,8 +3,15 @@ const router = express.Router()
 const { getAllProjects, createProject, getProject, deleteProject, updateProject } = require("../controllers/projectController")
 const { authenticateUser, authorizeRoles } = require("../middleware/authentication")
 
-router.route("/").post(authenticateUser, createProject).get(authenticateUser, getAllProjects)
+router
+  .route("/")
+  .post([authenticateUser, authorizeRoles("project manager")], createProject)
+  .get(authenticateUser, getAllProjects)
 
-router.route("/:id").get(getProject).delete(deleteProject).patch(updateProject)
+router
+  .route("/:id")
+  .get(authenticateUser, getProject)
+  .delete([authenticateUser, authorizeRoles("project manager")], deleteProject)
+  .patch([authenticateUser, authorizeRoles("project manager")], updateProject)
 
 module.exports = router
