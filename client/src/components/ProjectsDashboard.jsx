@@ -92,6 +92,10 @@ const ProjectsDashboard = () => {
                 <SearchBar input={input} onChange={updateInput}/>
            </Center>
            <Center>
+                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
+                <Link to="/">  Create New Project </Link>
+            </Center>
+           <Center>
                 <Alert status='error'>
                     <AlertDescription>You have
                         {currentUserRole === 'project manager' ? projects.length : null} tasks requiring attention </AlertDescription>
