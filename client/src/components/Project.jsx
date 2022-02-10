@@ -10,8 +10,9 @@ import { useState } from "react";
 
 
 
+
 const Project = () => {
-    const {state: {projects, curretUser}, dispatch} = useContext(appContext)
+    const {state: {projects, currentUser}, dispatch} = useContext(appContext)
     const params = useParams()
     const currentProject = projects.find(({_id})=> _id === params.id)
    
@@ -22,23 +23,33 @@ const Project = () => {
     
     // const [checkedItems, setCheckedItems] = React.useState( new Array(currentProject.stage.length).fill(false))
 
-    return(
-        <div>
-            <Center>
-                <Heading mb='1rem' fontSize='5xl' color='teal' as='b'>{currentProject.address}</Heading>
-            </Center>
-            <Center>
-                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
-                <Link to="/">  Add project Stage </Link>
-            </Center>
-            <Center>
-                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
-                <Link to="/">  Add trade provider </Link>
-            </Center >
-            <Center m="1rem">
-                <Link to="/">  View trade Providers </Link>
-            </Center >
-            <Center mt="2rem">
+    return currentProject ? (
+        
+        <>
+
+            {currentUser.role === "project manager" ? 
+                    <>
+                        <Center>
+                            <Heading mb='1rem' fontSize='5xl' color='teal' as='b'>{currentProject.address}</Heading>
+                        </Center>
+                        <Center>
+                            <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
+                            <Link to={`/projects/${params.id}/stages/new`}>  Add project Stage </Link>
+                        </Center>
+                        <Center>
+                            <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
+                            <Link to="/">  Add trade provider </Link>
+                        </Center >
+                        <Center m="1rem">
+                            <Link to="/">  View trade Providers </Link>
+                        </Center >
+                    </>
+                
+                : null }
+ 
+            
+            <Center mt="2rem"> 
+        
                 <ul >
                     { currentProject.stages.length > 0 ? currentProject.stage.map((stage, index) => 
                         <Center key={index} m="1rem" >
@@ -59,8 +70,8 @@ const Project = () => {
             <IconButton m="1rem" aria-label='' icon={<BsTrash />} />
                 <Link to="/">  Delete Project </Link>
             </Center >
-        </div>
-    )
+        </>
+    ) : (<Text>Page not found </Text>)
 }
 
 export default Project
