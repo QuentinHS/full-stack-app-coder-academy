@@ -45,9 +45,10 @@ const NewTask = () => {
                 <Textarea width='80%'  placeholder='Comments' />
             </Center>
             <Center>
-                {/* Require date entry field */}
-                <Text>Task Due Date</Text>
-                <Icon boxSize={6} m="1rem" as={ImCalendar} />
+                <FormLabel mt="1rem" htmlFor='completionDate'>Task Due Date</FormLabel>
+            </Center>
+            <Center>
+                <Input w="25rem" id='completionDate' type='date' onChange={formik.handleChange} value={formik.values.completionDate}/>
             </Center>
             <Center mt='2rem'>
                 <Link to="/register">
