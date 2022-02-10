@@ -17,6 +17,7 @@ import TradeProdvider from "./components/TradeProviders"
 import NewProject from "./components/NewProject"
 import TradieTask from "./components/TradieTask"
 import NewTask from "./components/NewTask"
+import TasksApproval from "./components/TasksApproval"
 
 const initialState = {projects: []}
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/tradieTask" element={<TradieTask /> } />
           <Route path="/projectsDashboard" element={<ProjectsDashboard /> } />
           <Route path="/newTask" element={<NewTask /> } />
+          <Route path="/tasksApproval" element={<TasksApproval /> } />
 
         </Routes>
         <ScrollToTop />
