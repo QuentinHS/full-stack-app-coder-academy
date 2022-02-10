@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Center, IconButton, List, ListItem, Text, VStack, Heading, Button } from "@chakra-ui/react";
+import { Center, IconButton, List, ListItem, Text, VStack, Heading, Button, Textarea } from "@chakra-ui/react";
 import React from "react";
 import{ Link } from 'react-router-dom'
 
@@ -27,10 +27,19 @@ const TasksApproval = ({tasksList=[]}) =>{
                 <Text mb='1rem' fontSize='3xl' as='b'>Task: {currentTask.stage[0].taskName}</Text>
             </Center>
             <Center >
-                <Text mb='1rem' fontSize='2xl' as='b'>Submitted by: {currentTask.stage[0].provider}</Text>
+                <Text  fontSize='xl' as='b'>Submitted by: {currentTask.stage[0].provider}</Text>
             </Center>
-
-
+            <Center>
+                <Textarea width='80%'  placeholder='Task Description' />
+            </Center>
+            <Center mt="2rem">
+                <Text mb='1rem' fontSize='1xl' as='b'>Attached Images</Text>
+            </Center>
+            {/* Not sure how to include images */}
+            <Center>
+                <Textarea width='80%'  placeholder='Reasons task was declined' />
+            </Center>
+           
         </div>
     )
 }
