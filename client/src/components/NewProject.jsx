@@ -7,6 +7,7 @@ import appContext from "../context/appContext"
 import { useNavigate } from "react-router"
 
 
+
 const NewProject = () => {
     const {state: {projects}, dispatch} = useContext(appContext)
     const navigate = useNavigate()
