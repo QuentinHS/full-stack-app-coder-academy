@@ -38,6 +38,7 @@ const getProject = async (req, res) => {
 
 const deleteProject = async (req, res) => {
   const { id } = req.params
+  await Stage.deleteMany({project: id})
   const project = await Project.findOneAndDelete({ _id: id })
   if (!project) {
     throw new NotFoundError(`No project with id ${id}`)
@@ -46,11 +47,7 @@ const deleteProject = async (req, res) => {
 }
 
 const updateProject = async (req, res) => {
-  const { id, name } = req.params
-
-  if (name === "") {
-    throw new BadRequestError("Name field cannot be empty")
-  }
+  const { id } = req.params
 
   const project = await Project.findOneAndUpdate({ _id: id }, req.body, {
     new: true,

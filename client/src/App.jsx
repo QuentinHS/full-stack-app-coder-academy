@@ -8,6 +8,7 @@ import Home from './components/Home'
 import Register from './components/Register'
 import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
+import Project from "./components/Project"
 // import "./App.css"
 import ProjectsDashboard from "./components/ProjectsDashboard"
 import stateReducer from "./reducers/stateReducer"
