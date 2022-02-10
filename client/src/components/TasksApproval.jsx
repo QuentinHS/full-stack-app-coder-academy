@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Center, IconButton, List, ListItem, Text, VStack, Heading, Button, Textarea } from "@chakra-ui/react";
+import { Center, IconButton, List, ListItem, Text, VStack, Heading, Button, Textarea, Stack, Checkbox } from "@chakra-ui/react";
 import React from "react";
 import{ Link } from 'react-router-dom'
 
@@ -13,7 +13,8 @@ const TasksApproval = ({tasksList=[]}) =>{
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
 
-   
+    const [checkedItems, setCheckedItems] = React.useState([false, false ])
+
 
     return (
         <div>
@@ -39,7 +40,27 @@ const TasksApproval = ({tasksList=[]}) =>{
             <Center>
                 <Textarea width='80%'  placeholder='Reasons task was declined' />
             </Center>
-           
+            <Center m="1rem" >
+                <Stack spacing={5} direction='row'>
+                    <Center>
+                    <Checkbox 
+                    spacing="1rem"
+                        isChecked={checkedItems[0]}
+                        onChange={(e) => setCheckedItems([e.target.checked, checkedItems[0]])}>
+                        Approve Task
+                    </Checkbox>
+                    <Checkbox 
+                    spacing="1rem"
+                        isChecked={checkedItems[1]}
+                        onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}>
+                        Decline Approval
+                    </Checkbox>
+                    </Center>
+                </Stack>
+            </Center>
+            <Center>
+                <Button mt='2rem' w='20rem'colorScheme='teal' type='submit' >Submit</Button>
+            </Center>
         </div>
     )
 }
