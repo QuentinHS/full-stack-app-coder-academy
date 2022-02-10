@@ -36,7 +36,7 @@ function App() {
           <Route path="/projects" element={<ProjectsDashboard/>} />
           <Route path="/projects/new" element={<NewProject/>}/>
           <Route path="/login" element={<Login/>} />
-          <Route path="/User" element={<User  /> } />
+          <Route path="/user" element={<User  /> } />
           <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
           <Route path="/pmTask" element={<PMTask /> } />

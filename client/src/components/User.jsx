@@ -30,12 +30,15 @@ const User = () => {
     })  
     return(
         <div>
+            <Center m="2rem">
+                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>My Profile</Text>
+            </Center>
             <Center>
                 {/* User name and other data will need to retrived and parsed in*/}
-                <Text mb='1rem' fontSize='5xl' color='teal' as='b'>{currentUser.firstName ? currentUser.firstName : "User Profile!"}</Text>
+                <Text mb='1rem' fontSize='2xl' color='teal' as='b'>{currentUser.firstName ? currentUser.firstName + " " + currentUser.lastName : "User Profile!"}</Text>
             </Center>
             {/* Maybe change position to something that isn't centered */}
-            <Center mt='2rem' >
+            <Center >
                 <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Email: {currentUser.email ? currentUser.email : "Add an email address!"}</Text>
             </Center>
             <Center>
