@@ -1,87 +1,70 @@
 import React, { useContext } from "react";
-import api from "../services/api";
-import { Input, InputLeftAddon, InputGroup, Center, Button, Text } from '@chakra-ui/react'
-import { BiSearch } from 'react-icons/bi'
-import { AiOutlinePlusCircle, AiFillExclamationCircle } from 'react-icons/ai'
+import { Center, Text, Icon, Checkbox, Stack, IconButton, Heading } from '@chakra-ui/react'
+import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 import { useParams } from "react-router";
 import appContext from "../context/appContext";
-
-const pm = {address: "123 fake street", task: [{stageNum: 1, taskNum: 1, trade: "carentry", provider: "Johno's construction"},{stageNum: 2, taskNum: 2, trade: "2 carentry", provider: "2 Johno's construction"}, {stageNum: 3, taskNum: 3, trade: "3 carentry", provider: "7 Johno's construction"}]}
-const currentProject = pm
-
-const projectList = {projects: [{address: "123 fake street"}, {address: "555 Evergreen trc"}, {address: "31 Spooner st"}]}
-const completedProjectList = {projects: [{address: "Foo"}, {address: "Bar"}, {address: "Blah"}]}
+import { useState } from "react";
 
 
+
+    const projectList = {projects: [{address: "123 Fake street"}, {address: "555 Evergreen trc"}, {address: "31 Spooner st"}]}
+    const pm = {address: "123 Fake street", stage: [{stageNum: 1, taskName: "foo", trade: "carentry", provider: "Johno's construction", complete: false},{stageNum: 2, taskName: "bar", trade: "2 carentry", provider: "2 Johno's construction"}, {stageNum: 3, taskName: "blah", trade: "3 carentry", provider: "7 Johno's construction"}, {stageNum: 5, taskName: "blah", trade: "3 carentry", provider: "7 Johno's construction"}]}
+
+    // const currentProject = pm
 
 
 const Project = () => {
-    const params = useParams()
-    
-    
     const {state: {projects, curretUser}, dispatch} = useContext(appContext)
+    const params = useParams()
+    const currentProject = projects.find(({_id})=> _id === params.id)
+   
+    console.log(currentProject)
     
     
     
+    
+    // const [checkedItems, setCheckedItems] = React.useState( new Array(currentProject.stage.length).fill(false))
+
     return(
         <div>
             <Center>
-                <Text mb='1rem' fontSize='3xl' color='teal' as='b'>{currentProject.address}</Text>
+                <Heading mb='1rem' fontSize='5xl' color='teal' as='b'>{currentProject.address}</Heading>
             </Center>
             <Center>
-                <div>
-                    <InputGroup>
-                        <InputLeftAddon children={<BiSearch />} />
-                        <Input width='' variant='outline' placeholder='Search Projects' />   
-                    </InputGroup>   
-                </div>
-            </Center>  
-            
-            <Center >
-                <Link to="/register">
-                    <Button leftIcon={<AiOutlinePlusCircle />} mt="1em" width="15rem" colorScheme="teal" variant="outline">Create New Project</Button>
-                </Link>
+                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
+                <Link to="/">  Add project Stage </Link>
             </Center>
             <Center>
-                <Text mt='1rem' fontSize='2xl' color='teal' as='b'>Tasks to Approve</Text>
+                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
+                <Link to="/">  Add trade provider </Link>
+            </Center >
+            <Center m="1rem">
+                <Link to="/">  View trade Providers </Link>
+            </Center >
+            <Center mt="2rem">
+                <ul >
+                    { currentProject.stages.length > 0 ? currentProject.stage.map((stage, index) => 
+                        <Center key={index} m="1rem" >
+                            <Stack spacing={5} direction='row'>
+                                <IconButton aria-label='Search database' icon={<BsTrash />} />
+                                <Checkbox 
+                                spacing="1rem"
+                                    isChecked={checkedItems[index]}
+                                    onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}>
+                                    Stage: {stage.stageNum}
+                                </Checkbox>
+                            </Stack>
+                        </Center>
+                    ): null}
+                </ul>
             </Center>
-            <Center >
-                {/* Need to show individual Tasks */}
-                    <ol>
-                        {currentProject.task.map((task, index) => 
-                        // will need to be user id through params
-                            <li key={index} ><Link to="/register"><Button mt="1em" width="15rem" colorScheme="teal" variant="outline">{task.provider}</Button></Link></li>
-                        )}
-                    </ol> 
-            </Center>
-            <Center>
-                <Text mt='1rem' fontSize='2xl' color='teal' as='b'>Current Projects</Text>
-            </Center>
-            <Center >
-                {/* May need to sort by date*/}
-                    <ol>
-                        {projectList.projects.map((project, id) => 
-                        // will need to be project id through params
-                            <li key={id} ><Link to="/register"><Button mt="1em" width="15rem" colorScheme="teal" variant="outline">{project.address}</Button></Link></li>
-                        )}
-                    </ol> 
-            </Center>
-            <Center>
-                <Text mt='1rem' fontSize='2xl' color='teal' as='b'>Completed Projects</Text>
-            </Center>
-            <Center >
-                {/* May need to sort by date*/}
-                    <ol>
-                        {completedProjectList.projects.map((project, id) => 
-                        // will need to be project id through params
-                            <li key={id} ><Link to="/register"><Button mt="1em" width="15rem" colorScheme="teal" variant="outline">{project.address}</Button></Link></li>
-                        )}
-                    </ol> 
-            </Center>
+            <Center mt="3rem">
+            <IconButton m="1rem" aria-label='' icon={<BsTrash />} />
+                <Link to="/">  Delete Project </Link>
+            </Center >
         </div>
     )
 }
-{/* <Text mb='1rem' fontSize='2xl' color='teal' as='b'>Projet</Text> */}
 
 export default Project

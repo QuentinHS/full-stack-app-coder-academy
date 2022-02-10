@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useEffect, useReducer, useState } from 'react'
-import Stage from './components/Stage'
 import Trade from './components/NewTask'
 import PMTask from './components/PMTask'
 import User from './components/User'
@@ -26,6 +25,8 @@ import Project from "./components/Project"
 const initialState = {projects: [], currentUser:{}}
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState)
+
+
  
 
   return (
@@ -37,11 +38,11 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/projects" element={<ProjectsDashboard/>} />
           <Route path="/projects/new" element={<NewProject/>}/>
+          <Route path="/projects/:id" element={<Project/>}/>
           <Route path="/login" element={<Login/>} />
           <Route path="/user" element={<User/> } />
           <Route path="/user/edit" element={<EditUserDetails /> } />
           <Route path="/user/password" element={<EditUserPassword /> } />
-          <Route path="/stage" element={<Stage /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
           <Route path="/pmTask" element={<PMTask /> } />
           <Route path="/tradieTask" element={<TradieTask /> } />
