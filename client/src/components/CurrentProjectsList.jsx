@@ -1,14 +1,13 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Center, IconButton, List, ListItem, Text, VStack } from "@chakra-ui/react";
-import React, { useContext } from "react";
-import appContext from "../context/appContext";
+import React from "react";
+
 
 
 const CurrentProjectsList = ({projectList=[]}) =>{
    
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-    const {state: {projects, curretUser}, dispatch} = useContext(appContext)
  
     const active = projectList.filter(projects => {
         return projects.completed === false
