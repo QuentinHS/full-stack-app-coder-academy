@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Register from './components/Register'
 import Login from './components/Login'
 import ScrollToTop from "./components/ScrollToTop"
+import Project from "./components/Project"
 // import "./App.css"
 import ProjectsDashboard from "./components/ProjectsDashboard"
 import stateReducer from "./reducers/stateReducer"
@@ -40,7 +41,7 @@ function App() {
           <Route path="/user" element={<User/> } />
           <Route path="/user/edit" element={<EditUserDetails /> } />
           <Route path="/user/password" element={<EditUserPassword /> } />
-          <Route path="/stage" element={<Stage /> } />
+          <Route path="/project" element={<Project /> } />
           <Route path="/tradeProviders" element={<TradeProdvider /> } />
           <Route path="/pmTask" element={<PMTask /> } />
           <Route path="/tradieTask" element={<TradieTask /> } />
