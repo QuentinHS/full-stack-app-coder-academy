@@ -21,8 +21,9 @@ import EditUserDetails from "./components/EditUserDetails"
 import EditUserPassword from "./components/EditUserPassword"
 import NewTask from "./components/NewTask"
 import TasksApproval from "./components/TasksApproval"
+import NewStage from "./components/NewStage"
 
-const initialState = {projects: [], currentUser:{}}
+const initialState = {projects: [], currentUser:{}, stages: []}
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState)
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/projects" element={<ProjectsDashboard/>} />
           <Route path="/projects/new" element={<NewProject/>}/>
           <Route path="/projects/:id" element={<Project/>}/>
+          <Route path= "/projects/:id/stages/new" element={<NewStage/>}/>
           <Route path="/login" element={<Login/>} />
           <Route path="/user" element={<User/> } />
           <Route path="/user/edit" element={<EditUserDetails /> } />
