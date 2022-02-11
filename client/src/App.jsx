@@ -21,7 +21,6 @@ import EditUserDetails from "./components/EditUserDetails"
 import EditUserPassword from "./components/EditUserPassword"
 import NewTask from "./components/NewTask"
 import TasksApproval from "./components/TasksApproval"
-import Project from "./components/Project"
 
 const initialState = {projects: [], currentUser:{}}
 function App() {
