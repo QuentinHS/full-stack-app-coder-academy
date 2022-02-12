@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {InputRightElement, InputGroup, Center, Input, Text,FormControl, FormLabel, FormErrorMessage, Button, HStack} from '@chakra-ui/react'
 import { useFormik } from "formik"
 import validate from "../validation/signupValidation"
@@ -6,7 +6,7 @@ import UserDetailsForm from "./UserDetailsForm";
 import api from "../services/api";
 import { useNavigate } from 'react-router'
 import { useCookies } from "react-cookie";
-
+import appContext from "../context/appContext"
 
 
 const Register = () => {
@@ -15,7 +15,10 @@ const Register = () => {
    const [roleTrade, setRoleTrade] = React.useState(true)
    const handleClickTrade = () => setRoleTrade(true)
    const handleClickProjectManager = () => setRoleTrade(false)
- 
+    const {
+        state: { auth },
+        dispatch,
+    } = useContext(appContext)
    const navigate = useNavigate()
 
    // get user detials from cookies 
@@ -51,9 +54,15 @@ const Register = () => {
             })
             .then(
                 console.log(cookies))
-            .then(() => navigate('/projects'))
-            .catch((error)=>{
-                console.log(error.response)
+            .then(() => {
+                dispatch({
+                    type: "setAuth",
+                    data: true,
+                })
+            })
+            .then(() => navigate("/projects"))
+            .catch((error) => {
+            console.log(error.response)
             })
             resetForm()
             
