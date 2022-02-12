@@ -31,6 +31,10 @@ const NewStage = () =>{
                     type: "addStage",
                     data: res.data
                 })
+                dispatch({ 
+                    type: "setStageSuccessAlert",
+                    data: "Your stage was successfully created "
+                })
             })
             .catch((error)=>{
                 console.log(error)
@@ -51,6 +55,10 @@ const NewStage = () =>{
             //   alert(JSON.stringify(values, null, 2))
                 addStage(values)
                 console.log(values)
+                // dispatch({
+                //     type: "setSuccessAlert",
+                //     data: "Stage Successfully Created "
+                // })
                 resetForm()
                 navigate(`/projects/${params.id}`)
                 

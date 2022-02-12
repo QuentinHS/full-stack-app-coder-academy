@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useEffect, useReducer, useState } from 'react'
 import Trade from './components/NewTask'
-import PMTask from './components/PMTask'
+import PMTask from './components/Stage'
 import User from './components/User'
 import Nav from './components/Nav'
 import Home from './components/Home'
@@ -23,7 +23,7 @@ import NewTask from "./components/NewTask"
 import TasksApproval from "./components/TasksApproval"
 import NewStage from "./components/NewStage"
 
-const initialState = {projects: [], currentUser:{}, stages: []}
+const initialState = {projects: [], currentUser:{}, stages: [], alert: {success: null, error: null}}
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState)
 

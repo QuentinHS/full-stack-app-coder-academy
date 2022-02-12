@@ -1,5 +1,5 @@
-import { FormLabel, Input, Button, FormControl, FormErrorMessage, Center, Text } from "@chakra-ui/react"
-import react, {useContext} from "react"
+import {AlertIcon, AlertDescription, Alert, FormLabel, Input, Button, FormControl, FormErrorMessage, Center, Text } from "@chakra-ui/react"
+import react, {useContext, useState} from "react"
 import { useFormik } from "formik"
 import validate from "../validation/loginValidation"
 import api from "../services/api"
@@ -9,11 +9,15 @@ import { useNavigate } from "react-router"
 import appContext from "../context/appContext"
 
 
+
+
 const Login = () => {
   // get user detials from cookies 
   const [cookies, setCookie] = useCookies("user", "role ")
+  const [error, setError] = useState('')
 
   const navigate = useNavigate()
+  let errorMessage
 
 
   // Formik form validation states
@@ -28,17 +32,34 @@ const Login = () => {
         console.log(values)
         authService.login(values.email, values.password)
         .then((res) =>{ 
+          
           console.log(res)
           setCookie("user", res.user.userId, {path: '/'})
           setCookie("role", res.user.role, {path: '/'})
         })
         .then(()=>{
-          navigate("/projects")
-          
+          resetForm()
+          navigate("/projects")  
         })
-        resetForm()
+        .catch((error, errorMessage)=>{
+          console.log(error.response.status)
+          if(error){
+            if(error.response.status === 401){
+              setError('Access denied, please check your details')
+            }
+            else {
+              setError( "A problem occured please contact administrator ")
+            }
+            
+          }
+
+        })
       },
   })
+
+  console.log(error)
+
+
     return (
       <>
        <Center>
@@ -69,6 +90,8 @@ const Login = () => {
                 />
                 {formik.errors.password ? <FormErrorMessage>{formik.errors.password}</FormErrorMessage> : null}
               </FormControl>
+              {error && <Alert status='error'> <AlertIcon/> <AlertDescription>{error}</AlertDescription> </Alert> }
+              
 
             <Button mt='2rem' w='20rem'colorScheme='teal' type='submit' >Submit</Button>
           </form>

@@ -40,5 +40,41 @@ export default function (currentState, action){
                 ...currentState, 
                 stages: [action.data, ...currentState.stages]
             }
+
+
+        case "setSuccessAlert":
+            return update(currentState, {
+                
+                alert: {
+                    success: {$set: action.data}
+                } 
+                
+            })
+
+        case "setErrorAlert":
+            return update(currentState, {
+                
+                alert: {
+                    error: {$set: action.data}
+                } 
+                
+            })
+
+        case "setStageSuccessAlert":
+            return update(currentState, {
+                
+                alert: {
+                    stageSuccess: {$set: action.data}
+                } 
+                
+            })    
+        case "setStageErrorAlert":
+            return update(currentState, {
+                
+                alert: {
+                    stageError: {$set: action.data}
+                } 
+                
+            })
     }
 }

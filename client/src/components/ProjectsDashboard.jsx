@@ -1,4 +1,4 @@
-import { Center, Text, Icon, Alert, AlertDescription, AlertIcon } from "@chakra-ui/react";
+import { Center, Text, Icon, Alert, AlertDescription, AlertIcon, CloseButton } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link as ReachLink} from "@chakra-ui/react";
 import { BsPlusCircle } from "react-icons/bs";
@@ -17,7 +17,7 @@ const ProjectsDashboard = () => {
     const [cookies, setCookie] = useCookies(["user", "role"])
     const currentUserId = cookies.user
     const currentUserRole = cookies.role
-    const {state: {projects, curretUser}, dispatch} = useContext(appContext)
+    const {state: {projects, curretUser, alert}, dispatch} = useContext(appContext)
     
     const [input, setInput ] = useState('')
     const [allProjects, setAllProjects] = useState()
@@ -51,7 +51,7 @@ const ProjectsDashboard = () => {
         
      }, [])
 
-
+  
 
 
     
@@ -88,10 +88,21 @@ const ProjectsDashboard = () => {
     }
 console.log(projects)
 
+// projects.map((project)=>{ project.stage.task })
+console.log(alert)
 
 
     return(
         <>
+         {alert.projectSuccess && 
+         <Center>
+            <Alert w='27rem' status='success'> 
+                <AlertIcon/> 
+                <AlertDescription>{alert.projectSuccess}</AlertDescription>
+                <CloseButton position='absolute' right='8px' top='8px' onClick={handleAlert}/>
+            </Alert>
+         </Center>
+         }
            <Center>
                <Text fontSize="5xl" color="teal" as="b"> My Projects </Text>
            </Center>
