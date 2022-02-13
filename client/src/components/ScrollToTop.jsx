@@ -32,10 +32,11 @@ const ScrollToTop = () => {
         return () => {
             window.removeEventListener('scroll', toggleVisibility)
         }
-
+    // Empty array prevents infanit loop
     }, [])
 
     return (
+        // This is the button and it uses className for CSS position etc
         <div className="toTop">
             <button className={isVisable ? "opOn" : "opOff" } type="button" onClick={scrollToTop} ><BiArrowFromBottom /></button>
         </div>
