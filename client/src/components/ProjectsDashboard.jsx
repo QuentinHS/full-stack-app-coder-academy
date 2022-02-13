@@ -10,6 +10,7 @@ import TasksToApprove from "./TasksToApprove";
 import appContext from "../context/appContext";
 import {useCookies} from 'react-cookie'
 import { Link } from "react-router-dom";
+import AlertComponent from "./AlertComponent";
 
 
 
@@ -94,15 +95,19 @@ console.log(alert)
 
     return(
         <>
-         {alert.projectSuccess && 
+         {/* {alert.success && 
          <Center>
             <Alert w='27rem' status='success'> 
                 <AlertIcon/> 
-                <AlertDescription>{alert.projectSuccess}</AlertDescription>
+                <AlertDescription>{alert.success}</AlertDescription>
                 <CloseButton position='absolute' right='8px' top='8px' onClick={handleAlert}/>
             </Alert>
          </Center>
-         }
+         } */}
+         <Center>
+            {alert.success && <AlertComponent alertStatus='success' />}
+            {alert.error && <AlertComponent alertStatus='error' />}
+         </Center>
            <Center>
                <Text fontSize="5xl" color="teal" as="b"> My Projects </Text>
            </Center>
