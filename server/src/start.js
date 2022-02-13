@@ -2,7 +2,7 @@ const app = require('./app')
 const connectDB = require("./db/connect")
 require("dotenv").config()
 const port = process.env.PORT || 7000
-
+// connect asyncronously to mongo
 const start = async () => {
   try {
     // connectDB

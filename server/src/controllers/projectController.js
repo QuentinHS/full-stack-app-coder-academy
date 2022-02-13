@@ -3,20 +3,23 @@ const Stage = require("../models/Stage")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
+// get all projects
 const getAllProjects = async (req, res) => {
   const projects = await Project.find({ projectManager: req.user.userId }).sort("-createdAt")
   res.status(StatusCodes.OK).json({ projects, count: projects.length })
 }
 
+// create new project
 const createProject = async (req, res) => {
   const project = await Project.create({...req.body, projectManager: req.user.userId})
  
   res.status(StatusCodes.CREATED).json({ project })
 }
 
+// get single project
 const getProject = async (req, res) => {
   const { id } = req.params
-
+  // get project and populate array property with that project's stages in object format
   const project = await Project.findOne({
     _id: id,
   })
@@ -29,13 +32,13 @@ const getProject = async (req, res) => {
   //    _id: jobId,
   //    createdBy: userId,
   //  })
-
+  // throw error if no project
   if (!project) {
     throw new NotFoundError(`No project with id ${id}`)
   }
   res.status(StatusCodes.OK).json({ project })
 }
-
+// delete single project
 const deleteProject = async (req, res) => {
   const { id } = req.params
   await Stage.deleteMany({project: id})
@@ -45,7 +48,7 @@ const deleteProject = async (req, res) => {
   }
   res.status(StatusCodes.OK).json({ project })
 }
-
+// update single project
 const updateProject = async (req, res) => {
   const { id } = req.params
 
@@ -53,7 +56,7 @@ const updateProject = async (req, res) => {
     new: true,
     runValidators: true,
   })
-
+  // throw error if no project with id
   if (!project) {
      throw new NotFoundError(`No project with id ${id}`)
   }
