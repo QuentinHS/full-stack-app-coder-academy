@@ -8,7 +8,6 @@ const cors = require("cors")
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")
 
-
 const createServer = require("./utils/server")
 
 // creates the server with express 
