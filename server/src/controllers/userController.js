@@ -3,36 +3,8 @@ const { StatusCodes } = require("http-status-codes")
 const CustomError = require("../errors")
 const { createTokenUser, attachCookiesToResponse, checkPermissions } = require("../utils")
 
-// Get all project managers 
 
-// const getAllProjectManagers = async (req, res) => {
-//   const users = await User.find({ role: "project manager" }).select("-password")
-//   res.status(StatusCodes.OK).json({ users })
-
-// // Get all trade providers
-
-// const getAllTradeProviders = async (req, res) => {
-//   const users = await User.find({ role: "trade provider" }).select("-password")
-//   res.status(StatusCodes.OK).json({ users })
-//   }
-// }
-
-// Protected Route / Trade Provider User
-// Get Single User   
-
-// const getSingleUser = async (req, res) => {
-//   const user = await User.findOne({ _id: req.params.id }).select("-password")
-//   if (!user) {
-//     throw new CustomError.NotFoundError(`No user with id : ${req.params.id}`)
-//   }
-//   res.status(StatusCodes.OK).json({ user })
-// }
-
-// Protected Route / Admin or User
-// Show Current User  
-
-// New routes
-
+// get all users - admin only
 const getAllUsers = async(req, res) => {
   console.log(req.cookies)
   console.log(req.user)
@@ -40,6 +12,7 @@ const getAllUsers = async(req, res) => {
   res.status(StatusCodes.OK).json({ users })
 }
 
+// show current user details
 const showCurrentUser = async (req, res) => {
   const user = await User.findOne({ _id: req.user.userId }).select("-password")
   if (!user) {
@@ -49,6 +22,7 @@ const showCurrentUser = async (req, res) => {
   res.status(StatusCodes.OK).json({user: user})
 }
 
+// get single user
 const getSingleUser = async (req, res) => {
   const user = await User.findOne({ _id: req.params.id }).select("-password")
   if (!user) {
@@ -59,13 +33,14 @@ const getSingleUser = async (req, res) => {
 }
 
 
-// update user
+// update user details
 const updateUser = async (req, res) => {
+  // get information from form
   const { email, firstName, lastName, businessName, abn } = req.body
   if (!email || !firstName || !lastName|| !businessName) {
     throw new CustomError.BadRequestError("Please provide all values")
   }
-
+  // find user with appropriate id
   const user = await User.findOne({_id: req.user.userId})
 
   
@@ -83,20 +58,7 @@ const updateUser = async (req, res) => {
 }
 
 
-// alternate update user method with findoneandupdate
-// const updateUser = async (req, res) => {
-//   const {email, firstName} = req.body
-//   if (!email || !firstName) {
-//     throw new CustomError.BadRequestError("Please provide all values")
-//   }
-
-//   const user = await User.findOneAndUpdate({_id: req.user.userId}, {email, firstName}, {new: true, runValidators: true})
-
-//   const tokenUser = createTokenUser(user)
-//   attachCookiesToResponse({res, user: tokenUser})
-//   res.status(StatusCodes.OK).json({user: tokenUser})
-// }
-
+// update user password
 const updateUserPassword = async (req, res) => {
   const { oldPassword, password } = req.body
   if (!oldPassword || !password) {

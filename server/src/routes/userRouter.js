@@ -3,7 +3,7 @@ const router = express.Router()
 const { authenticateUser, authorizeRoles } = require('../middleware/authentication')
 const { getAllUsers, getSingleUser, showCurrentUser, updateUser, updateUserPassword } = require("../controllers/userController")
 
-
+// user routes - some require admin authentication
 router.route("/users").get(authenticateUser, authorizeRoles("admin"), getAllUsers)
 
 router.route("/showMe").get(authenticateUser, showCurrentUser)

@@ -12,7 +12,7 @@ const authenticateUser = async (req, res, next) => {
   else if (req.cookies.token) {
     token = req.cookies.token
   }
-
+  // throw error if no token
   if (!token) {
     throw new CustomError.UnauthenticatedError("Authentication invalid")
   }
@@ -31,6 +31,7 @@ const authenticateUser = async (req, res, next) => {
   }
 }
 
+// check authorisation of user role
 const authorizeRoles = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
