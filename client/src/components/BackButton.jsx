@@ -3,7 +3,6 @@ import { BiArrowBack } from 'react-icons/bi'
 
 // BackButton is used in the Nav component
 const BackButton = (props) => {
-    
   // useNavigate allows the app to go to previous pages
     let navigate = useNavigate();
     return (

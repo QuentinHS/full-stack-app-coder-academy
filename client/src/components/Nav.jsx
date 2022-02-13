@@ -39,6 +39,7 @@ const Nav = () => {
 
 
     return(
+      // Navigation buttons for the Nav link component
         <div className="container" >
             <BackButton className="back" />
             <div className="linkGorup">

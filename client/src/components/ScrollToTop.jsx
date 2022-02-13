@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { BiArrowFromBottom } from 'react-icons/bi'
 import "../ScrollToTop.css"
 
-
 // The ScrollToTop is used to scroll to the top of the page once the page offset reaches above 300
 const ScrollToTop = () => {
     // Relies on the state to be either true or false for the button to be visable
     const [isVisable, setIsVisable ] = useState(false)
-
     // Toggles between visabel and not
     const toggleVisibility = () => {
         if(window.pageYOffset > 300){
@@ -16,7 +14,6 @@ const ScrollToTop = () => {
             setIsVisable(false)
         }
     }
-
     // This enables the smooth action when scrolling back to the top
     const scrollToTop = () => {
         window.scrollTo({
@@ -24,7 +21,6 @@ const ScrollToTop = () => {
             behavior: "smooth"
         })
     }
-
     // UseEffect prevents infanit loop and removes eventlistener when necessary
     useEffect(() => {
         window.addEventListener('scroll', toggleVisibility)
@@ -34,7 +30,6 @@ const ScrollToTop = () => {
         }
     // Empty array prevents infanit loop
     }, [])
-
     return (
         // This is the button and it uses className for CSS position etc
         <div className="toTop">
