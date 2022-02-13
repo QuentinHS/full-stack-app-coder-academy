@@ -4,11 +4,20 @@ import { describe, expect, it, beforeEach } from "vitest"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-describe("Home component test", () => {
+describe("Appcomponent test", () => {
   it("shows the welcome message", () => {
     render(<App />)
-
-    const headingElement = screen.getByText(/welcome/i)
-    expect(headingElement).toBeInTheDocument()
+    expect(screen.getByText(/welcome/i)).toBeInTheDocument()
+  })
+  it("displays signup and login buttons", () => {
+    render(<App />)
+    expect(screen.getByRole("button", { name: "Login" })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: "Sign Up" })).toBeInTheDocument()
+  })
+  it("displays register page when Sign Up button is clicked", () => {
+    render(<App />)
+    userEvent.click(screen.getByRole("button", { name: "Sign Up" }))
+    expect(screen.getByText(/sign up/i)).toBeInTheDocument()
+    
   })
 })
