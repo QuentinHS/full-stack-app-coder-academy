@@ -1,8 +1,9 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "src/app.js",
+  "main": "start.js",
   "scripts": {
+    "start": "node src/start.js",
     "serve": "nodemon src/start.js",
     "test": "jest"
   },
@@ -35,5 +36,7 @@
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
   },
-  "description": ""
+  "engines": {
+    "node": "16.x"
+  }
 }
