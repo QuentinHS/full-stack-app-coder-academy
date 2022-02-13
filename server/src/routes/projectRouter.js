@@ -3,6 +3,7 @@ const router = express.Router()
 const { getAllProjects, createProject, getProject, deleteProject, updateProject } = require("../controllers/projectController")
 const { authenticateUser, authorizeRoles } = require("../middleware/authentication")
 
+// project routes
 router
   .route("/")
   .post([authenticateUser, authorizeRoles("project manager")], createProject)

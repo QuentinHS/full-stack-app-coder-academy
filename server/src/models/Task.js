@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const { Schema } = mongoose
 
+// task schema
 const TaskSchema = new Schema(
   {
     name: {
@@ -67,4 +68,5 @@ const TaskSchema = new Schema(
   { timestamps: true }
 )
 
+// create model from schema
 module.exports = mongoose.model("Task", TaskSchema)

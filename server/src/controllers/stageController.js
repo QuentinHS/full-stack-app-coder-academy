@@ -4,7 +4,7 @@ const Task = require("../models/Task")
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
-
+// get all stages
 const getAllStages = async (req, res) => {
   req.body.project = req.params.id
 
@@ -12,9 +12,7 @@ const getAllStages = async (req, res) => {
   res.status(StatusCodes.OK).json({ stages, count: stages.length })
 }
 
-
-
-
+// create new stage
 const createStage = async (req, res) => {
   const { id } = req.params
   const project = await Project.findById(id)
@@ -35,7 +33,7 @@ const createStage = async (req, res) => {
 //   res.status(StatusCodes.CREATED).json({ stage })
 // }
 
-
+// get single stage
 const getStage = async (req, res) => {
   const { id } = req.params
 
@@ -57,10 +55,10 @@ const getStage = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ stage })
 }
-
+// delete single stage
 const deleteStage = async (req, res) => {
   const { id } = req.params
-
+  // cascade delete for dependent tasks
   await Task.deleteMany({ stage: id })
   const stage = await Stage.findOneAndDelete({ _id: id })
   if (!stage) {
@@ -68,10 +66,10 @@ const deleteStage = async (req, res) => {
   }
   res.status(StatusCodes.OK).json({ stage })
 }
-
+// update single stage
 const updateStage = async (req, res) => {
   const { id, name } = req.params
-
+  // ensure fields are filled in
   if (name === "") {
     throw new BadRequestError("Name field cannot be empty")
   }
@@ -80,7 +78,7 @@ const updateStage = async (req, res) => {
     new: true,
     runValidators: true,
   })
-
+  // throw error if no stage with id
   if (!stage) {
     throw new NotFoundError(`No stagewith id ${id}`)
   }

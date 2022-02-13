@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const { Schema } = mongoose
 
+// trade schema
 const TradeSchema = new Schema({
   name: {
     type: String,
@@ -10,4 +11,5 @@ const TradeSchema = new Schema({
 { timestamps: true }
 )
 
+// create model from schema
 module.exports = mongoose.model("Trade", TradeSchema)

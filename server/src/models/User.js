@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const validator = require("validator")
 const { Schema } = mongoose
 
+// user schema
 const UserSchema = new Schema(
   {
     firstName: {
@@ -68,15 +69,18 @@ const UserSchema = new Schema(
   { timestamps: true }
 )
 
+// hash + salt password for user when signing up
 UserSchema.pre("save", async function () {
   if (!this.isModified("password")) return
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
 })
 
+// compare hashed passwords when user logs in
 UserSchema.methods.comparePassword = async function (canditatePassword) {
   const isMatch = await bcrypt.compare(canditatePassword, this.password)
   return isMatch
 }
 
+// create model from schema
 module.exports = mongoose.model("User", UserSchema)

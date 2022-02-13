@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true})
 const { getAllStages, createStage, getStage, deleteStage, updateStage } = require("../controllers/stageController")
 const { authenticateUser, authorizeRoles } = require("../middleware/authentication")
 
-// Creating a stage within a project 
+// Stage routes
 router
   .route("/")
   .post([authenticateUser, authorizeRoles("project manager")], createStage)
@@ -13,8 +13,6 @@ router
   .get(authenticateUser, getStage)
   .delete([authenticateUser, authorizeRoles("project manager")], deleteStage)
   .patch([authenticateUser, authorizeRoles("project manager")], updateStage)
-
-// This is a random comment
 
 module.exports = router
 

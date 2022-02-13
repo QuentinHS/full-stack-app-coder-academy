@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const { Schema } = mongoose
 
+// stage schema
 const StageSchema = new Schema(
   {
     name: {
@@ -26,4 +27,5 @@ const StageSchema = new Schema(
   { timestamps: true }
 )
 
+// create model from schema
 module.exports = mongoose.model("Stage", StageSchema)

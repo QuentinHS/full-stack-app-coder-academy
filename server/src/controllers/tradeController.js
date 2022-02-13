@@ -2,17 +2,20 @@ const Trade = require('../models/Trade')
 const { StatusCodes } = require("http-status-codes")
 const { BadRequestError, NotFoundError } = require("../errors")
 
+// get all trades
 const getAllTrades = async(req, res) =>{
     req.body.task = req.params.id 
     const trades = await Trade.find({})
     res.status(StatusCodes.OK).json({ trades, count: trades.length })
 }
 
+// create new trade
 const createTrade = async(req, res) =>{
     const trade = await Trade.create(req.body)
     res.status(StatusCodes.CREATED).json({ trade })
 }
 
+// get single trade
 const getTrade = async(req, res)=>{
     const { id } = req.params
 
@@ -25,6 +28,7 @@ const getTrade = async(req, res)=>{
     res.status(StatusCodes.OK).json({ trade })
 }
 
+// delete trade
 const deleteTrade = async(req, res)=>{
     const {id} = req.params 
     const trade = await Trade.findOneAndDelete({_id: id})
@@ -35,6 +39,7 @@ const deleteTrade = async(req, res)=>{
 
 }
 
+// update single trade
 const updateTrade = async(req, res)=>{
     const {id, name} = req.params
 

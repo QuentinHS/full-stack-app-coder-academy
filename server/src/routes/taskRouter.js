@@ -4,7 +4,7 @@ const { getAllTasks, createTask, getTask, deleteTask, updateTask } = require("..
 const { authenticateUser, authorizeRoles } = require("../middleware/authentication")
 const { uploadTaskImage } = require("../controllers/uploadsController")
 
-// Creating a stage within a project
+// Tsk routes
 router
   .route("/")
   .get(authenticateUser, getAllTasks)
