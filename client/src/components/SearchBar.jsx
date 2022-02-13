@@ -4,7 +4,6 @@ import React from "react";
 
 const SearchBar = ({input: query, onChange: setQuery}) => {
 
-
     return(
         <>
             <Center>
@@ -13,7 +12,6 @@ const SearchBar = ({input: query, onChange: setQuery}) => {
                         <Input m='1rem' w={[300, 200, 200]} placeholder='Search projects' size='md' value={query} onChange={e => setQuery(e.target.value)} />
                 </InputGroup>
             </Center>
-            
         </>
     )
 }

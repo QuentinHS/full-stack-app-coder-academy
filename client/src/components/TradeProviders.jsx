@@ -3,10 +3,7 @@ import { Center, Icon,  Heading, IconButton } from '@chakra-ui/react'
 import { BsTrash, BsPlusCircle } from 'react-icons/bs'
 import{ Link } from 'react-router-dom'
 
-const tradeList = [{carpenter: ["Jim’s carpentry", "JVK & Sons Construction", "Josh Cassidy Carpenter"]}, {plumber: ["Jim’s plumbing", "Paul Fitzpatrick Plumbing", "Damien's Plumbing Services"]}, {electrical: ["Jim’s electrical", "On Electrical Contractors Pty Ltd", "NNC ELECTRICAL"]}]
-
-
-
+// inteded as a means to display a list of trade providers
 const TradeProdviders = () => {
 
     return(
@@ -15,9 +12,11 @@ const TradeProdviders = () => {
                 <Heading fontSize='5xl' color='teal' as='b'>Trade Providers</Heading>
             </Center>
             <Center mt="2rem">
+                {/* Pm can add another trade provider */}
                 <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
                 <Link to="/">  Add trade provider </Link>
             </Center>
+            {/* Lists displays list of trade providers */}
             <Center mt="1rem">
                 <ul >
                     {tradeList[0].carpenter.map((trade, index) => 

@@ -6,8 +6,7 @@ import validate from "../validation/newProjectValidation"
 import appContext from "../context/appContext"
 import { useNavigate } from "react-router"
 
-
-
+// This is where new projects are created
 const NewProject = () => {
     const {state: {projects}, dispatch} = useContext(appContext)
     const navigate = useNavigate()

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router";
 import api from "../services/api";
 import appContext from "../context/appContext"
 
+// This is the navigation links for the top of the app and is shown on every page
 const Nav = () => {
     const [cookies, setCookie, removeCookie] = useCookies(["user", "role"])
     const navigate = useNavigate()
@@ -41,8 +42,10 @@ const Nav = () => {
     return(
       // Navigation buttons for the Nav link component
         <div className="container" >
+          {/* Imported backButton component */}
             <BackButton className="back" />
             <div className="linkGorup">
+                {/* These link to respective routes */}
                 <Link className="link" to="/projects"><BiHome /></Link>
                 <Link className="link" to="/user"><BsFillPersonFill /></Link>
                 <Link className="link" to="/" onClick={logout}><FiLogOut /></Link>

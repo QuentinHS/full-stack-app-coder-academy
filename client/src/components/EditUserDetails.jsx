@@ -13,7 +13,7 @@ const EditUserDetails = () => {
     // navigate the components 
     const navigate = useNavigate()
 
- 
+    // Formik is used to handle the forms input
     const formik = useFormik({
         initialValues: {
             firstName: currentUser.firstName,

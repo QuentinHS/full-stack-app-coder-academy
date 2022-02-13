@@ -5,11 +5,10 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import{ Link } from 'react-router-dom'
 import{ ImCalendar } from 'react-icons/im'
 
+// This is where a new task is created
 const NewTask = () => {
-
     const [show, setShow] = React.useState(false)
     const handleClickShow = () => setShow(!show)
-
     const formik = useFormik({
         initialValues: {
           trade: '',
@@ -19,7 +18,6 @@ const NewTask = () => {
           alert(JSON.stringify(values, null, 2));
         },
       });
-    
     return (
         <div>
             <Center mb="2rem">
@@ -40,7 +38,6 @@ const NewTask = () => {
                 <Text>Task Assignee</Text>
                 <IconButton size='sm'  mr="2rem" ml='12px' aria-label='Show/hide component' icon={<ChevronDownIcon/>} onClick={handleClickShow}/>
             </Center>
-
             <Center>
                 <Textarea width='80%'  placeholder='Comments' />
             </Center>
@@ -57,22 +54,6 @@ const NewTask = () => {
             </Center>
         </div>
     )
-   
-
-
-
-
-    // return(
-    //     
-
-    //     
-    //         <form onSubmit={formik.handleSubmit}></form>
-    //     </div>
-    // )
 }
 
 export default NewTask
-
-//     <Center mb="2rem">
-//     <Heading fontSize='5xl' color='teal' as='b' >Create New Task</Heading>
-// </Center>

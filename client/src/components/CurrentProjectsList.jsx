@@ -9,7 +9,7 @@ const CurrentProjectsList = ({projectList=[]}) =>{
     const [show, setShow] = React.useState(false)
     // Shows the list when user clicks on the drop down
     const handleClickShow = () => setShow(!show)
-    // filters the project list as the user enters input into the search field
+    // filters the project list 
     const active = projectList.filter(projects => {
         return projects.completed === false
     })

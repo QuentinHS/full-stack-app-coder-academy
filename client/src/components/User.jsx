@@ -6,8 +6,6 @@ import{ Link } from 'react-router-dom'
 import api from "../services/api";
 import appContext from "../context/appContext";
 
-
-
 const User = () => {
     //setting user 
     // const [currentUser, setCurrentUser] = useState({})
@@ -16,18 +14,11 @@ const User = () => {
     const handleClick =()=>{
 
     }
-
-  
-
- 
     return(
         <div>
             <Center m="2rem">
                 <Text mb='1rem' fontSize='5xl' color='teal' as='b'>My Profile</Text>
             </Center>
-            <Center>
-                <Text mb='1rem' fontSize='2xl' color='teal' as='b' > My Profile</Text>
-            </Center> 
             <Center>
                  <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.firstName ? currentUser.firstName : "Add a first name"} {currentUser.lastName ? currentUser.lastName : "Add a last name"}</Text>
             </Center>
@@ -44,7 +35,6 @@ const User = () => {
                 <Text mb='1rem' mr='1rem' fontSize='2xl' color='teal' as='b' >Trade: </Text> <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.trade ? currentUser.trade : "Add a Trade!"}</Text> 
             </Center>
                 : null}
-                
             <Center>
                 <Text mb='1rem' mr='1rem' fontSize='2xl' color='teal' as='b' >Company: </Text>
                 {currentUser.businessName ? <Text mb='1rem' fontSize='2xl' color='teal'>{currentUser.businessName} </Text>: <Alert w='15rem' status='error'> <AlertIcon/>Add company/business!</Alert>} 

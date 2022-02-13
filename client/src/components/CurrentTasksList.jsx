@@ -12,6 +12,7 @@ const CurrentTasksList = ({tasksList=[]}) =>{
     const handleClickShow = () => setShow(!show)
     const onSite = true
     const eclamation = true
+    // filters the task list 
     const active = tasksList.filter(tasks => {
         return tasks.completed === false
     })

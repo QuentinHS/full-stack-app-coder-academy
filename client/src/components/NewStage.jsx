@@ -9,9 +9,8 @@ import NewTask from "./NewTask"
 import { useParams } from "react-router"
 import api from "../services/api"
 
+// This is where the new stage is created
 const NewStage = () =>{
-
-
 
     const {state: {projects, stages}, dispatch} = useContext(appContext)
     const navigate = useNavigate()
@@ -26,7 +25,6 @@ const NewStage = () =>{
         await api.post(`/projects/${params.id}/stages`, values, { withCredentials: true })
             .then ((res) => {
                 console.log(res.data) 
-
                 dispatch({
                     type: "addStage",
                     data: res.data
@@ -53,16 +51,13 @@ const NewStage = () =>{
                 console.log(values)
                 resetForm()
                 navigate(`/projects/${params.id}`)
-                
             },
         })   
         console.log(currentProject.stages)
         console.log(stages)
-
     return (
         <>
         <form onSubmit={formik.handleSubmit}>  
-        
             <Center>
                 <Text mb='1rem' fontSize='4xl' color='teal' as='b'> Create new Stage  </Text>
             </Center>
@@ -80,8 +75,6 @@ const NewStage = () =>{
            <Center>
              <Button mt='2rem' w='20rem'colorScheme='teal' type='submit' >Submit</Button>
             </Center>
-          
-
         </form>
         </>
     )

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router'
 import { useCookies } from "react-cookie";
 import appContext from "../context/appContext"
 
-
+// This is used for user sign up 
 const Register = () => {
 
    // State for Project Manager and Tradesman buttons 
@@ -24,7 +24,7 @@ const Register = () => {
    // get user detials from cookies 
     const [cookies, setCookie] = useCookies("user", "role")
 
-
+    // Uses formik for handling the input when user signs up
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -34,7 +34,6 @@ const Register = () => {
             confirmPassword: '',
             businessName: '',
             abn: null
-        
         },
         validate,
         onSubmit: (values, {resetForm} ) => {
@@ -49,8 +48,6 @@ const Register = () => {
                 console.log(res.data.user)
                 setCookie("user", res.data.user.userId, {path: '/'})
                 setCookie("role", res.data.user.role, {path: '/'})
-                
-                
             })
             .then(
                 console.log(cookies))
@@ -64,13 +61,10 @@ const Register = () => {
             .catch((error) => {
             console.log(error.response)
             })
+            // resets form after form submition
             resetForm()
-            
         },
     })   
-    
-                    
-                    
     return(
         <>
             <Center>

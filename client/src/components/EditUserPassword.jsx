@@ -19,6 +19,7 @@ const EditUserPassword = () =>{
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(false)
 
+    // Formik is used to handle the forms input
     const formik = useFormik({
         initialValues: {
             oldPassword: '',
@@ -37,16 +38,17 @@ const EditUserPassword = () =>{
                 setError(false)
                 
             })
+            // Formik error handling
             .catch((error)=>{
                 console.log(error.response.data)
                 setError(true)
                 setSuccess(false)
             })
+            // resets form after submition
             resetForm()
             
         },
     }) 
-    console.log(formik.errors)
     return(
         <>
             <Center>
