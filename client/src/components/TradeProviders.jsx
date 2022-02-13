@@ -9,15 +9,14 @@ const tradeList = [{carpenter: ["Jim’s carpentry", "JVK & Sons Construction", 
 
 const TradeProdviders = () => {
 
+    
+
     return(
         <div>
             <Center>
                 <Heading fontSize='5xl' color='teal' as='b'>Trade Providers</Heading>
             </Center>
-            <Center mt="2rem">
-                <Icon boxSize={6} m="1rem" as={BsPlusCircle} />
-                <Link to="/">  Add trade provider </Link>
-            </Center>
+           
             <Center mt="1rem">
                 <ul >
                     {tradeList[0].carpenter.map((trade, index) => 

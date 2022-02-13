@@ -35,7 +35,7 @@ const Project = () => {
         })
         setComponentStages(response.data.stages)
            
-    }, [componentStages])
+    }, [])
 
     //post request to delete project 
 
@@ -153,7 +153,7 @@ const Project = () => {
                                     isChecked = {checkedItems[index]}
                                     onChange ={e => setCheckedItems(e.target.checked) }
                                     >
-                                   <Link to="/tasks">Stage: {stage.name}</Link> 
+                                   <Link to={`/projects/${params.id}/stages/${stage._id}/tasks`}>Stage: {stage.name}</Link> 
                                 </Checkbox>
                             </Stack>
                         </Center>
